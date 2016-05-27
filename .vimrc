@@ -48,9 +48,7 @@ set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-nnoremap <Tab> >>
 nnoremap <S-Tab> <<
-vnoremap <Tab> >1v
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
 

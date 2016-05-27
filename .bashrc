@@ -3,6 +3,7 @@
 # for examples
 
 #my aliases
+alias dbshell='~/workspace/fred/scripts/fred-manager db_shell'
 alias gotests='cd ~/workspace/server/tests/interfaces/whois/'
 alias gowhois='cd ~/workspace/server/src/whois/'
 alias fredscr='~/workspace/fred/scripts/fred-manager'
