@@ -34,6 +34,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this
 
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
@@ -43,14 +47,60 @@ set cursorline
 
 map <C-b> :pop<CR>
 nnoremap <F1> :w<CR>
+set so=7
+set lazyredraw 
+set smarttab
 
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
+command W w !sudo tee % > /dev/null
+
+vnoremap . :norm.<CR>
+
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ag \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'.
+        l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" =
+    l:saved_reg
+endfunction
+"""""""""""""""""""""""""""""
+
+
+nnoremap l >>
+vnoremap l >>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
+
+"Move characters / selections
+nnoremap <C-h> xhP
+nunmap <C-l>
+nnoremap <C-l> xp
+vnoremap <C-h> xhP`[v`]
+vnoremap <C-l> xp`[v`]
 
 "Mappings to move lines
 nnoremap <C-j> :m .+1<CR>==
@@ -135,10 +185,11 @@ match redundant_spaces /\s\+$\| \+\ze\t/
 " Change name_with_underscores to NamesInCameCase for visually selected text.
 " mnemonic *c*amelCase
 vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
+" :s#_\(\l\)#\u\1#g
 " Change CamelCase to name_with_underscore for visually selected text.
 " mnemonic *u*nderscores.
 vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
-
+" :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
 " Airline bundle
 "let g:airline_powerline_fonts=1
