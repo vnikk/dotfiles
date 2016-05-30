@@ -2,15 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-#my aliases
-alias dbshell='~/workspace/fred/scripts/fred-manager db_shell'
-alias gotests='cd ~/workspace/server/tests/interfaces/whois/'
-alias gowhois='cd ~/workspace/server/src/whois/'
-alias fredscr='~/workspace/fred/scripts/fred-manager'
-alias playsound='paplay ~/Downloads/Oh-yeah-sound-effect.ogg'
-alias xclip='xclip -selection c'
-alias gobuild='cd /home/nick/workspace/fred/scripts/root/bin'
-alias gocorwho='cd ~/workspace/server/src/corba/whois'
+function set-title() {
+if [[ -z "$ORIG" ]]; then
+    ORIG=$PS1
+fi
+TITLE="\[\e]2;$*\a\]"
+PS1=${ORIG}${TITLE}
+}
 
 # If not running interactively, don't do anything
 case $- in
@@ -121,12 +119,12 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -139,8 +137,8 @@ alias l='ls -CF'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.aliasrc ]; then
+    . ~/.aliasrc
 fi
 
 # enable programmable completion features (you don't need to enable
