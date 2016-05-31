@@ -47,7 +47,13 @@ set cursorline
 
 map <C-b> :pop<CR>
 nnoremap <F1> :w<CR>
+
+" MOVEMENT
+" " allow backspace and cursor keys to cross line boundaries
+set whichwrap+=<,>,[,]
 set so=7
+" --------
+
 set lazyredraw 
 set smarttab
 
