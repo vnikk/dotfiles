@@ -2,6 +2,7 @@
 set nocp
 filetype off
 
+
 " Vundle
  set rtp+=~/.vim/bundle/Vundle.vim
 " alternatively, pass a path where Vundle should install plugins
