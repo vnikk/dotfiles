@@ -55,15 +55,40 @@ set so=7
 " --------
 
 set lazyredraw 
+let mapleader = "\<Space>"
+
+nnoremap K <nop>
+
 set smarttab
 
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 vnoremap . :norm.<CR>
+
+""""""""""""""""""""""""""""""
+" => Source <-> Header
+""""""""""""""""""""""""""""""
+function! OpenOther()
+    if expand("%:e") == "cpp"
+        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+    elseif expand("%:e") == "cc"
+        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+    elseif expand("%:e") == "h"
+        let src_name = 
+        if filereadable(expand("%:p:r:s?include?src?").".cpp")
+            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cpp")
+        elseif filereadable(expand("%:p:r:s?include?src?").".cc")
+            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cc")
+        endif
+    endif
+endfunction
+
+nmap ,o :call OpenOther()<CR>
+"""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""
@@ -103,7 +128,7 @@ inoremap <S-Tab> <C-d>
 
 "Move characters / selections
 nnoremap <C-h> xhP
-nunmap <C-l>
+"nunmap <C-l>
 nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]
@@ -123,9 +148,6 @@ nnoremap <C-t> :tabnew<CR>
 inoremap <F2> <Esc>:tabprevious<CR>i
 inoremap <F3> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
-
-" ctrl-I to switch between vertical or horizontal splitted windows
-"map <C-I> <C-W><C-W>
 
 " Tab width and tab width for autoindent
 set tabstop=4
@@ -147,8 +169,8 @@ set numberwidth=4
 set number
 
 " Underline actual line in insert mode
-autocmd InsertLeave * se nocul
-autocmd InsertEnter * se cul
+"autocmd InsertLeave * se nocul
+"autocmd InsertEnter * se cul
 
 filetype plugin on
 filetype indent on
