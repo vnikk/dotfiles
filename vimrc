@@ -232,7 +232,7 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 "let g:vim_markdown_initial_foldlevel=1
 
 " Ctrlp bundle
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Tagbar bundle
 "nmap <C-m> :TagbarToggle<CR>
