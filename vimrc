@@ -4,6 +4,8 @@ filetype off
 
 
 " Vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" :PluginInstall
  set rtp+=~/.vim/bundle/Vundle.vim
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
