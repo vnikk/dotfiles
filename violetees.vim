@@ -55,7 +55,7 @@ hi Label guifg=#d6d2aa guibg=NONE guisp=NONE gui=bold ctermfg=187 ctermbg=NONE c
 hi PMenuSel guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=23 ctermbg=144 cterm=NONE
 hi Search guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=234 ctermbg=144 cterm=NONE
 hi Delimiter guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=187 ctermbg=NONE cterm=NONE
-hi Statement guifg=#9c9248 guibg=NONE guisp=NONE gui=bold ctermfg=185 ctermbg=NONE cterm=bold
+hi Statement guifg=#9c9248 guibg=NONE guisp=NONE gui=bold ctermfg=143 ctermbg=NONE cterm=bold
 hi SpellRare guifg=#bcb3e6 guibg=#111d24 guisp=#111d24 gui=underline ctermfg=146 ctermbg=235 cterm=underline
 hi Comment guifg=#21a6a6 guibg=NONE guisp=NONE gui=italic ctermfg=203 ctermbg=NONE cterm=NONE
 hi Character guifg=#91acc2 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
@@ -63,7 +63,6 @@ hi Float guifg=#91acc2 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE c
 hi Number guifg=#71c950 guibg=NONE guisp=NONE gui=NONE ctermfg=113 ctermbg=NONE cterm=NONE
 hi Boolean guifg=#91acc2 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
 hi Operator guifg=#d6d2aa guibg=NONE guisp=NONE gui=bold ctermfg=187 ctermbg=NONE cterm=bold
-"underline
 hi CursorLine guifg=NONE guibg=#182830 guisp=#182830 gui=NONE ctermfg=NONE ctermbg=236 cterm=NONE 
 hi TabLineFill guifg=#1b323e guibg=#486170 guisp=#486170 gui=bold ctermfg=23 ctermbg=67 cterm=bold
 hi WarningMsg guifg=#91acc2 guibg=#918273 guisp=#918273 gui=NONE ctermfg=109 ctermbg=95 cterm=NONE
