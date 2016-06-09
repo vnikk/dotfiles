@@ -46,8 +46,21 @@ set tags=./tags;
 
 set cursorline
 
+set tabpagemax=20
+
 map <C-b> :pop<CR>
+
+" <C-k> is free to map
+" <C-[> is free to map
+
+nnoremap Q <nop>
+
+inoremap <F1> <Esc>:w<CR>
 nnoremap <F1> :w<CR>
+
+"MAP {} () they are useless
+nnoremap { viBo<Esc>
+nnoremap } viB<Esc>
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
@@ -121,8 +134,8 @@ endfunction
 """""""""""""""""""""""""""""
 
 
-nnoremap l >>
-vnoremap l >>
+nnoremap <leader><tab> >>
+vnoremap <leader><tab> >>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
@@ -144,7 +157,11 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " This is for opening new tabs or switching between tabs
 nnoremap <F2> :tabprevious<CR>
+vnoremap <F2> <Esc>:tabprevious<CR>
+nnoremap <Leader><F2> :tabm-1<CR>
 nnoremap <F3> :tabnext<CR>
+vnoremap <F3> <Esc>:tabnext<CR>
+nnoremap <Leader><F3> :tabm+1<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <F2> <Esc>:tabprevious<CR>i
 inoremap <F3> <Esc>:tabnext<CR>i
@@ -241,5 +258,5 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 "map <C-n> :NERDTreeToggle<CR>
 
 highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%121v.\+/
 
