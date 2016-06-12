@@ -47,7 +47,8 @@ set tags=./tags;
 set cursorline
 
 map <C-b> :pop<CR>
-nnoremap <F1> :w<CR>
+nnoremap S :w<CR>
+"as same as cc
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
