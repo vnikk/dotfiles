@@ -4,6 +4,8 @@ filetype off
 
 
 " Vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" :PluginInstall
  set rtp+=~/.vim/bundle/Vundle.vim
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -46,9 +48,23 @@ set tags=./tags;
 
 set cursorline
 
+set tabpagemax=20
+
 map <C-b> :pop<CR>
+
+" inoremap <F1> <Esc>:w<CR>
 nnoremap S :w<CR>
 "as same as cc
+
+" <C-k> is free to map
+" <C-[> is free to map
+
+nnoremap Q <nop>
+
+
+"MAP {} () they are useless
+nnoremap { viBo<Esc>
+nnoremap } viB<Esc>
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
@@ -122,8 +138,8 @@ endfunction
 """""""""""""""""""""""""""""
 
 
-nnoremap l >>
-vnoremap l >>
+nnoremap <leader><tab> >>
+vnoremap <leader><tab> >>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
@@ -145,7 +161,11 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " This is for opening new tabs or switching between tabs
 nnoremap <F2> :tabprevious<CR>
+vnoremap <F2> <Esc>:tabprevious<CR>
+nnoremap <Leader><F2> :tabm-1<CR>
 nnoremap <F3> :tabnext<CR>
+vnoremap <F3> <Esc>:tabnext<CR>
+nnoremap <Leader><F3> :tabm+1<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <F2> <Esc>:tabprevious<CR>i
 inoremap <F3> <Esc>:tabnext<CR>i
@@ -242,5 +262,5 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 "map <C-n> :NERDTreeToggle<CR>
 
 highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%121v.\+/
 
