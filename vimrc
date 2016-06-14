@@ -61,6 +61,7 @@ nnoremap S :w<CR>
 
 nnoremap Q <nop>
 
+nnoremap <esc> :noh<return><esc>
 
 "MAP {} () they are useless
 nnoremap { viBo<Esc>
