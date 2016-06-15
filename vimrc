@@ -44,7 +44,7 @@ filetype plugin indent on    " required
 
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-set tags=./tags;
+set tags=~/workspace/server/tags
 
 set cursorline
 
@@ -211,7 +211,8 @@ inoremap jk <ESC>
 " set ofu=syntaxcomplete#Complete
 
 " Run ctags
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
 
 " GUI
 if has('gui_running')
