@@ -63,6 +63,17 @@ nnoremap S :w<CR>
 
 nnoremap Q <nop>
 
+nnoremap j gj
+nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" " $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
