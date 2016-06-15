@@ -48,6 +48,8 @@ set tags=~/workspace/server/tags
 
 set cursorline
 
+set wildmenu
+
 set tabpagemax=20
 
 map <C-b> :pop<CR>
