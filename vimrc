@@ -61,7 +61,9 @@ nnoremap S :w<CR>
 
 nnoremap Q <nop>
 
+" :let @/ = ""
 nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
 "MAP {} () they are useless
 nnoremap { viBo<Esc>
