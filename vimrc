@@ -14,6 +14,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
