@@ -50,9 +50,14 @@ set tags=~/workspace/server/tags
 
 set cursorline
 
+" to paste from clipboard properly
+set paste
+
 set tabpagemax=20
 
 map <C-b> :pop<CR>
+
+nmap <F4> :TagbarToggle<CR>
 
 " inoremap <F1> <Esc>:w<CR>
 nnoremap S :w<CR>
