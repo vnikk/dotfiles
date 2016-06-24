@@ -162,3 +162,5 @@ export PSQL_EDITOR='vim +"set syntax=sql"'
 
 # removes freeze from Ctrl-S (requiring Ctrl-Q to unfreeze)
 stty -ixon
+
+alias xclip='xclip -selection c'

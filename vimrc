@@ -14,6 +14,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 "Plugin 'scrooloose/nerdTree'
@@ -53,6 +54,8 @@ set cursorline
 " to paste from clipboard properly
 set paste
 
+set wildmenu
+
 set tabpagemax=20
 
 map <C-b> :pop<CR>
@@ -68,6 +71,17 @@ nnoremap S :w<CR>
 
 nnoremap Q <nop>
 
+nnoremap j gj
+nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" " $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
@@ -77,6 +91,8 @@ nnoremap { viBo<Esc>
 nnoremap } viB<Esc>
 nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
+
+nnoremap <leader>q :set number!<CR>
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
@@ -98,6 +114,18 @@ map <ScrollWheelDown> <C-E>
 command! W w !sudo tee % > /dev/null
 
 vnoremap . :norm.<CR>
+
+" strips trailing whitespace at the end of files. this
+" " is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
 """"""""""""""""""""""""""""""
 " => Source <-> Header
