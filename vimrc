@@ -15,6 +15,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+"Plugin 'scrooloose/nerdTree'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
