@@ -75,6 +75,8 @@ nnoremap <esc>^[ <esc>^[
 "MAP {} () they are useless
 nnoremap { viBo<Esc>
 nnoremap } viB<Esc>
+nnoremap ( vibo<Esc>
+nnoremap ) vib<Esc>
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
