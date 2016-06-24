@@ -159,3 +159,6 @@ fi
 # Custom environment variables.
 # Set vim as editor for psql. http://vim.wikia.com/wiki/Quick_and_dirty_Postgres_query
 export PSQL_EDITOR='vim +"set syntax=sql"'
+
+# removes freeze from Ctrl-S (requiring Ctrl-Q to unfreeze)
+stty -ixon
