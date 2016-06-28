@@ -51,8 +51,8 @@ set tags=~/workspace/server/tags
 
 set cursorline
 
-" to paste from clipboard properly
-set paste
+" to paste from clipboard properly; intereferes with jk
+"set paste
 
 set wildmenu
 
@@ -305,3 +305,4 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
 match OverLength /\%121v.\+/
 
+nmap <leader>t <C-w><C-]><C-w>T
