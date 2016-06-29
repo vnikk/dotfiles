@@ -20,6 +20,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
+Plugin 'vim-airline/vim-airline'
+Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
 "   Plugin 'honza/vim-snippets'
 
