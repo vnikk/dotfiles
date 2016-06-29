@@ -16,6 +16,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+"Plugin 'scrooloose/nerdTree'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -51,11 +53,16 @@ set tags=~/workspace/server/tags
 
 set cursorline
 
+" to paste from clipboard properly; intereferes with jk
+"set paste
+
 set wildmenu
 
 set tabpagemax=20
 
 map <C-b> :pop<CR>
+
+nmap <F4> :TagbarToggle<CR>
 
 " inoremap <F1> <Esc>:w<CR>
 nnoremap S :w<CR>
@@ -84,6 +91,8 @@ nnoremap <esc>^[ <esc>^[
 "MAP {} () they are useless
 nnoremap { viBo<Esc>
 nnoremap } viB<Esc>
+nnoremap ( vibo<Esc>
+nnoremap ) vib<Esc>
 
 nnoremap <leader>q :set number!<CR>
 
@@ -299,3 +308,4 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
 match OverLength /\%121v.\+/
 
+nmap <leader>t <C-w><C-]><C-w>T
