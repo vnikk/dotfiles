@@ -42,6 +42,9 @@ filetype plugin indent on    " required
 "map <C-h> <C-W>h
 "map <C-l> <C-W>l
 
+" Omni
+let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
+
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 set tags=~/workspace/server/tags
