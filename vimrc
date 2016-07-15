@@ -182,7 +182,7 @@ endfunction
 vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 
 nnoremap <leader><tab> >>
-vnoremap <leader><tab> >>
+vnoremap <leader><tab> >><Esc>1v
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
