@@ -25,6 +25,7 @@ hi Normal guifg=#e8e8ff guibg=#111d24 guisp=#111d24 gui=italic ctermfg=189 cterm
 "hi LocalVariable -- no settings --
 "hi CTagsClass -- no settings --
 "hi clear -- no settings --
+" TODO
 hi IncSearch guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=23 ctermbg=144 cterm=NONE
 hi WildMenu guifg=NONE guibg=#7f95a8 guisp=#7f95a8 gui=NONE ctermfg=NONE ctermbg=109 cterm=NONE
 hi SignColumn guifg=#1b323e guibg=#354691 guisp=#354691 gui=NONE ctermfg=23 ctermbg=60 cterm=NONE
@@ -45,7 +46,7 @@ hi Identifier guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=187 ctermbg=N
 hi SpecialChar guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=187 ctermbg=NONE cterm=NONE
 hi Conditional guifg=#d6d2aa guibg=NONE guisp=NONE gui=bold ctermfg=187 ctermbg=NONE cterm=bold
 hi StorageClass guifg=#3e52ac guibg=NONE guisp=NONE gui=bold ctermfg=61 ctermbg=NONE cterm=bold
-hi Todo guifg=#bcb3e6 guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=233 ctermbg=144 cterm=NONE
+hi Todo guifg=#bcb3e6 guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=235 ctermbg=203 cterm=NONE
 hi Special guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=187 ctermbg=NONE cterm=NONE
 hi LineNr guifg=#8233d6 guibg=NONE guisp=NONE gui=italic ctermfg=98 ctermbg=234 cterm=NONE
 "current line number
