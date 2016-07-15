@@ -180,7 +180,12 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 """""""""""""""""""""""""""""
 
+" COMMENTING
 vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
+vnoremap <leader>x :normal @c
+vnoremap <leader>u :s/^\/\///
+nnoremap <leader>u :s/^\/\///
+nnoremap <leader>c 0i//
 
 nnoremap <leader><tab> >>
 vnoremap <leader><tab> >><Esc>1v
