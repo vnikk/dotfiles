@@ -219,6 +219,7 @@ nnoremap <leader><F3> :execute 'silent! tabmove ' . (tabpagenr())<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 nmap <leader>t <C-w><C-]><C-w>T
+nmap <leader>f <C-w>gf
 
 " Commenting
 vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
