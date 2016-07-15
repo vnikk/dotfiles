@@ -94,7 +94,6 @@ nnoremap } viB<Esc>
 nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
 
-nnoremap <leader>q :set number!<CR>
 
 " MOVEMENT
 " " allow backspace and cursor keys to cross line boundaries
@@ -104,6 +103,8 @@ set so=7
 
 set lazyredraw 
 let mapleader = "\<Space>"
+
+nnoremap <leader>q :set number!<CR>
 
 nnoremap K <nop>
 
