@@ -47,7 +47,9 @@ let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
 
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-set tags=~/workspace/server/tags
+if filereadable("~/.vimenv")
+    so ~/.vimenv
+endif
 
 set cursorline
 
@@ -241,10 +243,6 @@ inoremap jk <ESC>
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
-
-" Run ctags
-" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
 
 " GUI
 if has('gui_running')
