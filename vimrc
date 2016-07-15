@@ -3,7 +3,9 @@ set nocp
 filetype off
 
 
-" Vundle
+"""""""""""""""""""""""""""""
+" VUNDLE
+"""""""""""""""""""""""""""""
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " :PluginInstall
  set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,81 +44,190 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this
 
+"""""""""""""""""""""""""""""
+" SETTINGS
+"""""""""""""""""""""""""""""
+
+" Basic
+set showcmd
+set showmatch
+set ruler
+set numberwidth=4
+set number
+set noshowmode
+set cursorline
+filetype plugin on
+filetype indent on
+let mapleader = "\<Space>"
+set mouse=a
+
+" Tab
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Smart search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" GUI
+if has('gui_running')
+    set guifont=Monaco\ for\ Powerline\ 12
+    " Remove menu bar
+    set guioptions-=m
+    " Remove toolbar
+    set guioptions-=T
+endif
+
+" Colors
+let base16colorspace=256
+"set t_Co=256
+"set background=dark
+colorscheme violetees "koehler delek zellner peachpuff
+syntax on
+
+" Highlight redundant whitespaces
+hi redundant_spaces ctermbg=blue guibg=blue
+match redundant_spaces /\s\+$\| \+\ze\t/
+
+" Overlength
+highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
+match OverLength /\%121v.\+/
+
+" Ctrlp bundle
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Movement
+" backspace and arrows cross line boundaries
+set whichwrap+=<,>,[,]
+set scrolloff=7
+
+" Other
+set pastetoggle=<F10>
+set tags=~/workspace/server/tags
+set wildmenu
+set tabpagemax=20
+set lazyredraw 
+set smarttab
+command! W w !sudo tee % > /dev/null
+
+"""""""""""""
+
+"""""""""""""""""""""""""""""
+" MAPPING
+"""""""""""""""""""""""""""""
+
 "map <C-j> <C-W>j
 "map <C-k> <C-W>k
 "map <C-h> <C-W>h
 "map <C-l> <C-W>l
 
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-
-set tags=~/workspace/server/tags
-
-set cursorline
-
-" to paste from clipboard properly; intereferes with jk
-"set paste
-
-set wildmenu
-
-set tabpagemax=20
-
-map <C-b> :pop<CR>
-
-nmap <F4> :TagbarToggle<CR>
-
-" inoremap <F1> <Esc>:w<CR>
-nnoremap S :w<CR>
-"as same as cc
-
 " <C-k> is free to map
 " <C-[> is free to map
 
-nnoremap Q <nop>
+" Run ctags
+" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
 
+" Change name_with_underscores to NamesInCameCase for visually selected text.
+" mnemonic *c*amelCase
+vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
+" :s#_\(\l\)#\u\1#g
+" Change CamelCase to name_with_underscore for visually selected text.
+" mnemonic *u*nderscores.
+vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
+" :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
+
+" Basic
+" inoremap <F1> <Esc>:w<CR>
+"as same as cc
+nnoremap S :w<CR>
+inoremap jk <ESC>
+nnoremap <leader>q :set number!<CR>
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+vnoremap . :norm.<CR>
+
+" Tags
+map <C-b> :pop<CR>
+nmap <F4> :TagbarToggle<CR>
+
+" Replace
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" Movement
 nnoremap j gj
 nnoremap k gk
-
-" move to beginning/end of line
 nnoremap B ^
 nnoremap E $
 
-" " $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
-
-" :let @/ = ""
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
-
-"MAP {} () they are useless
+" {} () search
 nnoremap { viBo<Esc>
 nnoremap } viB<Esc>
 nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
 
+" Characters / selections shifting
+nnoremap <C-h> xhP
+"nunmap <C-l>
+nnoremap <C-l> xp
+vnoremap <C-h> xhP`[v`]
+vnoremap <C-l> xp`[v`]
 
-" MOVEMENT
-" " allow backspace and cursor keys to cross line boundaries
-set whichwrap+=<,>,[,]
-set so=7
-" --------
+" Tab shifting
+nnoremap <leader><tab> >>
+vnoremap <leader><tab> >><Esc>1v
+nnoremap <S-Tab> <<
+vnoremap <S-Tab> <1v
+inoremap <S-Tab> <C-d>
 
-set lazyredraw 
-let mapleader = "\<Space>"
+" Line moving
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
-nnoremap <leader>q :set number!<CR>
+" Esc cancels highlight
+" :let @/ = ""
+nnoremap <esc> :noh<return><esc>
+nnoremap <esc>^[ <esc>^[
 
+" Folding toggle
+nnoremap <Space> za
+
+" Opening / switching tabs
+nnoremap <F2> :tabprevious<CR>
+vnoremap <F2> <Esc>:tabprevious<CR>
+nnoremap <leader><F2> :tabm-1<CR>
+nnoremap <F3> :tabnext<CR>
+vnoremap <F3> <Esc>:tabnext<CR>
+nnoremap <leader><F3> :tabm+1<CR>
+nnoremap <C-t> :tabnew<CR>
+inoremap <F2> <Esc>:tabprevious<CR>i
+inoremap <F3> <Esc>:tabnext<CR>i
+inoremap <C-t> <Esc>:tabnew<CR>
+nmap <leader>t <C-w><C-]><C-w>T
+
+" Commenting
+vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
+vnoremap <leader>x :normal @c
+vnoremap <leader>u :s/^\/\///
+nnoremap <leader>u :s/^\/\///
+nnoremap <leader>c 0i//
+
+" Turn off
+nnoremap $ <nop>
+nnoremap ^ <nop>
+nnoremap Q <nop>
 nnoremap K <nop>
 
-set smarttab
-
-set mouse=a
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
-
-command! W w !sudo tee % > /dev/null
-
-vnoremap . :norm.<CR>
+""""""""""""""""""""""""""""""
+" OTHER
+""""""""""""""""""""""""""""""
 
 " strips trailing whitespace at the end of files. this
 " " is called on buffer write in the autogroup above.
@@ -131,8 +242,9 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 """"""""""""""""""""""""""""""
-" => Source <-> Header
+" Source <-> Header NEEDS TO BE COMPLETED
 """"""""""""""""""""""""""""""
+
 function! OpenOther()
     if expand("%:e") == "cpp"
         exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
@@ -149,11 +261,9 @@ function! OpenOther()
 endfunction
 
 nmap ,o :call OpenOther()<CR>
-"""""""""""""""""""""""""""""
-
 
 """"""""""""""""""""""""""""""
-" => Visual mode related
+" Visual mode related
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -180,116 +290,15 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 """""""""""""""""""""""""""""
 
-" COMMENTING
-vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
-vnoremap <leader>x :normal @c
-vnoremap <leader>u :s/^\/\///
-nnoremap <leader>u :s/^\/\///
-nnoremap <leader>c 0i//
-
-nnoremap <leader><tab> >>
-vnoremap <leader><tab> >><Esc>1v
-nnoremap <S-Tab> <<
-vnoremap <S-Tab> <1v
-inoremap <S-Tab> <C-d>
-
-"Move characters / selections
-nnoremap <C-h> xhP
-"nunmap <C-l>
-nnoremap <C-l> xp
-vnoremap <C-h> xhP`[v`]
-vnoremap <C-l> xp`[v`]
-
-"Mappings to move lines
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
-
-" This is for opening new tabs or switching between tabs
-nnoremap <F2> :tabprevious<CR>
-vnoremap <F2> <Esc>:tabprevious<CR>
-nnoremap <Leader><F2> :tabm-1<CR>
-nnoremap <F3> :tabnext<CR>
-vnoremap <F3> <Esc>:tabnext<CR>
-nnoremap <Leader><F3> :tabm+1<CR>
-nnoremap <C-t> :tabnew<CR>
-inoremap <F2> <Esc>:tabprevious<CR>i
-inoremap <F3> <Esc>:tabnext<CR>i
-inoremap <C-t> <Esc>:tabnew<CR>
-
-" Tab width and tab width for autoindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-" Smart search stuff
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-set showcmd
-set showmatch
-set ruler
-
-" Line numbering
-set numberwidth=4
-set number
-
 " Underline actual line in insert mode
 "autocmd InsertLeave * se nocul
 "autocmd InsertEnter * se cul
 
-filetype plugin on
-filetype indent on
-
-set pastetoggle=<F10>
-set noshowmode
-
-" Folding toggle
-nnoremap <Space> za
-
-" ESC to jk
-inoremap jk <ESC>
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
 
-" Run ctags
-" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
 
-" GUI
-if has('gui_running')
-    set guifont=Monaco\ for\ Powerline\ 12
-    " Remove menu bar
-    set guioptions-=m
-    " Remove toolbar
-    set guioptions-=T
-endif
-
-" Access colors present in 256 colorspace
-let base16colorspace=256
-"set t_Co=256
-"set background=dark
-colorscheme violetees "koehler delek zellner peachpuff
-syntax on
-
-" Highlight redundant whitespaces
-hi redundant_spaces ctermbg=blue guibg=blue
-match redundant_spaces /\s\+$\| \+\ze\t/
-
-" Change name_with_underscores to NamesInCameCase for visually selected text.
-" mnemonic *c*amelCase
-vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
-" :s#_\(\l\)#\u\1#g
-" Change CamelCase to name_with_underscore for visually selected text.
-" mnemonic *u*nderscores.
-vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
-" :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
 " Airline bundle
 "let g:airline_powerline_fonts=1
@@ -302,8 +311,6 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " let g:vim_markdown_folding_disabled=1
 "let g:vim_markdown_initial_foldlevel=1
 
-" Ctrlp bundle
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Tagbar bundle
 "nmap <C-m> :TagbarToggle<CR>
@@ -311,7 +318,3 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Nerdtree bundle
 "map <C-n> :NERDTreeToggle<CR>
 
-highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%121v.\+/
-
-nmap <leader>t <C-w><C-]><C-w>T
