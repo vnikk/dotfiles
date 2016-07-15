@@ -191,6 +191,10 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+" Line join
+nnoremap <leader>j J
+nnoremap <leader>k i<Esc>
+
 " Esc cancels highlight
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
@@ -200,15 +204,19 @@ nnoremap <esc>^[ <esc>^[
 nnoremap <Space> za
 
 " Opening / switching tabs
+nnoremap J :tabprevious<cr>
+vnoremap J <Esc>:tabprevious<cr>
+nnoremap K :tabnext<cr>
+vnoremap K <Esc>:tabnext<cr>
 nnoremap <F2> :tabprevious<CR>
+inoremap <F2> <Esc>:tabprevious<CR>
 vnoremap <F2> <Esc>:tabprevious<CR>
-nnoremap <leader><F2> :tabm-1<CR>
 nnoremap <F3> :tabnext<CR>
+inoremap <F3> <Esc>:tabnext<CR>
 vnoremap <F3> <Esc>:tabnext<CR>
+nnoremap <leader><F2> :tabm-1<CR>
 nnoremap <leader><F3> :tabm+1<CR>
 nnoremap <C-t> :tabnew<CR>
-inoremap <F2> <Esc>:tabprevious<CR>i
-inoremap <F3> <Esc>:tabnext<CR>i
 inoremap <C-t> <Esc>:tabnew<CR>
 nmap <leader>t <C-w><C-]><C-w>T
 
@@ -223,7 +231,7 @@ nnoremap <leader>c 0i//
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q <nop>
-nnoremap K <nop>
+"nnoremap K <nop>
 
 """"""""""""""""""""""""""""""
 " OTHER
