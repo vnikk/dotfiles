@@ -1,3 +1,4 @@
+" TODO omnicpp faq #7
 " No compatible; better at start!
 set nocp
 filetype off
@@ -46,11 +47,13 @@ filetype plugin indent on    " required
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
+let OmniCpp_DisplayMode = 0
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 """""""""""""""""""""""""""""
 " SETTINGS
 """""""""""""""""""""""""""""
-
 
 " Basic
 set showcmd
@@ -66,6 +69,11 @@ let mapleader = "\<Space>"
 set mouse=a
 if filereadable("~/.vimenv")
     so ~/.vimenv
+endif
+if isdirectory("~/workspace")
+    set path+=~/workspace/server
+else
+    set path+=~
 endif
 
 " Tab
@@ -113,7 +121,13 @@ set scrolloff=7
 
 " Other
 set pastetoggle=<F10>
-set tags=~/workspace/server/tags
+
+if isdirectory("~/workspace")
+    set tags=~/.vim/stl_tags,~/workspace/server/tags
+else
+    set tags=~/.vim/stl_tags,~/tags
+endif
+
 set wildmenu
 set tabpagemax=20
 set lazyredraw 
@@ -136,7 +150,12 @@ command! W w !sudo tee % > /dev/null
 
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
+if isdirectory("~/workspace")
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
+else
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/tags<CR>
+endif
+
 
 " Change name_with_underscores to NamesInCameCase for visually selected text.
 " mnemonic *c*amelCase
