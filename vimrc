@@ -100,7 +100,7 @@ if has('gui_running')
     set guioptions-=T
 endif
 
-" Colors
+" Access colors present in 256 colorspace
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
@@ -111,10 +111,6 @@ syntax on
 hi redundant_spaces ctermbg=blue guibg=blue
 match redundant_spaces /\s\+$\| \+\ze\t/
 
-" Overlength
-highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%121v.\+/
-
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -122,6 +118,10 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " backspace and arrows cross line boundaries
 set whichwrap+=<,>,[,]
 set scrolloff=7
+
+" Overlength
+highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
+match OverLength /\%111v.\+/
 
 " Other
 set pastetoggle=<F10>
