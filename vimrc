@@ -1,4 +1,5 @@
 " TODO omnicpp faq #7
+" leader + o to open last tab
 " No compatible; better at start!
 set nocp
 filetype off
