@@ -324,6 +324,15 @@ function! VisualSelection(direction, extra_filter) range
     l:saved_reg
 endfunction
 """""""""""""""""""""""""""""
+function! s:VSetSearch()
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@ = temp
+endfunction
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+"""""""""""""""""""""""""""""
 
 " Underline actual line in insert mode
 "autocmd InsertLeave * se nocul
