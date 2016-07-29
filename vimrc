@@ -52,6 +52,9 @@ let OmniCpp_DisplayMode = 0
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" Cscope
+cs add $CSCOPE_DB
+
 """""""""""""""""""""""""""""
 " SETTINGS
 """""""""""""""""""""""""""""
