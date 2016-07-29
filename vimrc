@@ -133,9 +133,11 @@ else
 endif
 
 set wildmenu
+set wildmode=list:longest
 set tabpagemax=20
 set lazyredraw 
 set smarttab
+set formatoptions-=o
 command! W w !sudo tee % > /dev/null
 
 """""""""""""
