@@ -193,6 +193,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap B ^
 nnoremap E $
+vnoremap E $
+vnoremap B ^
+onoremap B ^
+onoremap E $
 
 " {} () search
 nnoremap { viBo<Esc>
