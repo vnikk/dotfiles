@@ -338,22 +338,6 @@ endfunction
 " Omni completion
 " set ofu=syntaxcomplete#Complete
 
-" GUI
-if has('gui_running')
-    set guifont=Monaco\ for\ Powerline\ 12
-    " Remove menu bar
-    set guioptions-=m
-    " Remove toolbar
-    set guioptions-=T
-endif
-
-" Access colors present in 256 colorspace
-let base16colorspace=256
-"set t_Co=256
-"set background=dark
-colorscheme violetees "koehler delek zellner peachpuff
-syntax on
-
 " Airline bundle
 "let g:airline_powerline_fonts=1
 "set laststatus=2
