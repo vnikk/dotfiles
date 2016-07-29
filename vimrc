@@ -280,25 +280,27 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 """"""""""""""""""""""""""""""
-" Source <-> Header NEEDS TO BE COMPLETED
+" Source <-> Header
 """"""""""""""""""""""""""""""
-
+" expand("%:p:r:s?src?include?")
+" :e %<.cpp
 function! OpenOther()
     if expand("%:e") == "cpp"
-        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "cc"
-        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "h"
         let src_name = 
-        if filereadable(expand("%:p:r:s?include?src?").".cpp")
-            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cpp")
-        elseif filereadable(expand("%:p:r:s?include?src?").".cc")
-            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cc")
+        "if filereadable(expand("%:p:r:s?include?src?").".cpp")
+        if filereadable(expand("%:p:r:s?src?").".cpp")
+            exe "split" fnameescape(expand("%:p:r:s?src?").".cpp")
+        elseif filereadable(expand("%:p:r:s?src?").".cc")
+            exe "split" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     endif
 endfunction
 
-nmap ,o :call OpenOther()<CR>
+nmap <leader>h :call OpenOther()<CR>
 
 """"""""""""""""""""""""""""""
 " Visual mode related
