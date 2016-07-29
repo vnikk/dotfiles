@@ -1,4 +1,5 @@
 " TODO omnicpp faq #7
+" leader + o to open last tab
 " No compatible; better at start!
 set nocp
 filetype off
@@ -55,6 +56,9 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Syntastic
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
+" Cscope
+cs add $CSCOPE_DB
+
 """""""""""""""""""""""""""""
 " SETTINGS
 """""""""""""""""""""""""""""
@@ -71,10 +75,10 @@ filetype plugin on
 filetype indent on
 let mapleader = "\<Space>"
 set mouse=a
-if filereadable("~/.vimenv")
+if filereadable(expand("~/.vimenv"))
     so ~/.vimenv
 endif
-if isdirectory("~/workspace")
+if isdirectory(expand("~/workspace"))
     set path+=~/workspace/server
 else
     set path+=~
@@ -100,7 +104,7 @@ if has('gui_running')
     set guioptions-=T
 endif
 
-" Colors
+" Access colors present in 256 colorspace
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
@@ -111,10 +115,6 @@ syntax on
 hi redundant_spaces ctermbg=blue guibg=blue
 match redundant_spaces /\s\+$\| \+\ze\t/
 
-" Overlength
-highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%121v.\+/
-
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -123,10 +123,14 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set whichwrap+=<,>,[,]
 set scrolloff=7
 
+" Overlength
+highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
+match OverLength /\%111v.\+/
+
 " Other
 set pastetoggle=<F10>
 
-if isdirectory("~/workspace")
+if isdirectory(expand("~/workspace"))
     set tags=~/.vim/stl_tags,~/workspace/server/tags
 else
     set tags=~/.vim/stl_tags,~/tags
@@ -156,13 +160,14 @@ command! W w !sudo tee % > /dev/null
 
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-if isdirectory("~/workspace")
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
+if isdirectory(expand("~/workspace"))
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
 else
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/tags<CR>
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
 
+" TODO map to leader+_
 " Change name_with_underscores to NamesInCameCase for visually selected text.
 " mnemonic *c*amelCase
 vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
@@ -194,6 +199,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap B ^
 nnoremap E $
+vnoremap E $
+vnoremap B ^
+onoremap B ^
+onoremap E $
 
 " {} () search
 nnoremap { viBo<Esc>
@@ -210,7 +219,7 @@ vnoremap <C-l> xp`[v`]
 
 " Tab shifting
 nnoremap <leader><tab> >>
-vnoremap <leader><tab> >><Esc>1v
+vnoremap <tab> >><Esc>1v
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
@@ -240,8 +249,8 @@ nnoremap J :tabprevious<cr>
 vnoremap J <Esc>:tabprevious<cr>
 nnoremap K :tabnext<cr>
 vnoremap K <Esc>:tabnext<cr>
-nnoremap <leader><F2> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <leader><F3> :execute 'silent! tabmove ' . (tabpagenr())<CR>
+nnoremap <leader>J :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr())<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 nmap <leader>t <C-w><C-]><C-w>T
@@ -277,25 +286,27 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 """"""""""""""""""""""""""""""
-" Source <-> Header NEEDS TO BE COMPLETED
+" Source <-> Header
 """"""""""""""""""""""""""""""
-
+" expand("%:p:r:s?src?include?")
+" :e %<.cpp
 function! OpenOther()
     if expand("%:e") == "cpp"
-        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "cc"
-        exe "split" fnameescape(expand("%:p:r:s?src?include?").".h")
+        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "h"
         let src_name = 
-        if filereadable(expand("%:p:r:s?include?src?").".cpp")
-            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cpp")
-        elseif filereadable(expand("%:p:r:s?include?src?").".cc")
-            exe "split" fnameescape(expand("%:p:r:s?include?src?").".cc")
+        "if filereadable(expand("%:p:r:s?include?src?").".cpp")
+        if filereadable(expand("%:p:r:s?src?").".cpp")
+            exe "split" fnameescape(expand("%:p:r:s?src?").".cpp")
+        elseif filereadable(expand("%:p:r:s?src?").".cc")
+            exe "split" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     endif
 endfunction
 
-nmap ,o :call OpenOther()<CR>
+nmap <leader>h :call OpenOther()<CR>
 
 """"""""""""""""""""""""""""""
 " Visual mode related
@@ -341,22 +352,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
-
-" GUI
-if has('gui_running')
-    set guifont=Monaco\ for\ Powerline\ 12
-    " Remove menu bar
-    set guioptions-=m
-    " Remove toolbar
-    set guioptions-=T
-endif
-
-" Access colors present in 256 colorspace
-let base16colorspace=256
-"set t_Co=256
-"set background=dark
-colorscheme violetees "koehler delek zellner peachpuff
-syntax on
 
 " Airline bundle
 "let g:airline_powerline_fonts=1
