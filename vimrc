@@ -243,8 +243,8 @@ nnoremap J :tabprevious<cr>
 vnoremap J <Esc>:tabprevious<cr>
 nnoremap K :tabnext<cr>
 vnoremap K <Esc>:tabnext<cr>
-nnoremap <leader><F2> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <leader><F3> :execute 'silent! tabmove ' . (tabpagenr())<CR>
+nnoremap <leader>J :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr())<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 nmap <leader>t <C-w><C-]><C-w>T
