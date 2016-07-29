@@ -157,10 +157,11 @@ command! W w !sudo tee % > /dev/null
 if isdirectory(expand("~/workspace"))
     map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
 else
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/tags<CR>
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
 
+" TODO map to leader+_
 " Change name_with_underscores to NamesInCameCase for visually selected text.
 " mnemonic *c*amelCase
 vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
