@@ -213,7 +213,7 @@ vnoremap <C-l> xp`[v`]
 
 " Tab shifting
 nnoremap <leader><tab> >>
-vnoremap <leader><tab> >><Esc>1v
+vnoremap <tab> >><Esc>1v
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
