@@ -21,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 "Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -50,6 +51,9 @@ let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
 let OmniCpp_DisplayMode = 0
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Syntastic
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
 """""""""""""""""""""""""""""
 " SETTINGS
