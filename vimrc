@@ -71,10 +71,10 @@ filetype plugin on
 filetype indent on
 let mapleader = "\<Space>"
 set mouse=a
-if filereadable("~/.vimenv")
+if filereadable(expand("~/.vimenv"))
     so ~/.vimenv
 endif
-if isdirectory("~/workspace")
+if isdirectory(expand("~/workspace"))
     set path+=~/workspace/server
 else
     set path+=~
@@ -126,7 +126,7 @@ set scrolloff=7
 " Other
 set pastetoggle=<F10>
 
-if isdirectory("~/workspace")
+if isdirectory(expand("~/workspace"))
     set tags=~/.vim/stl_tags,~/workspace/server/tags
 else
     set tags=~/.vim/stl_tags,~/tags
@@ -154,8 +154,8 @@ command! W w !sudo tee % > /dev/null
 
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-if isdirectory("~/workspace")
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/workspace/server/tags<CR>
+if isdirectory(expand("~/workspace"))
+    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
 else
     map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/tags<CR>
 endif
