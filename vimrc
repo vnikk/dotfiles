@@ -277,6 +277,14 @@ nnoremap ^ <nop>
 nnoremap Q @@
 "nnoremap K <nop>
 
+" Smart tab autocomplete
+function! SuperTab()
+    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+        return "\<Tab>"
+    else
+        return "\<C-n>"
+endfunction
+
 """"""""""""""""""""""""""""""
 " OTHER
 """"""""""""""""""""""""""""""
