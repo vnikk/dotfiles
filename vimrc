@@ -80,6 +80,9 @@ else
     set path+=~
 endif
 
+" automatically reload vimrc when it's saved
+
+au BufWritePost .vimrc so ~/.vimrc
 " Tab
 set tabstop=4
 set shiftwidth=4
