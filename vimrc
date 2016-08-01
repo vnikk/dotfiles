@@ -274,7 +274,7 @@ nnoremap <leader>c 0i//
 " Turn off
 nnoremap $ <nop>
 nnoremap ^ <nop>
-nnoremap Q <nop>
+nnoremap Q @@
 "nnoremap K <nop>
 
 """"""""""""""""""""""""""""""
