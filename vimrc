@@ -22,6 +22,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 "Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -51,6 +52,9 @@ let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
 let OmniCpp_DisplayMode = 0
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Syntastic
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
 " Cscope
 cs add $CSCOPE_DB
@@ -136,9 +140,11 @@ else
 endif
 
 set wildmenu
+set wildmode=list:longest
 set tabpagemax=20
 set lazyredraw 
 set smarttab
+set formatoptions-=o
 command! W w !sudo tee % > /dev/null
 
 """""""""""""
@@ -350,6 +356,15 @@ function! VisualSelection(direction, extra_filter) range
     let @" =
     l:saved_reg
 endfunction
+"""""""""""""""""""""""""""""
+function! s:VSetSearch()
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@ = temp
+endfunction
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 """""""""""""""""""""""""""""
 
 " Underline actual line in insert mode
