@@ -56,9 +56,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Syntastic
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
-" Cscope
-cs add $CSCOPE_DB
-
 """""""""""""""""""""""""""""
 " SETTINGS
 """""""""""""""""""""""""""""
