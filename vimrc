@@ -18,7 +18,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Valloric/YouCompleteMe'
+if v:version >= 703 && has("patch598")
+    Plugin 'Valloric/YouCompleteMe'
+endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 "Plugin 'scrooloose/nerdTree'
