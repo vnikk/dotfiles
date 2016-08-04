@@ -82,6 +82,9 @@ set mouse=a
 if filereadable(expand("~/.vimenv"))
     so ~/.vimenv
 endif
+if matchstr(expand("%:p:h"), 'workspace') == 'workspace'
+    cd ~/workspace/server
+endif
 if isdirectory(expand("~/workspace"))
     set path+=~/workspace/server
 else
