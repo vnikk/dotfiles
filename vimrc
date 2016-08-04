@@ -59,6 +59,10 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Syntastic
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 
+" Clang complete
+let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang.so"
+
+
 """""""""""""""""""""""""""""
 " SETTINGS
 """""""""""""""""""""""""""""
