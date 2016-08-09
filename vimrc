@@ -29,7 +29,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'vim-airline/vim-airline'
 Plugin 'Rip-Rip/clang_complete'
 Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
