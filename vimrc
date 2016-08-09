@@ -117,7 +117,7 @@ endif
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
-colorscheme violetees "koehler delek zellner peachpuff
+colorscheme mikado "violetees koehler delek zellner peachpuff
 syntax on
 
 " Highlight redundant whitespaces
@@ -238,9 +238,9 @@ nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]
 
-" Tab shifting
-vnoremap <tab> >><Esc>1v
-nnoremap <tab> >>
+" Tab shifting; dont change <leader><tab> - intereferes with <C-i>
+vnoremap <leader><tab> >><Esc>1v
+nnoremap <leader><tab> >>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
