@@ -118,7 +118,7 @@ endif
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
-colorscheme violetees "koehler delek zellner peachpuff
+colorscheme mikado "violetees koehler delek zellner peachpuff
 syntax on
 
 " Highlight redundant whitespaces
