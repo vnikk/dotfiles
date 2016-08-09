@@ -238,9 +238,9 @@ nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]
 
-" Tab shifting
-vnoremap <tab> >><Esc>1v
-nnoremap <tab> >>
+" Tab shifting; dont change <leader><tab> - intereferes with <C-i>
+vnoremap <leader><tab> >><Esc>1v
+nnoremap <leader><tab> >>
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <1v
 inoremap <S-Tab> <C-d>
