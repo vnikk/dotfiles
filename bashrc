@@ -92,15 +92,15 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \D{%H.%M:%S} \w `__exit_code`$(__git_ps1)\n\$ '
 fi
 # If this is a screen show it in prompt
-case "$TERM" in
-screen*)
-    if [ "$color_prompt" = yes ]; then
-        PS1="\[\033[1;36m\]SCREEN $PS1"
-    else
-        PS1="SCREEN $PS1"
-    fi
-    ;;
-esac
+#case "$TERM" in
+#screen*)
+#    if [ "$color_prompt" = yes ]; then
+#        PS1="\[\033[1;36m\]SCREEN $PS1"
+#    else
+#        PS1="SCREEN $PS1"
+#    fi
+#    ;;
+#esac
 
 # if [ "$color_prompt" = yes ]; then
 #     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
