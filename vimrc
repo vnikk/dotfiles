@@ -331,7 +331,6 @@ function! OpenOther()
     elseif expand("%:e") == "cc"
         exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "h"
-        let src_name = 
         "if filereadable(expand("%:p:r:s?include?src?").".cpp")
         if filereadable(expand("%:p:r:s?src?").".cpp")
             exe "split" fnameescape(expand("%:p:r:s?src?").".cpp")
