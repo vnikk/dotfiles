@@ -302,6 +302,12 @@ endfunction
 " OTHER
 """"""""""""""""""""""""""""""
 
+" copies current file name as C++ header
+function! CpHead()
+    let head =expand("%")
+    let @"="#include \"".head."\"\n"
+endfunction
+
 " strips trailing whitespace at the end of files. this
 " " is called on buffer write in the autogroup above.
 function! <SID>StripTrailingWhitespaces()
