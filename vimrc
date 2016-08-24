@@ -310,12 +310,12 @@ endfunction
 nnoremap <leader>s :call SwapTwoArgs()<CR>
 
 " copies current file name as C++ header
-function! CopyHeader()
+function! YankHeader()
     let head =expand("%")
     let @"="#include \"".head."\"\n"
 endfunction
 
-nnoremap <leader>ch :call CopyHeader()<CR>
+nnoremap <leader>y :call CopyHeader()<CR>
 
 " strips trailing whitespace at the end of files. this is called on buffer write in the autogroup above.
 function! <SID>StripTrailingWhitespaces()
