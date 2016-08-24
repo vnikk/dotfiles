@@ -300,8 +300,14 @@ function! SuperTab()
 endfunction
 
 """"""""""""""""""""""""""""""
-" OTHER
+" FUNCTIONS
 """"""""""""""""""""""""""""""
+" swap two function arguments if on same line
+function! SwapTwoArgs()
+    s/(\(.*\), \(.*\))/(\2, \1)/
+endfunction
+
+nnoremap <leader>s :call SwapTwoArgs()<CR>
 
 " copies current file name as C++ header
 function! CopyHeader()
@@ -311,8 +317,7 @@ endfunction
 
 nnoremap <leader>ch :call CopyHeader()<CR>
 
-" strips trailing whitespace at the end of files. this
-" " is called on buffer write in the autogroup above.
+" strips trailing whitespace at the end of files. this is called on buffer write in the autogroup above.
 function! <SID>StripTrailingWhitespaces()
     " save last search & cursor position
     let _s=@/
@@ -323,12 +328,10 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-""""""""""""""""""""""""""""""
 " Source <-> Header
-""""""""""""""""""""""""""""""
-" expand("%:p:r:s?src?include?")
-" :e %<.cpp
 function! OpenOther()
+    " expand("%:p:r:s?src?include?")
+    " :e %<.cpp
     if expand("%:e") == "cpp"
         exe "split" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "cc"
@@ -345,11 +348,7 @@ endfunction
 
 nmap <leader>h :call OpenOther()<CR>
 
-""""""""""""""""""""""""""""""
-" Visual mode related
-""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
