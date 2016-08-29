@@ -316,7 +316,7 @@ function! YankHeader()
     let @"="#include \"".head."\"\n"
 endfunction
 
-nnoremap <leader>y :call CopyHeader()<CR>
+nnoremap <leader>y :call YankHeader()<CR>
 
 " strips trailing whitespace at the end of files. this is called on buffer write in the autogroup above.
 function! <SID>StripTrailingWhitespaces()
