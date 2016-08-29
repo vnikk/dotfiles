@@ -286,6 +286,7 @@ nnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\///:noh<return>
 nnoremap <leader>c 0i//
 
 " Turn off
+nnoremap <F1> <nop>
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
