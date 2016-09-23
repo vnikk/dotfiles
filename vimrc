@@ -193,6 +193,7 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 nnoremap S :w<CR>
 inoremap jk <ESC>
 inoremap JK <ESC>
+inoremap jK <ESC>
 nnoremap <leader>q :set number!<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
