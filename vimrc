@@ -29,7 +29,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'Rip-Rip/clang_complete'
+"Plugin 'Rip-Rip/clang_complete'
 Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
 "   Plugin 'honza/vim-snippets'
