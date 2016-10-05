@@ -323,11 +323,22 @@ function! EvenEquals()
     endwhile
 endfunction
 
+" make table with equal signs
+function! SetFoldmethod()
+    let method = &foldmethod
+    echom method
+    if method == 'manual'
+        set foldmethod=syntax
+    else
+        set foldmethod=manual
+    endif
+endfunction
+nnoremap <leader>m :call SetFoldmethod()<CR>
+
 " swap two function arguments if on same line
 function! SwapTwoArgs()
     s/(\(.*\), \(.*\))/(\2, \1)/
 endfunction
-
 nnoremap <leader>s :call SwapTwoArgs()<CR>
 
 " copies current file name as C++ header
@@ -335,7 +346,6 @@ function! YankHeader()
     let head =expand("%")
     let @"="#include \"".head."\"\n"
 endfunction
-
 nnoremap <leader>y :call YankHeader()<CR>
 
 " strips trailing whitespace at the end of files. this is called on buffer write in the autogroup above.
