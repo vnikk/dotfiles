@@ -1,7 +1,7 @@
 " TODO omnicpp faq #7
 " leader + o to open last tab
-" No compatible; better at start!
-set nocp
+
+set nocp " better at start!
 filetype off
 
 
@@ -304,6 +304,7 @@ endfunction
 """"""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""
+" IN PROGRESS
 function! s:get_visual_selection()
   " Why is this not a built-in Vim script function?!
   let [lnum1, col1] = getpos("'<")[1:2]
