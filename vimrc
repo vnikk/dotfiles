@@ -334,7 +334,7 @@ function! SetFoldmethod()
         set foldmethod=manual
     endif
 endfunction
-nnoremap <leader>m :call SetFoldmethod()<CR>
+nnoremap <leader>z :call SetFoldmethod()<CR>
 
 " swap two function arguments if on same line
 function! SwapTwoArgs()
