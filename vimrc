@@ -327,12 +327,12 @@ endfunction
 " make table with equal signs
 function! SetFoldmethod()
     let method = &foldmethod
-    echom method
     if method == 'manual'
         set foldmethod=syntax
     else
         set foldmethod=manual
     endif
+    echom &foldmethod
 endfunction
 nnoremap <leader>z :call SetFoldmethod()<CR>
 
