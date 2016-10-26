@@ -140,6 +140,10 @@ match OverLength /\%111v.\+/
 " Other
 set pastetoggle=<F10>
 
+" Don't start new comment on a new line
+au FileType c,cpp setlocal comments-=:// comments+=f://
+
+
 if isdirectory(expand("~/workspace"))
     set tags=~/.vim/stl_tags,~/workspace/server/tags
 else
