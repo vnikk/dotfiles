@@ -34,7 +34,7 @@ hi Title guifg=#bcb3e6 guibg=#111d24 guisp=#111d24 gui=bold ctermfg=146 ctermbg=
 hi Folded guifg=#1b323e guibg=#7f95a8 guisp=#7f95a8 gui=italic ctermfg=249 ctermbg=237 cterm=NONE
 hi PreCondit guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
 hi Include guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
-hi TabLineSel guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=bold ctermfg=173 ctermbg=235 cterm=bold
+hi TabLineSel guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=bold ctermfg=235 ctermbg=204 cterm=bold
 hi StatusLineNC guifg=#1b323e guibg=#486170 guisp=#486170 gui=bold ctermfg=235 ctermbg=173 cterm=bold
 hi NonText guifg=#5a788b guibg=NONE guisp=NONE gui=italic ctermfg=66 ctermbg=NONE cterm=NONE
 hi DiffText guifg=NONE guibg=#491b14 guisp=#491b14 gui=NONE ctermfg=NONE ctermbg=52 cterm=NONE
