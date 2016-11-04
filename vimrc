@@ -91,9 +91,9 @@ else
     set path+=~
 endif
 
-" automatically reload vimrc when it's saved
-
+" automatically reload vimrc when it's saved TODO fix sequential save freeze
 au BufWritePost .vimrc so ~/.vimrc
+
 " Tab
 set tabstop=4
 set shiftwidth=4
@@ -318,6 +318,7 @@ function! s:get_visual_selection()
   let lines[0] = lines[0][col1 - 1:]
   return join(lines, "\n")
 endfunction
+
 " make table with equal signs
 function! EvenEquals()
     let lnum1 = getpos("'<")[1]
@@ -328,7 +329,7 @@ function! EvenEquals()
     endwhile
 endfunction
 
-" make table with equal signs
+" foldmethod: manual <-> syntax
 function! SetFoldmethod()
     let method = &foldmethod
     if method == 'manual'
