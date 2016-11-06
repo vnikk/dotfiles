@@ -93,9 +93,9 @@ else
     set path+=~
 endif
 
-" automatically reload vimrc when it's saved
-
+" automatically reload vimrc when it's saved TODO fix sequential save freeze
 au BufWritePost .vimrc so ~/.vimrc
+
 " Tab
 set tabstop=4
 set shiftwidth=4
@@ -141,6 +141,10 @@ match OverLength /\%111v.\+/
 
 " Other
 set pastetoggle=<F10>
+
+" Don't start new comment on a new line
+au FileType c,cpp setlocal comments-=:// comments+=f://
+
 
 if isdirectory(expand("~/workspace"))
     set tags=~/.vim/stl_tags,~/workspace/server/tags
@@ -286,7 +290,7 @@ vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 vnoremap <leader>x :normal 0i// 
 vnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\///:noh<return>
 nnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\///:noh<return>
-nnoremap <leader>c 0i//
+nnoremap <leader>c 0i// 
 
 " Turn off
 nnoremap <F1> <nop>
@@ -316,6 +320,7 @@ function! s:get_visual_selection()
   let lines[0] = lines[0][col1 - 1:]
   return join(lines, "\n")
 endfunction
+
 " make table with equal signs
 function! EvenEquals()
     let lnum1 = getpos("'<")[1]
@@ -326,15 +331,15 @@ function! EvenEquals()
     endwhile
 endfunction
 
-" make table with equal signs
+" foldmethod: manual <-> syntax
 function! SetFoldmethod()
     let method = &foldmethod
-    echom method
     if method == 'manual'
         set foldmethod=syntax
     else
         set foldmethod=manual
     endif
+    echom &foldmethod
 endfunction
 nnoremap <leader>z :call SetFoldmethod()<CR>
 
