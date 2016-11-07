@@ -1,4 +1,5 @@
 " TODO omnicpp faq #7
+" TODO statusline buffer number
 " leader + o to open last tab
 
 set nocp " better at start!
@@ -28,7 +29,9 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
+
 "Plugin 'Rip-Rip/clang_complete'
 Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
@@ -118,7 +121,7 @@ endif
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
-colorscheme violetees "mikado koehler delek zellner peachpuff
+colorscheme balancees "violetees mikado koehler delek zellner peachpuff
 syntax on
 
 " Highlight redundant whitespaces
@@ -222,8 +225,14 @@ onoremap B ^
 onoremap E $
 
 " Move in command line
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
+cnoremap <C-B> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-b> <C-left>
+cnoremap <C-w> <C-right><right>
+cnoremap <C-h> <left>
+cnoremap <C-l> <right>
+cnoremap <C-j> <up>
+cnoremap <C-k> <down>
 
 " Move in insert mode
 imap <C-h> <C-o>h
