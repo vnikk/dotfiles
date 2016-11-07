@@ -95,7 +95,7 @@ else
 endif
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
-au BufWritePost .vimrc so ~/.vimrc
+"au BufWritePost .vimrc so ~/.vimrc
 
 " Tab
 set tabstop=4
@@ -121,8 +121,8 @@ endif
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
-colorscheme balancees "violetees mikado koehler delek zellner peachpuff
-syntax on
+syntax on "has to be before colorscheme
+colorscheme balancees "koehler mikado violetees delek zellner peachpuff
 
 " Highlight redundant whitespaces
 hi redundant_spaces ctermbg=blue guibg=blue
