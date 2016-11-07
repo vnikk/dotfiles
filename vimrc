@@ -117,16 +117,18 @@ if has('gui_running')
     set guioptions-=T
 endif
 
+" Highlight redundant whitespaces
+hi redundant_spaces ctermbg=blue guibg=blue
+autocmd ColorScheme * highlight redundant_spaces ctermbg=red guibg=red
+"/\s\+$\| \+\ze\t/
+match redundant_spaces  /\s\+\%#\@<!$/
+
 " Access colors present in 256 colorspace
 let base16colorspace=256
 "set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
 colorscheme balancees "koehler mikado violetees delek zellner peachpuff
-
-" Highlight redundant whitespaces
-hi redundant_spaces ctermbg=blue guibg=blue
-match redundant_spaces /\s\+$\| \+\ze\t/
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -136,9 +138,10 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 set whichwrap+=<,>,[,]
 set scrolloff=7
 
-" Overlength
-highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-match OverLength /\%111v.\+/
+" Overlength TODO fix breaking of redundant_spaces
+"highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
+"highlight OverLength cterm=underline guibg=#592929
+"match OverLength /\%111v.\+/
 
 " Other
 set pastetoggle=<F10>
@@ -452,4 +455,3 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 " Nerdtree bundle
 "map <C-n> :NERDTreeToggle<CR>
-
