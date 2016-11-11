@@ -78,6 +78,7 @@ set number
 set noshowmode
 set cursorline
 set statusline=%<%f\ %n\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set rulerformat=#%n\ %l,%c%V%=%P
 filetype plugin on
 filetype indent on
 let mapleader = "\<Space>"
