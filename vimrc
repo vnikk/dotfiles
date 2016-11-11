@@ -235,8 +235,8 @@ cnoremap <C-b> <C-left>
 cnoremap <C-w> <C-right><right>
 cnoremap <C-h> <left>
 cnoremap <C-l> <right>
-cnoremap <C-j> <up>
-cnoremap <C-k> <down>
+cnoremap <C-j> <down>
+cnoremap <C-k> <up>
 
 " Move in insert mode
 imap <C-h> <C-o>h
