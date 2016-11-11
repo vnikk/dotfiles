@@ -25,7 +25,7 @@ hi Normal guifg=#e8e8ff guibg=#111d24 guisp=#111d24 gui=italic ctermfg=189 cterm
 "hi LocalVariable -- no settings --
 "hi CTagsClass -- no settings --
 "hi clear -- no settings --
-hi IncSearch guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=98 ctermbg=173 cterm=NONE
+hi IncSearch guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=98 ctermbg=204 cterm=NONE
 hi WildMenu guifg=NONE guibg=#7f95a8 guisp=#7f95a8 gui=NONE ctermfg=NONE ctermbg=109 cterm=NONE
 hi SignColumn guifg=#1b323e guibg=#354691 guisp=#354691 gui=NONE ctermfg=23 ctermbg=60 cterm=NONE
 hi SpecialComment guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
@@ -52,7 +52,7 @@ hi CursorLineNr guifg=#8233d6 guibg=NONE guisp=NONE gui=italic ctermfg=229 cterm
 hi StatusLine guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=bold ctermfg=235 ctermbg=204 cterm=bold
 hi Label guifg=#d6d2aa guibg=NONE guisp=NONE gui=bold ctermfg=173 ctermbg=NONE cterm=bold
 hi PMenuSel guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=23 ctermbg=144 cterm=NONE
-hi Search guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=234 ctermbg=173 cterm=NONE
+hi Search guifg=#1b323e guibg=#bdbb97 guisp=#bdbb97 gui=NONE ctermfg=234 ctermbg=204 cterm=NONE
 hi Delimiter guifg=#d6d2aa guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
 hi Statement guifg=#9c9248 guibg=NONE guisp=NONE gui=bold ctermfg=143 ctermbg=NONE cterm=bold
 hi SpellRare guifg=#bcb3e6 guibg=#111d24 guisp=#111d24 gui=underline ctermfg=146 ctermbg=235 cterm=underline
