@@ -164,3 +164,5 @@ export PSQL_EDITOR='vim +"set syntax=sql"'
 stty -ixon
 
 alias xclip='xclip -selection c'
+
+function sess(){ vi -S ~/sessions/"$1"; }
