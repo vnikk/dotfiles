@@ -299,8 +299,8 @@ nmap <leader>f <C-w>gf
 " Commenting
 vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 vnoremap <leader>x :normal 0i// 
-vnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\///:noh<return>
-nnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\///:noh<return>
+vnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\/\\|^# \?//:noh<return>
+nnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>c 0i// 
 
 " Turn off
