@@ -18,7 +18,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 if v:version >= 703 && has("patch598")
-    Plugin 'Valloric/YouCompleteMe'
+    "Plugin 'Valloric/YouCompleteMe'
 endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -29,6 +29,7 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
+Plugin 'vim-scripts/OmniCppComplete'
 
 "Plugin 'Rip-Rip/clang_complete'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -179,10 +180,11 @@ command! W w !sudo tee % > /dev/null
 
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"TODO work in tmux
 if isdirectory(expand("~/workspace"))
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
 else
-    map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
 
