@@ -1,5 +1,4 @@
 " TODO omnicpp faq #7
-" leader + o to open last tab
 
 set nocp " better at start!
 filetype off
