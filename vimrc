@@ -54,6 +54,7 @@ filetype plugin indent on    " required
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
 let OmniCpp_DisplayMode = 0
+"OmniFAQ: automatically close the preview window
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
