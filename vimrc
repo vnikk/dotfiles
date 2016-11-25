@@ -1,5 +1,4 @@
 " TODO omnicpp faq #7
-" TODO statusline buffer number
 " leader + o to open last tab
 
 set nocp " better at start!
