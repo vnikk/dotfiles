@@ -31,8 +31,8 @@ Bundle 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'vim-scripts/OmniCppComplete'
+"Plugin 'Rip-Rip/clang_complete'
 
-Plugin 'Rip-Rip/clang_complete'
 Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
 "   Plugin 'honza/vim-snippets'
