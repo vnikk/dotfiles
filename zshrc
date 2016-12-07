@@ -88,6 +88,10 @@ if [ -f ~/.aliasrc ]; then
     . ~/.aliasrc
 fi
 
+if [ -f ~/.dotfiles/common ]; then
+    . ~/.dotfiles/common
+fi
+
 alias l='ls -hF'
 alias la='ls -haF'
 alias ll='ls -lhF'

@@ -1,0 +1,5 @@
+function sess(){ vi -S ~/sessions/"$1"; }
+
+alias xclip='xclip -selection c'
+alias xlog="git xlog"
+alias flux='~/shell/xflux -l 50°06'

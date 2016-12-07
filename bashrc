@@ -145,6 +145,10 @@ if [ -f ~/.aliasrc ]; then
     . ~/.aliasrc
 fi
 
+if [ -f ~/.dotfiles/common ]; then
+    . ~/.dotfiles/common
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -163,10 +167,5 @@ export PSQL_EDITOR='vim +"set syntax=sql"'
 # removes freeze from Ctrl-S (requiring Ctrl-Q to unfreeze)
 stty -ixon
 
-alias xclip='xclip -selection c'
-
-function sess(){ vi -S ~/sessions/"$1"; }
 source ~/.git-prompt.sh
-source .git-prompt.sh
 alias godot="cd ~/.dotfiles"
-alias flux='~/shell/xflux -l 50°06'
