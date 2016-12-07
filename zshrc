@@ -92,10 +92,6 @@ if [ -f ~/.dotfiles/common ]; then
     . ~/.dotfiles/common
 fi
 
-alias l='ls -hF'
-alias la='ls -haF'
-alias ll='ls -lhF'
-alias xclip='xclip -selection c'
 alias .="source"
 alias theme="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
