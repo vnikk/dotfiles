@@ -99,5 +99,5 @@ alias -s jpg=gwenview
 alias -s jpeg=gwenview
 alias -s png=gwenview
 alias -g win=/mnt/win/Users/wat
-alias get="sudo apt-get install"
+alias get="sudo yum install"
 
