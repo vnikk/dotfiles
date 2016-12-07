@@ -167,3 +167,6 @@ alias xclip='xclip -selection c'
 
 function sess(){ vi -S ~/sessions/"$1"; }
 source ~/.git-prompt.sh
+source .git-prompt.sh
+alias godot="cd ~/.dotfiles"
+alias flux='~/shell/xflux -l 50°06'
