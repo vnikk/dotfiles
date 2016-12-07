@@ -13,4 +13,4 @@
 [push]
 	default = matching
 [commit]
-	template = /home/mviazovskyi/.gitmsg.txt
+	template = ~/.gitmsg.txt
