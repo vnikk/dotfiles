@@ -10,6 +10,7 @@
 	st = status
 	ci = commit
 	last = log -1 HEAD
+    pad = add -p
 [push]
 	default = matching
 [commit]
