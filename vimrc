@@ -212,8 +212,8 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
 noremap <CR> :
-noremap p p1v=
-noremap P P1v=
+nnoremap p p=`]
+nnoremap P P=`]
 
 " Tags
 map <C-b> :pop<CR>
