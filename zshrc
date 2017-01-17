@@ -92,6 +92,11 @@ if [ -f ~/.dotfiles/common ]; then
     . ~/.dotfiles/common
 fi
 
+newalias()
+{
+    echo "alias $1" >> ~/.zshrc;
+}
+
 alias .="source"
 alias theme="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
