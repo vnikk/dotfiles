@@ -98,11 +98,14 @@ newalias()
 }
 
 alias .="source"
-alias theme="source ~/.zshrc"
+alias thm="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s jpg=gwenview
-alias -s jpeg=gwenview
-alias -s png=gwenview
+alias -s jpg=eog
+alias -s jpeg=eog
+alias -s png=eog
+alias -s odt=libreoffice
+alias -s pdf=evince
+alias -s zip=unzip
 alias -g win=/mnt/win/Users/wat
 alias get="sudo yum install"
-
+alias here='nautilus . &'
