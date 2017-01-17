@@ -88,6 +88,10 @@ if [ -f ~/.aliasrc ]; then
     . ~/.aliasrc
 fi
 
+if [ -f ~/.zaliasrc ]; then
+    . ~/.zaliasrc
+fi
+
 if [ -f ~/.dotfiles/common ]; then
     . ~/.dotfiles/common
 fi
