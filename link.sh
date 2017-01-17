@@ -2,6 +2,7 @@
 ln -s -f $PWD/bashrc ~/.bashrc
 ln -s -f $PWD/zshrc ~/.zshrc
 ln -s -f $PWD/vimrc ~/.vimrc
+ln -s -f $PWD/tmux.conf ~/.tmux.conf
 
 mkdir ~/.vim/colors
 
