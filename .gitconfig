@@ -13,5 +13,3 @@
     pad = add -p
 [push]
 	default = matching
-[commit]
-	template = ~/.gitmsg.txt
