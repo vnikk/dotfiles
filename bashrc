@@ -144,6 +144,12 @@ if [ -f ~/.dotfiles/common ]; then
     . ~/.dotfiles/common
 fi
 
+# dircolors --print-database > ~/.dircolors
+# change OTHER_WRITABLE to 01;34
+if [ -f ~/.dircolors ]; then
+    . ~/.dircolors
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
