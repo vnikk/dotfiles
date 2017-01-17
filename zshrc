@@ -97,11 +97,10 @@ if [ -f ~/.dotfiles/common ]; then
 fi
 
 alias .="source"
-alias theme="source ~/.zshrc"
+alias thm="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias -s jpg=gwenview
 alias -s jpeg=gwenview
 alias -s png=gwenview
 alias -g win=/mnt/win/Users/wat
 alias get="sudo yum install"
-
