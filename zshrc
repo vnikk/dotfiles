@@ -110,6 +110,6 @@ alias -s png=eog
 alias -s odt=libreoffice
 alias -s pdf=evince
 alias -s zip=unzip
-alias -g win=/mnt/win/Users/wat
+alias -g win='cd /mnt/ntfs/Users/wat'
 alias get="sudo yum install"
 alias here='nautilus . &'
