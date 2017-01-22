@@ -101,15 +101,19 @@ newalias()
     echo "alias $1" >> ~/.zshrc;
 }
 
+background() {
+    "$@" &
+}
+
 alias .="source"
 alias thm="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s jpg=eog
-alias -s jpeg=eog
-alias -s png=eog
-alias -s odt=libreoffice
-alias -s pdf=evince
+alias -s {jpg, jpeg, png}='background eog'
+alias -s odt='background libreoffice'
+alias -s pdf='background evince'
 alias -s zip=unzip
 alias -g win='cd /mnt/ntfs/Users/wat'
 alias get="sudo yum install"
 alias here='nautilus . &'
+alias -s doc='background openoffice.org'
+alias ez='vi ~/.zshrc'
