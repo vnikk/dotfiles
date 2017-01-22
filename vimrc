@@ -212,7 +212,7 @@ nnoremap <leader>q :set number!<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
-noremap <CR> :
+nnoremap <CR> :
 nnoremap p p=`]
 nnoremap P P=`]
 
