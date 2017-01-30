@@ -331,6 +331,24 @@ function! s:get_visual_selection()
   return join(lines, "\n")
 endfunction
 
+" toggle between showing and hiding redundant whitespaces
+let g:isWhitespaceOn = 2
+function! ToggleWhitespaces()
+    if g:isWhitespaceOn == 1
+        hi redundant_spaces ctermbg=red guibg=red
+        let g:isWhitespaceOn = 2
+    elseif g:isWhitespaceOn == 2
+        hi clear redundant_spaces
+        let g:isWhitespaceOn = 0
+    else
+        hi redundant_spaces ctermbg=blue guibg=blue
+        let g:isWhitespaceOn = 1
+    endif
+
+endfunction
+
+nnoremap <leader>w :call ToggleWhitespaces()<CR>
+
 " make table with equal signs
 function! EvenEquals()
     let lnum1 = getpos("'<")[1]
