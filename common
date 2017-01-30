@@ -1,4 +1,4 @@
-function sess(){ vi -S ~/sessions/"$1"; }
+function sess(){ vi -S ~/.vim/sessions/"$1"; }
 
 alias xclip='xclip -selection c'
 alias xlog="git xlog"
