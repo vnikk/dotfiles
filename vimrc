@@ -473,4 +473,4 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 "nmap <C-m> :TagbarToggle<CR>
 
 " Nerdtree bundle
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTree<CR>
