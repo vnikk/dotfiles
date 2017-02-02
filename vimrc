@@ -30,6 +30,7 @@ Plugin 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
