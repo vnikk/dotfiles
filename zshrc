@@ -105,6 +105,14 @@ background() {
     "$@" &
 }
 
+dimon() {
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+}
+
+dimoff() {
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+}
+
 alias .="source"
 alias thm="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
