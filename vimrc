@@ -22,7 +22,7 @@ if v:version >= 703 && has("patch598")
 endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-"Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -33,7 +33,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
 "   Plugin 'honza/vim-snippets'
 
