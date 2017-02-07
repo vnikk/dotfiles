@@ -475,3 +475,4 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 " Nerdtree bundle
 map <C-n> :NERDTree<CR>
+set noeol binary fileformat=dos
