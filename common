@@ -6,4 +6,8 @@ alias flux='~/shell/xflux -l 50°06'
 
 alias ll='ls -lhF'
 alias la='ls -AF'
-alias l='ls -CF --group-directories-first'
+alias l='ls -CF'
+
+if [ $(uname) = "Linux" ]; then
+	alias l='l --group-directories-first'
+fi
