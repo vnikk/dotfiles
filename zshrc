@@ -10,7 +10,7 @@
 if [ $USER = "wat" ]; then
     ZSH_THEME="my"
 else
-    ZSH_THEME="random"
+	ZSH_THEME="peepcode"
 fi
 
 # Uncomment the following line to use case-sensitive completion.
