@@ -97,7 +97,7 @@ if [ -f ~/.dotfiles/common ]; then
 fi
 
 alias .="source"
-alias thm="source ~/.zshrc"
+alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias -s jpg=gwenview
 alias -s jpeg=gwenview
