@@ -7,7 +7,11 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="random"
+if [ $USER = "wat" ]; then
+    ZSH_THEME="my"
+else
+    ZSH_THEME="random"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +55,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z bgnotify)
+plugins=(git z bgnotify extract)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,11 +100,32 @@ if [ -f ~/.dotfiles/common ]; then
     . ~/.dotfiles/common
 fi
 
+newalias()
+{
+    echo "alias $1" >> ~/.zshrc;
+}
+
+background() {
+    "$@" &
+}
+
+dimon() {
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+}
+
+dimoff() {
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+}
+
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s jpg=gwenview
-alias -s jpeg=gwenview
-alias -s png=gwenview
-alias -g win=/mnt/win/Users/wat
+alias -s {jpg, jpeg, png}='background eog'
+alias -s odt='background libreoffice'
+alias -s pdf='background evince'
+alias -s zip=unzip
+alias -g win='cd /mnt/ntfs/Users/wat'
 alias get="sudo yum install"
+alias here='nautilus . &'
+alias -s doc='background openoffice.org'
+alias ez='vi ~/.zshrc'

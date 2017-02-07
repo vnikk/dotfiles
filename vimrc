@@ -22,7 +22,7 @@ if v:version >= 703 && has("patch598")
 endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-"Plugin 'scrooloose/nerdTree'
+Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -30,10 +30,12 @@ Plugin 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'junegunn/vim-easy-align'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'jistr/vim-nerdtree-tabs'
 " Optional:
 "   Plugin 'honza/vim-snippets'
 
@@ -212,9 +214,9 @@ nnoremap <leader>q :set number!<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
-noremap <CR> :
-noremap p p1v=
-noremap P P1v=
+nnoremap <CR> :
+nnoremap p p=`]
+nnoremap P P=`]
 
 " Tags
 map <C-b> :pop<CR>
@@ -232,16 +234,6 @@ vnoremap E $
 vnoremap B ^
 onoremap B ^
 onoremap E $
-
-" Move in command line
-cnoremap <C-B> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-b> <C-left>
-cnoremap <C-w> <C-right><right>
-cnoremap <C-h> <left>
-cnoremap <C-l> <right>
-cnoremap <C-j> <down>
-cnoremap <C-k> <up>
 
 " Move in insert mode
 imap <C-h> <C-o>h
@@ -295,7 +287,7 @@ vnoremap J <Esc>:tabprevious<cr>
 nnoremap K :tabnext<cr>
 vnoremap K <Esc>:tabnext<cr>
 nnoremap <leader>J :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-if v:version >= 703
+if v:version >= 703 && !has('unix') " TODO remove version?
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr())<CR>
 else
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
@@ -340,6 +332,24 @@ function! s:get_visual_selection()
   let lines[0] = lines[0][col1 - 1:]
   return join(lines, "\n")
 endfunction
+
+" toggle between showing and hiding redundant whitespaces
+let g:isWhitespaceOn = 2
+function! ToggleWhitespaces()
+    if g:isWhitespaceOn == 1
+        hi redundant_spaces ctermbg=red guibg=red
+        let g:isWhitespaceOn = 2
+    elseif g:isWhitespaceOn == 2
+        hi clear redundant_spaces
+        let g:isWhitespaceOn = 0
+    else
+        hi redundant_spaces ctermbg=blue guibg=blue
+        let g:isWhitespaceOn = 1
+    endif
+
+endfunction
+
+nnoremap <leader>w :call ToggleWhitespaces()<CR>
 
 " make table with equal signs
 function! EvenEquals()
@@ -464,4 +474,4 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 "nmap <C-m> :TagbarToggle<CR>
 
 " Nerdtree bundle
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTree<CR>
