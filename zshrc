@@ -119,6 +119,10 @@ dimoff() {
     gsettings set org.gnome.desktop.session idle-delay 0
 }
 
+aliaz() {
+    alias | grep $1
+}
+
 alias .="source"
 alias thm="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
