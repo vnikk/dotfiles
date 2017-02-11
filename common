@@ -8,3 +8,7 @@ alias mv='mv -n'
 alias ll='ls -lhF'
 alias la='ls -AF'
 alias l='ls -CF --group-directories-first'
+
+if [ -f ~/shell/xcv ]; then
+    source ~/shell/xcv 1>/dev/null
+fi
