@@ -4,6 +4,7 @@ alias xclip='xclip -selection c'
 alias xlog="git xlog"
 alias flux='~/shell/xflux -l 50°06'
 
+alias mv='mv -n'
 alias ll='ls -lhF'
 alias la='ls -AF'
 alias l='ls -CF --group-directories-first'
