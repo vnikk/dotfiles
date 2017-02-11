@@ -7,10 +7,10 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-if [ $USER = "wat" ]; then
+if [ $(uname) = "Linux" ]; then
     ZSH_THEME="my"
 else
-    ZSH_THEME="random"
+	ZSH_THEME="peepcode"
 fi
 
 # Uncomment the following line to use case-sensitive completion.
@@ -55,7 +55,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z extract)
+plugins=(git z bgnotify extract)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,7 +124,7 @@ aliaz() {
 }
 
 alias .="source"
-alias thm="source ~/.zshrc"
+alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias -s jpg='background eog'
 alias -s jpeg='background eog'
