@@ -10,7 +10,7 @@ alias la='ls -AF'
 alias l='ls -CF'
 
 if [ $(uname) = "Linux" ]; then
-alias l='l --group-directories-first'
+	alias l='ls -CF --group-directories-first'
 fi
 
 if [ -f ~/shell/xcv ]; then

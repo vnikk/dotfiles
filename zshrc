@@ -89,15 +89,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [ -f ~/.aliasrc ]; then
-    . ~/.aliasrc
+	source ~/.aliasrc
 fi
 
 if [ -f ~/.zaliasrc ]; then
-    . ~/.zaliasrc
+	source ~/.zaliasrc
 fi
 
-if [ -f ~/.dotfiles/common ]; then
-    . ~/.dotfiles/common
+if [ -f ~/.dotfiles/common.sh ]; then
+	source ~/.dotfiles/common.sh
 fi
 
 newalias()
