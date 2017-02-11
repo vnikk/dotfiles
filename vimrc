@@ -115,7 +115,9 @@ set smartcase
 
 " GUI
 if has('gui_running')
-    set guifont=Monaco\ for\ Powerline\ 12
+    "set guifont=Monaco\ for\ Powerline\ 12
+    set guifont=Monospace\ 12
+    set lines=999 columns=999
     " Remove menu bar
     set guioptions-=m
     " Remove toolbar
