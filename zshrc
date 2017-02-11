@@ -111,10 +111,12 @@ background() {
 
 dimon() {
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+    gsettings set org.gnome.desktop.session idle-delay 300
 }
 
 dimoff() {
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    gsettings set org.gnome.desktop.session idle-delay 0
 }
 
 alias .="source"
