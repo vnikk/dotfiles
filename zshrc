@@ -55,7 +55,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z bgnotify extract)
+plugins=(git z bgnotify extract fancy-ctrl-z )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,15 +89,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [ -f ~/.aliasrc ]; then
-    . ~/.aliasrc
+	source ~/.aliasrc
 fi
 
 if [ -f ~/.zaliasrc ]; then
-    . ~/.zaliasrc
+	source ~/.zaliasrc
 fi
 
-if [ -f ~/.dotfiles/common ]; then
-    . ~/.dotfiles/common
+if [ -f ~/.dotfiles/common.sh ]; then
+	source ~/.dotfiles/common.sh
 fi
 
 newalias()
@@ -111,21 +111,30 @@ background() {
 
 dimon() {
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+    gsettings set org.gnome.desktop.session idle-delay 300
 }
 
 dimoff() {
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    gsettings set org.gnome.desktop.session idle-delay 0
+}
+
+aliaz() {
+    alias | grep $1
 }
 
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s {jpg, jpeg, png}='background eog'
+alias -s jpg='background eog'
+alias -s jpeg='background eog'
+alias -s png='background eog'
+alias -s gif='background eog'
 alias -s odt='background libreoffice'
 alias -s pdf='background evince'
 alias -s zip=unzip
 alias -g win='cd /mnt/ntfs/Users/wat'
 alias get="sudo yum install"
-alias here='nautilus . &'
+alias here='nautilus . 2>/dev/null &'
 alias -s doc='background openoffice.org'
 alias ez='vi ~/.zshrc'
