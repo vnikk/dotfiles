@@ -184,20 +184,18 @@ command! W w !sudo tee % > /dev/null
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "TODO work in tmux
-if isdirectory(expand("~/workspace"))
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
+if isdirectory(expand("~/danube"))
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube<CR>
 else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
 
 " TODO map to leader+_
-" Change name_with_underscores to NamesInCameCase for visually selected text.
-" mnemonic *c*amelCase
+" Change name_with_underscores to NamesInCameCase for visually selected text. Mnemonic: C_amelCase
 vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
 " :s#_\(\l\)#\u\1#g
-" Change CamelCase to name_with_underscore for visually selected text.
-" mnemonic *u*nderscores.
+" Change CamelCase to name_with_underscore for visually selected text. Mnemonic: U_nderscores.
 vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
@@ -307,7 +305,9 @@ nnoremap <F1> <nop>
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
-"nnoremap K <nop>
+
+" Nerdtree bundle
+map <F5> :NERDTree<CR>
 
 " Smart tab autocomplete
 function! SuperTab()
@@ -447,11 +447,6 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 """""""""""""""""""""""""""""
-
-" Underline actual line in insert mode
-"autocmd InsertLeave * se nocul
-"autocmd InsertEnter * se cul
-
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
