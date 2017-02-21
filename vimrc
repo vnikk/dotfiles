@@ -167,7 +167,7 @@ endif
 set wildmenu
 set wildmode=list:longest
 set tabpagemax=20
-set lazyredraw 
+set lazyredraw
 set smarttab
 set formatoptions-=o
 command! W w !sudo tee % > /dev/null
@@ -177,11 +177,6 @@ command! W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""
 " MAPPING
 """""""""""""""""""""""""""""
-
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
 
 " <C-k> is free to map
 " <C-[> is free to map
