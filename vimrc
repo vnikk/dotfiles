@@ -98,6 +98,7 @@ if isdirectory(expand("~/workspace"))
 else
     set path+=~
 endif
+set backspace=indent,eol,start " fix backspace
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
 "au BufWritePost .vimrc so ~/.vimrc
@@ -477,4 +478,4 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 
 " Nerdtree bundle
 map <C-n> :NERDTree<CR>
-set noeol binary fileformat=dos
+set noeol fileformat=dos " binary
