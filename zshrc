@@ -115,7 +115,7 @@ newalias()
 }
 
 background() {
-    "$@" &
+    "$@" 2>/dev/null &
 }
 
 dimon() {
