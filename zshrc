@@ -100,6 +100,15 @@ if [ -f ~/.dotfiles/common.sh ]; then
 	source ~/.dotfiles/common.sh
 fi
 
+cat << EOF
+$fg_bold[red]
+▄█       █▄
+  ▄█████▄  
+  █▄▄█▄▄█  
+▄▄ █▀█▀█ ▄▄
+ ▀       ▀ 
+EOF
+
 newalias()
 {
     echo "alias $1" >> ~/.zshrc;
