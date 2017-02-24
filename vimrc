@@ -98,6 +98,7 @@ if isdirectory(expand("~/workspace"))
 else
     set path+=~
 endif
+set backspace=indent,eol,start " fix backspace
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
 "au BufWritePost .vimrc so ~/.vimrc
@@ -166,7 +167,7 @@ endif
 set wildmenu
 set wildmode=list:longest
 set tabpagemax=20
-set lazyredraw 
+set lazyredraw
 set smarttab
 set formatoptions-=o
 command! W w !sudo tee % > /dev/null
@@ -177,31 +178,24 @@ command! W w !sudo tee % > /dev/null
 " MAPPING
 """""""""""""""""""""""""""""
 
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
-
 " <C-k> is free to map
 " <C-[> is free to map
 
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "TODO work in tmux
-if isdirectory(expand("~/workspace"))
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/workspace/server/tags<CR>
+if isdirectory(expand("~/danube"))
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube<CR>
 else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
 
 " TODO map to leader+_
-" Change name_with_underscores to NamesInCameCase for visually selected text.
-" mnemonic *c*amelCase
+" Change name_with_underscores to NamesInCameCase for visually selected text. Mnemonic: C_amelCase
 vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
 " :s#_\(\l\)#\u\1#g
-" Change CamelCase to name_with_underscore for visually selected text.
-" mnemonic *u*nderscores.
+" Change CamelCase to name_with_underscore for visually selected text. Mnemonic: U_nderscores.
 vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
@@ -309,7 +303,9 @@ nnoremap <F1> <nop>
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
-"nnoremap K <nop>
+
+" Nerdtree bundle
+map <F5> :NERDTree<CR>
 
 " Smart tab autocomplete
 function! SuperTab()
@@ -449,11 +445,6 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 """""""""""""""""""""""""""""
-
-" Underline actual line in insert mode
-"autocmd InsertLeave * se nocul
-"autocmd InsertEnter * se cul
-
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete

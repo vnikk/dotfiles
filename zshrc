@@ -55,7 +55,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z bgnotify extract fancy-ctrl-z )
+plugins=(git z bgnotify extract fancy-ctrl-z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,3 +147,6 @@ alias get="sudo yum install"
 alias here='nautilus . 2>/dev/null &'
 alias -s doc='background openoffice.org'
 alias ez='vi ~/.zshrc'
+alias dan="cd ~/danube"
+
+bindkey '^ ' autosuggest-accept
