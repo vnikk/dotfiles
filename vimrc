@@ -448,6 +448,12 @@ function! VisualSelection(direction, extra_filter) range
     let @" =
     l:saved_reg
 endfunction
+
+" Make session
+function MkSes(name)
+    mks! ~/.vim/sessions/a:name
+endfunction
+
 """""""""""""""""""""""""""""
 function! s:VSetSearch()
     let temp = @@
