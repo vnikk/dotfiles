@@ -83,6 +83,8 @@ set noshowmode
 set cursorline
 set statusline=%<%f\ %n\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set rulerformat=#%n\ %l,%c%V%=%P
+set splitbelow
+set splitright
 filetype plugin on
 filetype indent on
 let mapleader = "\<Space>"
@@ -107,6 +109,8 @@ set backspace=indent,eol,start " fix backspace
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"?
+set autoindent
 
 " Smart search
 set hlsearch
