@@ -17,9 +17,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-if v:version >= 703 && has("patch598")
-    "Plugin 'Valloric/YouCompleteMe'
-endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
@@ -32,6 +29,9 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'junegunn/vim-easy-align'
+"if v:version >= 703 && has("patch598")
+    Plugin 'Valloric/YouCompleteMe'
+"endif
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
