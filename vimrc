@@ -411,15 +411,15 @@ function! OpenOther()
     " expand("%:p:r:s?src?include?")
     " :e %<.cpp
     if expand("%:e") == "cpp"
-        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
+        exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "cc"
-        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
+        exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "h"
         "if filereadable(expand("%:p:r:s?include?src?").".cpp")
         if filereadable(expand("%:p:r:s?src?").".cpp")
-            exe "split" fnameescape(expand("%:p:r:s?src?").".cpp")
+            exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cpp")
         elseif filereadable(expand("%:p:r:s?src?").".cc")
-            exe "split" fnameescape(expand("%:p:r:s?src?").".cc")
+            exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     endif
 endfunction
