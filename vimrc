@@ -1,4 +1,7 @@
 " TODO omnicpp faq #7
+"is said to show whitespace at the EOL
+set listchars+=trail:-
+
 
 set nocp " better at start!
 filetype off
