@@ -140,7 +140,14 @@ let base16colorspace=256
 "set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
-colorscheme balancees "koehler mikado violetees delek zellner peachpuff
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Linux"
+        colorscheme balancees "koehler mikado violetees delek zellner peachpuff
+    else
+        colorscheme balancees_transp
+    endif
+endif
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
