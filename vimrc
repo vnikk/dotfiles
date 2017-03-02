@@ -159,8 +159,8 @@ set pastetoggle=<F10>
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
 
-if isdirectory(expand("~/workspace"))
-    set tags=~/.vim/stl_tags,~/workspace/server/tags
+if isdirectory(expand("~/danube"))
+    set tags=~/.vim/stl_tags,~/danube/tags
 else
     set tags=~/.vim/stl_tags,~/tags
 endif
@@ -186,11 +186,10 @@ command! W w !sudo tee % > /dev/null
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "TODO work in tmux
 if isdirectory(expand("~/danube"))
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube<CR>
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube/tags<CR>
 else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
-
 
 " TODO map to leader+_
 " Change name_with_underscores to NamesInCameCase for visually selected text. Mnemonic: C_amelCase
