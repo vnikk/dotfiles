@@ -211,8 +211,6 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
 nnoremap <CR> :
-nnoremap p p=`]
-nnoremap P P=`]
 
 " Tags
 map <C-b> :pop<CR>
@@ -472,4 +470,4 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 " Tagbar bundle
 "nmap <C-m> :TagbarToggle<CR>
 
-"set noeol binary "fileformat=dos " binary
+"set noeol binary fileformat=dos
