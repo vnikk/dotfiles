@@ -2,7 +2,6 @@
 "is said to show whitespace at the EOL
 set listchars+=trail:-
 
-
 set nocp " better at start!
 filetype off
 
@@ -24,10 +23,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
 Plugin 'scrooloose/syntastic'
+"Bundle 'jistr/vim-nerdtree-tabs'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
+Bundle 'honza/vim-snippets' "Plugin?
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
@@ -38,24 +38,11 @@ Plugin 'junegunn/vim-easy-align'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
-"Bundle 'jistr/vim-nerdtree-tabs'
-" Optional:
-"   Plugin 'honza/vim-snippets'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
