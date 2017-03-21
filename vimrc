@@ -22,6 +22,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 "Bundle 'jistr/vim-nerdtree-tabs'
 
@@ -265,7 +266,8 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Line join
 nnoremap <leader>j J
-nnoremap <leader>k i<Esc>
+nnoremap <leader>k i
+<Esc>
 
 " Esc cancels highlight
 " :let @/ = ""
