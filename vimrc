@@ -306,6 +306,8 @@ nnoremap Q @@
 
 " Nerdtree bundle
 map <F5> :NERDTree<CR>
+let g:NERDTreeMapJumpFirstChild = 'H'
+let g:NERDTreeMapJumpLastChild = 'L'
 
 " Smart tab autocomplete
 function! SuperTab()
