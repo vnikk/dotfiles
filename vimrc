@@ -27,7 +27,7 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets' "Plugin?
+Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
