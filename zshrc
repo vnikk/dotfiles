@@ -191,5 +191,8 @@ alias here='nautilus . 2>/dev/null &'
 alias -s doc='background openoffice.org'
 alias ez='vi ~/.zshrc'
 alias dan="cd ~/danube"
+alias gs="git stash"
+alias gsp="git stash pop"
+alias gsl="git stash list"
 
 bindkey '^ ' autosuggest-accept
