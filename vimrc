@@ -439,7 +439,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 " Make session
-function MkSes(name)
+function! MkSes(name)
     mks! ~/.vim/sessions/a:name
 endfunction
 
