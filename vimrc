@@ -136,7 +136,8 @@ if has("unix")
     if s:uname == "Linux"
         colorscheme balancees "koehler mikado violetees delek zellner peachpuff
     else
-        colorscheme balancees_transp
+        colorscheme flatcolor
+        hi Normal guibg=NONE ctermbg=NONE
     endif
 endif
 
@@ -267,7 +268,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " Line join
 nnoremap <leader>j J
 nnoremap <leader>k i
-<Esc>
 
 " Esc cancels highlight
 " :let @/ = ""
