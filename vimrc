@@ -308,6 +308,9 @@ vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>c 0i// 
 
+" trim trailing whitespace
+noremap <silent> <leader>tt :%s/\s\+$//e<CR>
+
 " Turn off
 nnoremap <F1> <nop>
 nnoremap $ <nop>
