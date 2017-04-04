@@ -1,4 +1,5 @@
 " TODO omnicpp faq #7
+" function to print table of leader (and other) mappings
 "is said to show whitespace at the EOL
 set listchars+=trail:-
 
