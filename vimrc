@@ -317,8 +317,8 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
 
-" Nerdtree bundle
-map <F5> :NERDTree<CR>
+" Nerdtree bundle, NERDTree mappings: 
+nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
 
