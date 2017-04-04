@@ -206,6 +206,7 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " inoremap <F1> <Esc>:w<CR>
 "as same as cc
 nnoremap S :w<CR>
+nnoremap zx :q<CR>
 inoremap jk <ESC>
 inoremap JK <ESC>
 inoremap jK <ESC>
@@ -214,10 +215,16 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
 nnoremap <CR> :
+noremap <silent> zp "+[p
+nnoremap <silent> zy "+yy
+vnoremap <silent> zy "+y
+nnoremap <leader>rc :tabe $MYVIMRC<cr>
+nnoremap <leader>sr :source $MYVIMRC<cr>
 
 " Tags
 map <C-b> :pop<CR>
 nmap <F4> :TagbarToggle<CR>
+map <silent> gf :tabf <cfile><CR>
 
 " Replace
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
