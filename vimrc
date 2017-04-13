@@ -1,4 +1,7 @@
 " TODO omnicpp faq #7
+" function to print table of leader (and other) mappings
+"is said to show whitespace at the EOL
+set listchars+=trail:-
 
 set nocp " better at start!
 filetype off
@@ -17,42 +20,35 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-if v:version >= 703 && has("patch598")
-    "Plugin 'Valloric/YouCompleteMe'
-endif
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
+"Bundle 'jistr/vim-nerdtree-tabs'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'KabbAmine/vCoolor.vim'
+
+" system specific
+source ~/.vim/otherrc
+"if v:version >= 703 && has("patch598")
+    Plugin 'Valloric/YouCompleteMe'
+"endif
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
-
-"Bundle 'jistr/vim-nerdtree-tabs'
-" Optional:
-"   Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
@@ -83,6 +79,8 @@ set noshowmode
 set cursorline
 set statusline=%<%f\ %n\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set rulerformat=#%n\ %l,%c%V%=%P
+set splitbelow
+set splitright
 filetype plugin on
 filetype indent on
 let mapleader = "\<Space>"
@@ -107,6 +105,8 @@ set backspace=indent,eol,start " fix backspace
 set tabstop=4
 set shiftwidth=4
 set expandtab
+"?
+set autoindent
 
 " Smart search
 set hlsearch
@@ -136,7 +136,15 @@ let base16colorspace=256
 "set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
-colorscheme balancees "koehler mikado violetees delek zellner peachpuff
+if has("unix")
+    let s:uname = system("uname -s")
+    if s:uname == "Linux"
+        colorscheme balancees "koehler mikado violetees delek zellner peachpuff
+    else
+        colorscheme flatcolor
+        hi Normal guibg=NONE ctermbg=NONE
+    endif
+endif
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -158,8 +166,8 @@ set pastetoggle=<F10>
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
 
-if isdirectory(expand("~/workspace"))
-    set tags=~/.vim/stl_tags,~/workspace/server/tags
+if isdirectory(expand("~/danube"))
+    set tags=~/.vim/stl_tags,~/danube/tags
 else
     set tags=~/.vim/stl_tags,~/tags
 endif
@@ -185,11 +193,10 @@ command! W w !sudo tee % > /dev/null
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "TODO work in tmux
 if isdirectory(expand("~/danube"))
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube<CR>
+    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube/tags<CR>
 else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
-
 
 " TODO map to leader+_
 " Change name_with_underscores to NamesInCameCase for visually selected text. Mnemonic: C_amelCase
@@ -203,6 +210,7 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " inoremap <F1> <Esc>:w<CR>
 "as same as cc
 nnoremap S :w<CR>
+nnoremap zx :q<CR>
 inoremap jk <ESC>
 inoremap JK <ESC>
 inoremap jK <ESC>
@@ -211,10 +219,16 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
 nnoremap <CR> :
+noremap <silent> zp "+[p
+nnoremap <silent> zy "+yy
+vnoremap <silent> zy "+y
+nnoremap <leader>rc :tabe $MYVIMRC<cr>
+nnoremap <leader>sr :source $MYVIMRC<cr>
 
 " Tags
 map <C-b> :pop<CR>
 nmap <F4> :TagbarToggle<CR>
+map <silent> gf :tabf <cfile><CR>
 
 " Replace
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
@@ -265,7 +279,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Line join
 nnoremap <leader>j J
-nnoremap <leader>k i<Esc>
+nnoremap <leader>k i
 
 " Esc cancels highlight
 " :let @/ = ""
@@ -294,9 +308,12 @@ nmap <leader>f <C-w>gf
 " Commenting
 vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 vnoremap <leader>x :normal 0i// 
-vnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\/\\|^# \?//:noh<return>
-nnoremap <leader>u :s/\/\/ \\|\/\* \\| \*\/\\|^# \?//:noh<return>
+vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
+nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>c 0i// 
+
+" trim trailing whitespace
+noremap <silent> <leader>tt :%s/\s\+$//e<CR>
 
 " Turn off
 nnoremap <F1> <nop>
@@ -304,8 +321,10 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
 
-" Nerdtree bundle
-map <F5> :NERDTree<CR>
+" Nerdtree bundle, NERDTree mappings: 
+nnoremap <leader>n :NERDTree<CR>
+let g:NERDTreeMapJumpFirstChild = 'H'
+let g:NERDTreeMapJumpLastChild = 'L'
 
 " Smart tab autocomplete
 function! SuperTab()
@@ -398,15 +417,15 @@ function! OpenOther()
     " expand("%:p:r:s?src?include?")
     " :e %<.cpp
     if expand("%:e") == "cpp"
-        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
+        exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "cc"
-        exe "split" fnameescape(expand("%:p:r:s?src?").".h")
+        exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
     elseif expand("%:e") == "h"
         "if filereadable(expand("%:p:r:s?include?src?").".cpp")
         if filereadable(expand("%:p:r:s?src?").".cpp")
-            exe "split" fnameescape(expand("%:p:r:s?src?").".cpp")
+            exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cpp")
         elseif filereadable(expand("%:p:r:s?src?").".cc")
-            exe "split" fnameescape(expand("%:p:r:s?src?").".cc")
+            exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     endif
 endfunction
@@ -435,6 +454,12 @@ function! VisualSelection(direction, extra_filter) range
     let @" =
     l:saved_reg
 endfunction
+
+" Make session
+function! MkSes(name)
+    mks! ~/.vim/sessions/a:name
+endfunction
+
 """""""""""""""""""""""""""""
 function! s:VSetSearch()
     let temp = @@
@@ -467,6 +492,4 @@ endfunction
 " Tagbar bundle
 "nmap <C-m> :TagbarToggle<CR>
 
-" Nerdtree bundle
-map <C-n> :NERDTree<CR>
 "set noeol binary fileformat=dos

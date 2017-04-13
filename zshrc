@@ -10,7 +10,8 @@
 if [ $(uname) = "Linux" ]; then
     ZSH_THEME="my"
 else
-	ZSH_THEME="peepcode"
+	#ZSH_THEME="bira" #peepcode"
+	ZSH_THEME="powerlevel9k/powerlevel9k"
 fi
 
 # Uncomment the following line to use case-sensitive completion.
@@ -55,7 +56,7 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z bgnotify extract fancy-ctrl-z zsh-autosuggestions)
+plugins=(git z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,6 +88,48 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status load ram)
+POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="red"
+POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="yellow"
+POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="green"
+POWERLEVEL9K_RAM_ELEMENTS=(ram_free)
+
+POWERLEVEL9K_STATUS_ERROR_BACKGROUND="clear"
+POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
+POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_WARNING_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="red"
+POWERLEVEL9K_LOAD_WARNING_FOREGROUND="yellow"
+POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="green"
+POWERLEVEL9K_LOAD_BACKGROUND="clear"
+POWERLEVEL9K_LOAD_BACKGROUND="clear"
+POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
+POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
+POWERLEVEL9K_RAM_BACKGROUND="clear"
+POWERLEVEL9K_RAM_FOREGROUND="bold white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="36"
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND="clear"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="green"
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="clear"
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="yellow"
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="clear"
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="173"
+
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-remotebranch ) #git-aheadbehind git-stash git-tagname
+
+
+
+
 
 if [ -f ~/.aliasrc ]; then
 	source ~/.aliasrc
@@ -147,6 +190,8 @@ alias get="sudo yum install"
 alias here='nautilus . 2>/dev/null &'
 alias -s doc='background openoffice.org'
 alias ez='vi ~/.zshrc'
-alias dan="cd ~/danube"
+alias gs="git stash"
+alias gsp="git stash pop"
+alias gsl="git stash list"
 
 bindkey '^ ' autosuggest-accept
