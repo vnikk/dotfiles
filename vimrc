@@ -445,6 +445,9 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 """""""""""""""""""""""""""""
+function! WinEnc()
+    e ++enc=cp1251
+endfunction
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
