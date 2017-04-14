@@ -7,10 +7,12 @@ function normal() {
 }
 
 function colors() {
-    mkdir ~/.vim/colors
+    mkdir -p ~/.vim/colors
+    cd colorschemes
     for i in $(ls *.vim)
         do ln -s -f $PWD/$i ~/.vim/colors/$i
     done
+    cd -
 }
 
 function other() {
