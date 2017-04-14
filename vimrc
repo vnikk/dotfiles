@@ -138,12 +138,10 @@ let base16colorspace=256
 "set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
+
+colorscheme flatcolor
 if has("unix")
-    let s:uname = system("uname -s")
-    if s:uname == "Linux"
-        colorscheme balancees "koehler mikado violetees delek zellner peachpuff
-    else
-        colorscheme flatcolor
+    if system("uname -s") !~ "Linux"
         hi Normal guibg=NONE ctermbg=NONE
     endif
 endif
