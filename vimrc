@@ -37,7 +37,9 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'KabbAmine/vCoolor.vim'
 
 " system specific
-source ~/.vim/otherrc
+if filereadable(expand("~/.vim/otherrc"))
+    source ~/.vim/otherrc
+endif
 "if v:version >= 703 && has("patch598")
     Plugin 'Valloric/YouCompleteMe'
 "endif
