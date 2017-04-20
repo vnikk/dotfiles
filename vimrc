@@ -149,6 +149,7 @@ colorscheme flatcolor
 if has("unix")
     if system("uname -s") !~ "Linux"
         hi Normal guibg=NONE ctermbg=NONE
+        set termguicolors
     endif
 endif
 
