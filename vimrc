@@ -507,3 +507,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 "nmap <C-m> :TagbarToggle<CR>
 
 "set noeol binary fileformat=dos
+" Navigate quickfix list
+noremap <silent> <leader>] :cn<CR>zz
+noremap <silent> <leader>[ :cp<CR>zz
