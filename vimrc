@@ -313,11 +313,12 @@ nmap <leader>t <C-w><C-]><C-w>T
 nmap <leader>f <C-w>gf
 
 " Commenting
-vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
+nnoremap <leader>c :call Comment()<CR>
+"nnoremap <leader>c 0i// 
+"vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 vnoremap <leader>x :normal 0i// 
 vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
-nnoremap <leader>c 0i// 
 
 " trim trailing whitespace
 noremap <silent> <leader>tt :%s/\s\+$//e<CR>
@@ -372,6 +373,15 @@ function! ToggleWhitespaces()
 endfunction
 
 nnoremap <leader>w :call ToggleWhitespaces()<CR>
+
+" Comment
+function! Comment()
+    if expand("%:e") != "sh"
+        s/^/\/\/ /
+    else
+        s/^/# /
+    endif
+endfunction
 
 " make table with equal signs
 function! EvenEquals()
