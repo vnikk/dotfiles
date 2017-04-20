@@ -148,21 +148,25 @@ newalias()
     echo "alias $1" >> ~/.zshrc;
 }
 
-background() {
+background()
+{
     "$@" 2>/dev/null &
 }
 
-dimon() {
+dimon()
+{
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
     gsettings set org.gnome.desktop.session idle-delay 300
 }
 
-dimoff() {
+dimoff()
+{
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
     gsettings set org.gnome.desktop.session idle-delay 0
 }
 
-aliaz() {
+aliaz()
+{
     alias | grep $1
 }
 
