@@ -230,6 +230,7 @@ nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
 nnoremap <leader>rc :tabe $MYVIMRC<cr>
 nnoremap <leader>sr :source $MYVIMRC<cr>
+nnoremap Y y$
 
 " Tags
 map <C-b> :pop<CR>
