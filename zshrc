@@ -190,3 +190,4 @@ alias gsp="git stash pop"
 alias gsl="git stash list"
 
 bindkey '^ ' autosuggest-accept
+curl wttr.in

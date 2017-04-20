@@ -38,7 +38,9 @@ Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ervandew/supertab'
 
 " system specific
-source ~/.vim/otherrc
+if filereadable(expand("~/.vim/otherrc"))
+    source ~/.vim/otherrc
+endif
 "if v:version >= 703 && has("patch598")
     Plugin 'Valloric/YouCompleteMe'
 "endif
@@ -142,12 +144,10 @@ let base16colorspace=256
 "set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
+
+colorscheme flatcolor
 if has("unix")
-    let s:uname = system("uname -s")
-    if s:uname == "Linux"
-        colorscheme balancees "koehler mikado violetees delek zellner peachpuff
-    else
-        colorscheme flatcolor
+    if system("uname -s") !~ "Linux"
         hi Normal guibg=NONE ctermbg=NONE
     endif
 endif
@@ -487,6 +487,9 @@ endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
 vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 """""""""""""""""""""""""""""
+function! WinEnc()
+    e ++enc=cp1251
+endfunction
 
 " Omni completion
 " set ofu=syntaxcomplete#Complete
