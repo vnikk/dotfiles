@@ -180,7 +180,12 @@ else
 endif
 
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
+set wildignore+=.git                             " Version control
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store
 set tabpagemax=20
 set lazyredraw
 set smarttab
