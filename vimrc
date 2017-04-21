@@ -321,8 +321,8 @@ vnoremap <leader>x :normal 0i// 
 vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 
-" trim trailing whitespace
-noremap <silent> <leader>tt :%s/\s\+$//e<CR>
+" remove trailing whitespace
+noremap <silent> <leader>rw :%s/\s\+$//e<CR>
 
 " Turn off
 nnoremap <F1> <nop>
@@ -330,7 +330,7 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
 
-" Nerdtree bundle, NERDTree mappings: 
+" Nerdtree bundle, NERDTree mappings:
 nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
