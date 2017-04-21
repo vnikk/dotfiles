@@ -235,6 +235,14 @@ vnoremap <silent> zy "+y
 nnoremap <leader>rc :tabe $MYVIMRC<cr>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap Y y$
+cnoremap <C-A> <HOME>
+cnoremap <C-D> <DEL>
+
+"System clipboard interaction
+noremap <leader>y "*y
+noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+vnoremap <leader>y "*ygv
 
 " Tags
 map <C-b> :pop<CR>
