@@ -170,3 +170,4 @@ stty -ixon
 
 source ~/.git-prompt.sh
 alias godot="cd ~/.dotfiles"
+alias l=ls
