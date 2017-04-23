@@ -250,8 +250,8 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 
 " {} () search
-nnoremap { viBo<Esc>^
-nnoremap } viB<Esc>^
+"nnoremap { viBo<Esc>^ "these are [{, }]
+"nnoremap } viB<Esc>^
 nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
 
