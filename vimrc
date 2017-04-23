@@ -148,6 +148,8 @@ if has("unix")
         hi Normal guibg=NONE ctermbg=NONE
     endif
 endif
+"TODO check for truecolor
+set t_Co=256
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
