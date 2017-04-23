@@ -256,8 +256,7 @@ nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
 
 " Characters / selections shifting
-nnoremap <C-h> xhP
-"nunmap <C-l>
+nnoremap <C-h> hxph
 nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]
