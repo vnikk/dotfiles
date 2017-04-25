@@ -317,7 +317,7 @@ vnoremap J <Esc>:tabprevious<cr>
 nnoremap K :tabnext<cr>
 vnoremap K <Esc>:tabnext<cr>
 nnoremap <leader>J :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-if v:version >= 703 && !has('unix') " TODO remove version?
+if !has('unix')
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr())<CR>
 else
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
