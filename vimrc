@@ -9,10 +9,13 @@ filetype off
 """""""""""""""""""""""""""""
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " :PluginInstall
- set rtp+=~/.vim/bundle/Vundle.vim
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-call vundle#begin()
+if isdirectory(expand("$HOME/vimfiles/bundle/"))
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('$HOME/vimfiles/bundle/')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -151,6 +154,8 @@ if has("unix")
         set termguicolors
     endif
 endif
+"TODO check for truecolor
+set t_Co=256
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -268,14 +273,13 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 
 " {} () search
-nnoremap { viBo<Esc>^
-nnoremap } viB<Esc>^
+"nnoremap { viBo<Esc>^ "these are [{, }]
+"nnoremap } viB<Esc>^
 nnoremap ( vibo<Esc>
 nnoremap ) vib<Esc>
 
 " Characters / selections shifting
-nnoremap <C-h> xhP
-"nunmap <C-l>
+nnoremap <C-h> hxph
 nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]

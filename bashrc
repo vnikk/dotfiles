@@ -80,14 +80,14 @@ __exit_code () {
     fi
     echo -ne $OUTPUT
 }
+
 if [ "$color_prompt" = yes ]; then
 #   PS1='\[\033[1;30m\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;31m\]@\h\[\033[01;30m\] \D{%H.%M:%S} \w `__exit_code`\[\033[34m\]$(__git_ps1)\[\033[00m\]\n\$ '
     PS1='\[\033[94m\]\h\
 \[\033[1;35m\] \w \
 `__exit_code`\
-\[\033[0;36m\]$(__git_ps1) \[\033[00m\]\n> '
+\[\033[0;36m\]`__git_ps1` \[\033[00m\]\n> '
 #   PS1='\[\033[1;30m\]${debian_chroot:+($debian_chroot)}\[\033[01;35m\]\w \[\033[0;36m\]$(__git_ps1)\[\033[00m\]\n>'
-
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \D{%H.%M:%S} \w `__exit_code`$(__git_ps1)\n\$ '
 fi
@@ -165,8 +165,15 @@ fi
 # Set vim as editor for psql. http://vim.wikia.com/wiki/Quick_and_dirty_Postgres_query
 export PSQL_EDITOR='vim +"set syntax=sql"'
 
+if [ $(uname -o) = "Msys" ]; then
+    export VIM=$(pwd);
+else
+    source ~/.git-prompt.sh
+fi
+
+
 # removes freeze from Ctrl-S (requiring Ctrl-Q to unfreeze)
 stty -ixon
 
-source ~/.git-prompt.sh
 alias godot="cd ~/.dotfiles"
+alias l=ls
