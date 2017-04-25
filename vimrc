@@ -1,7 +1,4 @@
 " TODO omnicpp faq #7
-" function to print table of leader (and other) mappings
-"is said to show whitespace at the EOL
-set listchars+=trail:-
 
 set nocp " better at start!
 filetype off
@@ -105,6 +102,8 @@ else
     set path+=~
 endif
 set backspace=indent,eol,start " fix backspace
+"is said to show whitespace at the EOL
+set listchars+=trail:-
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
 "au BufWritePost .vimrc so ~/.vimrc
