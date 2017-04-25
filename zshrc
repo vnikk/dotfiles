@@ -9,6 +9,7 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 if [ $(uname) = "Linux" ]; then
     ZSH_THEME="my"
+    curl wttr.in
 else
 	#ZSH_THEME="bira" #peepcode"
 	ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -190,4 +191,3 @@ alias gsp="git stash pop"
 alias gsl="git stash list"
 
 bindkey '^ ' autosuggest-accept
-curl wttr.in
