@@ -182,3 +182,13 @@ newalias()
 
 alias godot="cd ~/.dotfiles"
 alias l=ls
+alias doxy="/c/Users/wat/Documents/uni/bachelor/doxy/doxygen.exe /c/Users/wat/Documents/uni/bachelor/doxy/config.txt"
+alias vb="vi ~/dotfiles/bashrc && source ~/dotfiles/bashrc"
+alias star="cd ~/Source/Repos/ualbertabot/StarAlgo/"
+alias g=git
+alias gs="git stash"
+alias ga="git add"
+alias gapa="git add -p"
+alias ..="cd .."
+alias gp="git push"
+alias gst="git status"
