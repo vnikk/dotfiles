@@ -128,6 +128,7 @@ if has('gui_running')
     set guioptions-=m
     " Remove toolbar
     set guioptions-=T
+    au GUIEnter * simalt ~x
 endif
 
 " Highlight redundant whitespaces
