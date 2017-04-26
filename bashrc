@@ -175,5 +175,10 @@ fi
 # removes freeze from Ctrl-S (requiring Ctrl-Q to unfreeze)
 stty -ixon
 
+newalias()
+{
+    echo "alias $1" >> ~/dotfiles/bashrc;
+}
+
 alias godot="cd ~/.dotfiles"
 alias l=ls
