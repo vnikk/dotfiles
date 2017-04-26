@@ -1,7 +1,4 @@
 " TODO omnicpp faq #7
-" function to print table of leader (and other) mappings
-"is said to show whitespace at the EOL
-set listchars+=trail:-
 
 set nocp " better at start!
 filetype off
@@ -38,6 +35,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'KabbAmine/vCoolor.vim'
+Plugin 'ervandew/supertab'
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
@@ -54,6 +52,11 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
@@ -102,6 +105,8 @@ else
     set path+=~
 endif
 set backspace=indent,eol,start " fix backspace
+"is said to show whitespace at the EOL
+set listchars+=trail:-
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
 "au BufWritePost .vimrc so ~/.vimrc
@@ -147,6 +152,7 @@ colorscheme flatcolor
 if has("unix")
     if system("uname -s") !~ "Linux"
         hi Normal guibg=NONE ctermbg=NONE
+        set termguicolors
     endif
 endif
 "TODO check for truecolor
@@ -179,7 +185,12 @@ else
 endif
 
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
+set wildignore+=.git                             " Version control
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store
 set tabpagemax=20
 set lazyredraw
 set smarttab
@@ -213,8 +224,6 @@ vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
 " :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
 " Basic
-" inoremap <F1> <Esc>:w<CR>
-"as same as cc
 nnoremap S :w<CR>
 nnoremap zx :q<CR>
 inoremap jk <ESC>
@@ -230,6 +239,15 @@ nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
 nnoremap <leader>rc :tabe $MYVIMRC<cr>
 nnoremap <leader>sr :source $MYVIMRC<cr>
+nnoremap Y y$
+cnoremap <C-A> <HOME>
+cnoremap <C-D> <DEL>
+
+"System clipboard interaction
+noremap <leader>y "*y
+noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+vnoremap <leader>y "*ygv
 
 " Tags
 map <C-b> :pop<CR>
@@ -311,14 +329,15 @@ nmap <leader>t <C-w><C-]><C-w>T
 nmap <leader>f <C-w>gf
 
 " Commenting
-vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
+nnoremap <leader>c :call Comment()<CR>
+"nnoremap <leader>c 0i// 
+"vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
 vnoremap <leader>x :normal 0i// 
 vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
 nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
-nnoremap <leader>c 0i// 
 
-" trim trailing whitespace
-noremap <silent> <leader>tt :%s/\s\+$//e<CR>
+" remove trailing whitespace
+noremap <silent> <leader>rw :%s/\s\+$//e<CR>
 
 " Turn off
 nnoremap <F1> <nop>
@@ -326,7 +345,7 @@ nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
 
-" Nerdtree bundle, NERDTree mappings: 
+" Nerdtree bundle, NERDTree mappings:
 nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
@@ -370,6 +389,15 @@ function! ToggleWhitespaces()
 endfunction
 
 nnoremap <leader>w :call ToggleWhitespaces()<CR>
+
+" Comment
+function! Comment()
+    if expand("%:e") != "sh"
+        s/^/\/\/ /
+    else
+        s/^/# /
+    endif
+endfunction
 
 " make table with equal signs
 function! EvenEquals()
@@ -498,3 +526,6 @@ endfunction
 "nmap <C-m> :TagbarToggle<CR>
 
 "set noeol binary fileformat=dos
+" Navigate quickfix list
+noremap <silent> <leader>] :cn<CR>zz
+noremap <silent> <leader>[ :cp<CR>zz
