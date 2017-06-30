@@ -219,12 +219,11 @@ else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
-" TODO map to leader+_
-" Change name_with_underscores to NamesInCameCase for visually selected text. Mnemonic: C_amelCase
-vmap ,c :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
+" name_with_underscores -> NamesInCameCase
+vnoremap <leader>+ :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
 " :s#_\(\l\)#\u\1#g
-" Change CamelCase to name_with_underscore for visually selected text. Mnemonic: U_nderscores.
-vmap ,u :s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>gul
+" CamelCase -> name_with_underscores
+vnoremap <leader>_ m":s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>`"viwugul
 " :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
 " Basic
