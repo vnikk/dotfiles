@@ -247,10 +247,10 @@ cnoremap <C-A> <HOME>
 cnoremap <C-D> <DEL>
 
 "System clipboard interaction
-noremap <leader>y "*y
+noremap <leader>y "*yy
 noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <leader>y "*ygv
+vnoremap <leader>y "*y
 
 " Tags
 map <C-b> :pop<CR>
