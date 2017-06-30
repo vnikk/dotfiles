@@ -450,7 +450,7 @@ function! OpenOther()
     endif
 endfunction
 
-nmap <leader>h :call OpenOther()<CR>
+nmap <leader>o :call OpenOther()<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
