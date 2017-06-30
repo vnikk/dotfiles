@@ -328,7 +328,8 @@ else
 endif
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
-nmap <leader>t <C-w><C-]><C-w>T
+" nmap <leader>t <C-w><C-]><C-w>T
+nmap <leader>t <C-w>T
 nmap <leader>f <C-w>gf
 
 " Commenting
