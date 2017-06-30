@@ -161,6 +161,8 @@ set t_Co=256
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_clear_cache_on_exit = 0
 
 " Movement
 " backspace and arrows cross line boundaries
