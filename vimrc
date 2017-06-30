@@ -332,14 +332,6 @@ inoremap <C-t> <Esc>:tabnew<CR>
 nmap <leader>t <C-w>T
 nmap <leader>f <C-w>gf
 
-" Commenting
-nnoremap <leader>c :call Comment()<CR>
-"nnoremap <leader>c 0i// 
-"vnoremap <leader>c <Esc>a */<Esc>gvo<Esc>i/* <Esc>
-vnoremap <leader>x :normal 0i// 
-vnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
-nnoremap <leader>u :s/\/\/ \?\\|\/\* \\| \*\/\\|^# \?//:noh<return>
-
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
 
@@ -393,15 +385,6 @@ function! ToggleWhitespaces()
 endfunction
 
 nnoremap <leader>w :call ToggleWhitespaces()<CR>
-
-" Comment
-function! Comment()
-    if expand("%:e") != "sh"
-        s/^/\/\/ /
-    else
-        s/^/# /
-    endif
-endfunction
 
 " make table with equal signs
 function! EvenEquals()
