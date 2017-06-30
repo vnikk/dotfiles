@@ -23,8 +23,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Bundle 'jistr/vim-nerdtree-tabs'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -36,6 +37,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ervandew/supertab'
+Plugin 'airblade/vim-gitgutter'
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
