@@ -141,6 +141,7 @@ if [ -f ~/.aliasrc ]; then
 	source ~/.aliasrc
 fi
 
+# zsh aliases
 if [ -f ~/.zaliasrc ]; then
 	source ~/.zaliasrc
 fi
@@ -179,17 +180,7 @@ aliaz()
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s jpg='background eog'
-alias -s jpeg='background eog'
-alias -s png='background eog'
-alias -s gif='background eog'
-alias -s odt='background libreoffice'
-alias -s pdf='background evince'
 alias -s zip=unzip
-alias -g win='cd /mnt/ntfs/Users/wat'
-alias get="sudo yum install"
-alias here='nautilus . 2>/dev/null &'
-alias -s doc='background openoffice.org'
 alias ez='vi ~/.zshrc'
 alias gs="git stash"
 alias gsp="git stash pop"
