@@ -238,7 +238,7 @@ nnoremap <CR> :
 noremap <silent> zp "+[p
 nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
-nnoremap <leader>rc :tabe $MYVIMRC<cr>
+nnoremap <leader>rc :execute 'e ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap Y y$
 cnoremap <C-A> <HOME>
