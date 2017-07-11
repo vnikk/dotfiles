@@ -1,5 +1,3 @@
-" TODO omnicpp faq #7
-
 set nocp " better at start!
 filetype off
 
