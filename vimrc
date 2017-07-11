@@ -248,6 +248,7 @@ cnoremap <C-D> <DEL>
 
 "System clipboard interaction
 noremap <leader>y "*yy
+"TODO paste inline
 noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
 noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
 vnoremap <leader>y "*y

@@ -4,9 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
-#needed for linux?
-export PATH=$PATH:/usr/local/bin
-
 # Powerlevel9k has to be above ZSH_THEME
 POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-remotebranch git-aheadbehind git-stash git-tagname) #
 POWERLEVEL9K_MODE=flat
@@ -133,14 +130,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-
-
-
-if [ -f ~/.aliasrc ]; then
-	source ~/.aliasrc
-fi
-
 # zsh aliases
 if [ -f ~/.zaliasrc ]; then
 	source ~/.zaliasrc
@@ -160,6 +149,7 @@ background()
     "$@" 2>/dev/null &
 }
 
+#TODO move to common linux
 dimon()
 {
     gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
