@@ -177,3 +177,5 @@ alias gsp="git stash pop"
 alias gsl="git stash list"
 
 bindkey '^ ' autosuggest-accept
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
