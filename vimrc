@@ -150,7 +150,7 @@ syntax on "has to be before colorscheme
 
 colorscheme flatcolor
 if has("unix")
-    if system("uname -s") !~ "Linux"
+    if system("uname -s") =~ "Darwin"
         hi Normal guibg=NONE ctermbg=NONE
         set termguicolors
     endif
