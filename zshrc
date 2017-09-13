@@ -173,6 +173,16 @@ copyy()
     echo -n "$*" | pbcopy
 }
 
+gmod()
+{
+    git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1
+}
+
+gmodc()
+{
+    git checkout $(git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1)
+}
+
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
