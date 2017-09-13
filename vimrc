@@ -1,7 +1,6 @@
 set nocp " better at start!
 filetype off
 
-
 """""""""""""""""""""""""""""
 " VUNDLE
 """""""""""""""""""""""""""""
@@ -36,6 +35,10 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'thinca/vim-localrc'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'wesQ3/vim-windowswap'
+"Plugin 'gilligan/vim-lldb'
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
