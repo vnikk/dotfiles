@@ -66,6 +66,17 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
+"auto-pairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+"let g:AutoPairsShortcutToggle   = '<leader>at'
+"let g:AutoPairsShortcutFastWrap = '<leader>aw'
+"let g:AutoPairsShortcutJump     = '<leader>aw'
+noremap <leader>at :call AutoPairsToggle()<CR>
+"TODO fix
+"noremap <leader>aw :call AutoPairsFastWrap()<CR>
+noremap <leader>an :call AutoPairsJump()<CR>
+
+
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
 let OmniCpp_DisplayMode = 0
