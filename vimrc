@@ -501,7 +501,11 @@ endfunction
 
 " Make session
 function! MkSes(name)
-    mks! ~/.vim/sessions/a:name
+    execute "mks! ~/.vim/sessions/" . a:name
+endfunction
+
+function! GetSes()
+    execute "!ls ~/.vim/sessions/"
 endfunction
 
 """""""""""""""""""""""""""""
