@@ -333,9 +333,6 @@ nnoremap <leader>k i
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
-" Folding toggle
-nnoremap <Space> za
-
 " Opening / switching tabs
 nnoremap J :tabprevious<cr>
 vnoremap J <Esc>:tabprevious<cr>
