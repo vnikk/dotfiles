@@ -143,18 +143,6 @@ set incsearch
 set ignorecase
 set smartcase
 
-" GUI
-if has('gui_running')
-    "set guifont=Monaco\ for\ Powerline\ 12
-    set guifont=Monospace\ 12
-    set lines=999 columns=999
-    " Remove menu bar
-    set guioptions-=m
-    " Remove toolbar
-    set guioptions-=T
-    au GUIEnter * simalt ~x
-endif
-
 " Highlight redundant whitespaces
 hi redundant_spaces ctermbg=blue guibg=blue
 autocmd ColorScheme * highlight redundant_spaces ctermbg=red guibg=red
@@ -176,6 +164,18 @@ if has("unix")
 endif
 "TODO check for truecolor
 set t_Co=256
+
+" GUI
+if has('gui_running')
+    "set guifont=Monaco\ for\ Powerline\ 12
+    set guifont=Monospace\ 12
+    set lines=999 columns=999
+    " Remove menu bar
+    set guioptions-=m
+    " Remove toolbar
+    set guioptions-=T
+    au GUIEnter * simalt ~x
+endif
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
