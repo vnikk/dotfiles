@@ -436,7 +436,7 @@ nnoremap <leader>z :call SetFoldmethod()<CR>
 function! SwapTwoArgs()
     s/(\(.*\), \(.*\))/(\2, \1)/
 endfunction
-nnoremap <leader>s :call SwapTwoArgs()<CR>
+nnoremap <leader>sa :call SwapTwoArgs()<CR>
 
 " copies current file name as C++ header
 function! YankHeader()
