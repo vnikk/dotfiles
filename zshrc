@@ -167,6 +167,12 @@ aliaz()
     alias | grep $1
 }
 
+#TODO maek cross-platform
+copyy()
+{
+    echo -n "$*" | pbcopy
+}
+
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
