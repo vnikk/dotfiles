@@ -310,9 +310,11 @@ vnoremap <C-l> xp`[v`]
 " Tab shifting; dont change <leader><tab> - intereferes with <C-i>
 vnoremap <leader><tab> >><Esc>1v
 nnoremap <leader><tab> >>
-nnoremap <S-Tab> <<
-vnoremap <S-Tab> <1v
-inoremap <S-Tab> <C-d>
+vnoremap <leader>> >><Esc>1v
+nnoremap <leader>> >>
+nnoremap <leader>< <<
+vnoremap <leader>< <1v
+inoremap <S-Tab>< <C-d>
 
 " Line moving
 nnoremap <C-j> :m .+1<CR>==
