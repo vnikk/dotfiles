@@ -183,6 +183,10 @@ gmodc()
     git checkout $(git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1)
 }
 
+vks() {
+    node /Users/mv185101/shell/vk_send/vk_send.js $*
+}
+
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
