@@ -254,10 +254,11 @@ map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
 nnoremap <CR> :
+vnoremap <CR> :
 noremap <silent> zp "+[p
 nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
-nnoremap <leader>rc :execute 'e ' . resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap Y y$
 cnoremap <C-A> <HOME>
