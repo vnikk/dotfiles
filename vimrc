@@ -372,6 +372,12 @@ function! SuperTab()
         return "\<C-n>"
 endfunction
 
+" Show Highlight group for debug
+" further: http://vimdoc.sourceforge.net/htmldoc/eval.html#synstack()
+map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 """"""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""
