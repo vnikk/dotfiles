@@ -521,7 +521,13 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
 function! WinEnc()
     e ++enc=cp1251
 endfunction
-
+"""""""""""""""""""""""""""""
+function! Csc()
+  cscope find c <cword>
+  copen
+endfunction
+command! Csc call Csc()
+"""""""""""""""""""""""""""""
 " Omni completion
 " set ofu=syntaxcomplete#Complete
 
