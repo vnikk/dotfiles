@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+#
+#Fixes tmux vim colors display
+export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -192,6 +195,7 @@ alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias -s zip=unzip
 alias ez='vi ~/.zshrc'
+alias eali="vi ~/.zaliasrc"
 alias gs="git stash"
 alias gsp="git stash pop"
 alias gsl="git stash list"

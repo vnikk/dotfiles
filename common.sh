@@ -17,3 +17,15 @@ if [ -f ~/shell/xcv ]; then
     source ~/shell/xcv 1>/dev/null
 fi
 
+#TODO lin only
+dimon()
+{
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+    gsettings set org.gnome.desktop.session idle-delay 300
+}
+
+dimoff()
+{
+    gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
+    gsettings set org.gnome.desktop.session idle-delay 0
+}
