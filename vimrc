@@ -224,7 +224,6 @@ command! W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""
 " MAPPING
 """""""""""""""""""""""""""""
-
 " <C-k> is free to map
 " <C-[> is free to map
 
@@ -332,6 +331,7 @@ nnoremap <leader>k i
 " Esc cancels highlight
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
+" TODO immediate ESC
 nnoremap <esc>^[ <esc>^[
 
 " Opening / switching tabs
