@@ -393,6 +393,25 @@ function! s:get_visual_selection()
   return join(lines, "\n")
 endfunction
 
+
+"TODO supposed to open file by symlink
+"noremap <leader>ev :execute 'e ' . resolve(expand(%))<CR>
+cnoreabbrev <expr> gbl getcmdtype() == ':' && getcmdpos() == 4 ? '! ( cd '.fnamemodify(resolve(expand('%')), ':h').' ; vi '.fnamemodify(resolve(expand('%')), ':t').' )' : 'gbl'
+function! Qwer()
+    let s:asdf = resolve(expand('%'))
+    exe 'e '.s:asdf
+endfunction
+
+"TODOcd to currenly opened symlinked file
+function! Slcd()
+    exe "lc " . resolve(expand("%:h"))
+endfunction
+
+" copy full current file to clipboard
+function! CopyName()
+    let @*=expand('%:p')
+endfunction
+
 " toggle between showing and hiding redundant whitespaces
 let g:isWhitespaceOn = 2
 function! ToggleWhitespaces()
