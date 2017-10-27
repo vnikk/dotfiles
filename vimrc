@@ -67,7 +67,8 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+
 "let g:AutoPairsShortcutToggle   = '<leader>at'
 "let g:AutoPairsShortcutFastWrap = '<leader>aw'
 "let g:AutoPairsShortcutJump     = '<leader>aw'
