@@ -85,8 +85,8 @@ if [ -f ~/.zaliasrc ]; then
 	source ~/.zaliasrc
 fi
 
-if [ -f ~/.dotfiles/common.sh ]; then
-	source ~/.dotfiles/common.sh
+if [ -f ~/.dotfiles/common ]; then
+	source ~/.dotfiles/common
 fi
 
 newalias()
