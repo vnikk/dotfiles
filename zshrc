@@ -56,9 +56,6 @@ DISABLE_AUTO_TITLE="true"
 # test
 ENABLE_CORRECTION="true"
 
-# test
-COMPLETION_WAITING_DOTS="true"
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
