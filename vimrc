@@ -350,6 +350,7 @@ inoremap <C-t> <Esc>:tabnew<CR>
 " nmap <leader>t <C-w><C-]><C-w>T
 nmap <leader>t <C-w>T
 nmap <leader>f <C-w>gf
+nmap <leader>od gD:vs<CR><C-W>W<C-o>
 
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
@@ -494,7 +495,7 @@ function! OpenOther()
     endif
 endfunction
 
-nmap <leader>o :call OpenOther()<CR>
+nmap <leader>oo :call OpenOther()<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
