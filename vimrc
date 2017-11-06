@@ -67,7 +67,8 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+
 "let g:AutoPairsShortcutToggle   = '<leader>at'
 "let g:AutoPairsShortcutFastWrap = '<leader>aw'
 "let g:AutoPairsShortcutJump     = '<leader>aw'
@@ -226,7 +227,6 @@ command! W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""
 " MAPPING
 """""""""""""""""""""""""""""
-
 " <C-k> is free to map
 " <C-[> is free to map
 
@@ -334,6 +334,7 @@ nnoremap <leader>k i
 " Esc cancels highlight
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
+" TODO immediate ESC
 nnoremap <esc>^[ <esc>^[
 
 " Opening / switching tabs
@@ -393,6 +394,25 @@ function! s:get_visual_selection()
   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][col1 - 1:]
   return join(lines, "\n")
+endfunction
+
+
+"TODO supposed to open file by symlink
+"noremap <leader>ev :execute 'e ' . resolve(expand(%))<CR>
+cnoreabbrev <expr> gbl getcmdtype() == ':' && getcmdpos() == 4 ? '! ( cd '.fnamemodify(resolve(expand('%')), ':h').' ; vi '.fnamemodify(resolve(expand('%')), ':t').' )' : 'gbl'
+function! Qwer()
+    let s:asdf = resolve(expand('%'))
+    exe 'e '.s:asdf
+endfunction
+
+"TODOcd to currenly opened symlinked file
+function! Slcd()
+    exe "lc " . resolve(expand("%:h"))
+endfunction
+
+" copy full current file to clipboard
+function! CopyName()
+    let @*=expand('%:p')
 endfunction
 
 " toggle between showing and hiding redundant whitespaces
