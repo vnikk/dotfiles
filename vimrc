@@ -347,9 +347,11 @@ endif
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 " nmap <leader>t <C-w><C-]><C-w>T
-nmap <leader>t <C-w>T
+"mnemonic: OpenWindow
+nmap <leader>ow <C-w>T
 nmap <leader>f <C-w>gf
 nmap <leader>od gD:vs<CR><C-W>W<C-o>
+nmap <leader>t :TagbarToggle<CR>
 
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
