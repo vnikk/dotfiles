@@ -155,7 +155,7 @@ let base16colorspace=256
 "set background=dark
 syntax on "has to be before colorscheme
 
-colorscheme flatcolor
+colorscheme gruvbox
 if has("unix")
     if system("uname -s") =~ "Darwin"
         hi Normal guibg=NONE ctermbg=NONE
