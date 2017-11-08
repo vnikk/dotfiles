@@ -18,6 +18,8 @@ function colors() {
 function other() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+    #list to make sure is installed
+    #Cscope
 }
 
 case $1 in
