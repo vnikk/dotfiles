@@ -67,15 +67,14 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+noremap <leader>at :call AutoPairsToggle()<CR>
+
 
 "let g:AutoPairsShortcutToggle   = '<leader>at'
 "let g:AutoPairsShortcutFastWrap = '<leader>aw'
 "let g:AutoPairsShortcutJump     = '<leader>aw'
-noremap <leader>at :call AutoPairsToggle()<CR>
 "TODO fix
 "noremap <leader>aw :call AutoPairsFastWrap()<CR>
-noremap <leader>an :call AutoPairsJump()<CR>
 
 
 " Omni
