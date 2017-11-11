@@ -79,11 +79,11 @@ fi
 # Personal aliases, though better in ZSH_CUSTOM
 
 if [ -f ~/.zaliasrc ]; then
-	source ~/.zaliasrc
+    source ~/.zaliasrc
 fi
 
 if [ -f ~/.dotfiles/common ]; then
-	source ~/.dotfiles/common
+    source ~/.dotfiles/common
 fi
 
 newalias()
