@@ -67,15 +67,14 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+noremap <leader>at :call AutoPairsToggle()<CR>
+
 
 "let g:AutoPairsShortcutToggle   = '<leader>at'
 "let g:AutoPairsShortcutFastWrap = '<leader>aw'
 "let g:AutoPairsShortcutJump     = '<leader>aw'
-noremap <leader>at :call AutoPairsToggle()<CR>
 "TODO fix
 "noremap <leader>aw :call AutoPairsFastWrap()<CR>
-noremap <leader>an :call AutoPairsJump()<CR>
 
 
 " Omni
@@ -156,7 +155,7 @@ let base16colorspace=256
 "set background=dark
 syntax on "has to be before colorscheme
 
-colorscheme flatcolor
+colorscheme gruvbox
 if has("unix")
     if system("uname -s") =~ "Darwin"
         hi Normal guibg=NONE ctermbg=NONE
@@ -351,8 +350,11 @@ endif
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 " nmap <leader>t <C-w><C-]><C-w>T
-nmap <leader>t <C-w>T
+"mnemonic: OpenWindow
+nmap <leader>ow <C-w>T
 nmap <leader>f <C-w>gf
+nmap <leader>od gD:vs<CR><C-W>W<C-o>
+nmap <leader>t :TagbarToggle<CR>
 
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
@@ -497,7 +499,7 @@ function! OpenOther()
     endif
 endfunction
 
-nmap <leader>o :call OpenOther()<CR>
+nmap <leader>oo :call OpenOther()<CR>
 
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>

@@ -46,18 +46,17 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 if [ $(uname) = "Linux" ]; then
     ZSH_THEME="my" # could be "random"
     curl wttr.in
+    export EDITOR='vim'
 else
 	#ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
+    export EDITOR='mvim -v'
 fi
 
 DISABLE_AUTO_TITLE="true"
 
 # test
 ENABLE_CORRECTION="true"
-
-# test
-COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -75,8 +74,6 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
-else
-    export EDITOR='mvim'
 fi
 
 # Personal aliases, though better in ZSH_CUSTOM
@@ -139,3 +136,4 @@ bindkey '^ ' autosuggest-accept
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias etmux="vi ~/.tmux.conf"
+alias v="f -e \"$EDITOR\""
