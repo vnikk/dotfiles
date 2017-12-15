@@ -31,14 +31,20 @@ Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'KabbAmine/vCoolor.vim'
+"Plugin 'junegunn/vim-easy-align'
+"TODO lin only
+"Plugin 'KabbAmine/vCoolor.vim'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'jiangmiao/auto-pairs'
+Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
 "Plugin 'gilligan/vim-lldb'
+"TRY:
+"Plugin 'gisodal/vimgdb'
+"Plugin 'huawenyu/neogdb.vim'
+"http://www.vim.org/scripts/script.php?script_id=3039
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
@@ -68,13 +74,15 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
 noremap <leader>at :call AutoPairsToggle()<CR>
+let g:AutoPairsUseInsertedCount = 1
 
 
 "let g:AutoPairsShortcutToggle   = '<leader>at'
-"let g:AutoPairsShortcutFastWrap = '<leader>aw'
+"let g:AutoPairsShortcutFastWrap = '<C-e>'
 "let g:AutoPairsShortcutJump     = '<leader>aw'
 "TODO fix
 "noremap <leader>aw :call AutoPairsFastWrap()<CR>
+inoremap <C-e> *@<C-R>=AutoPairsFastWrap()<CR>
 
 
 " Omni
