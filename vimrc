@@ -338,9 +338,11 @@ nnoremap <esc>^[ <esc>^[
 
 " Opening / switching tabs
 nnoremap J :tabprevious<cr>
-vnoremap J <Esc>:tabprevious<cr>
+"vnoremap J <Esc>:tabprevious<cr>
+vnoremap J nop
 nnoremap K :tabnext<cr>
-vnoremap K <Esc>:tabnext<cr>
+"vnoremap K <Esc>:tabnext<cr>
+vnoremap K nop
 nnoremap <leader>J :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 if !has('unix')
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr())<CR>
