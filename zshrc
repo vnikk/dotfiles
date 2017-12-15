@@ -137,3 +137,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias etmux="vi ~/.tmux.conf"
 alias v="f -e \"$EDITOR\""
+alias ff="find . -iname"
