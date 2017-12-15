@@ -268,8 +268,19 @@ vnoremap <silent> zy "+y
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap Y y$
-cnoremap <C-A> <HOME>
-cnoremap <C-D> <DEL>
+"cnoremap <C-A> <HOME>
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+"cnoremap <C-g>  <C-c>noremap <C-D> <DEL>
+cabbrev h tab help
 
 "System clipboard interaction
 noremap <leader>y "*yy
