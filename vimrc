@@ -227,7 +227,6 @@ command! W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""
 " MAPPING
 """""""""""""""""""""""""""""
-" <C-k> is free to map
 " <C-[> is free to map
 
 " Run ctags
