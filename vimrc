@@ -587,7 +587,8 @@ command! Csc call Csc()
 " Tagbar bundle
 "nmap <C-m> :TagbarToggle<CR>
 
-"set noeol binary fileformat=dos
+"for win
+"set noeol fileformat=dos " binary
 " Navigate quickfix list
 noremap <silent> <leader>] :cn<CR>zz
 noremap <silent> <leader>[ :cp<CR>zz
