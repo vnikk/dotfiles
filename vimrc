@@ -164,6 +164,7 @@ let base16colorspace=256
 syntax on "has to be before colorscheme
 
 colorscheme gruvbox
+set background=dark
 if has("unix")
     if system("uname -s") =~ "Darwin"
         hi Normal guibg=NONE ctermbg=NONE
@@ -202,6 +203,9 @@ set scrolloff=7
 
 " Other
 set pastetoggle=<F10>
+
+"dont search in folds
+set fdo-=search
 
 " Don't start new comment on a new line
 au FileType c,cpp setlocal comments-=:// comments+=f://

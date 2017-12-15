@@ -46,9 +46,11 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 if [ $(uname) = "Linux" ]; then
     ZSH_THEME="my" # could be "random"
     curl wttr.in
+    export EDITOR='vim'
 else
 	#ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
+    export EDITOR='mvim -v'
 fi
 
 DISABLE_AUTO_TITLE="true"
@@ -72,18 +74,16 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
-else
-    export EDITOR='mvim -v'
 fi
 
 # Personal aliases, though better in ZSH_CUSTOM
 
 if [ -f ~/.zaliasrc ]; then
-	source ~/.zaliasrc
+    source ~/.zaliasrc
 fi
 
 if [ -f ~/.dotfiles/common ]; then
-	source ~/.dotfiles/common
+    source ~/.dotfiles/common
 fi
 
 newalias()
