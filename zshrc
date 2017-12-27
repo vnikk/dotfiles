@@ -88,7 +88,7 @@ fi
 
 newalias()
 {
-    echo "alias $1" >> ~/.zshrc;
+    echo "alias $1='$2'" >> ~/.zshrc;
 }
 
 background()
