@@ -138,3 +138,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias etmux="vi ~/.tmux.conf"
 alias v="f -e \"$EDITOR\""
 alias ff="find . -iname"
+alias rgp='rg --type=cpp '
+alias rgj='rg --type=js '
+bindkey -s 'l' 'l'
+bindkey -s 'u' 'cd ..'
