@@ -8,6 +8,7 @@ map sl :open https://www.lingvolive.com/en-us/
 let hintcharacters = "qweradsfghjkl"
 set noautofocus
 map zv :tabnew vk.com/im<CR>
+map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
 getIP() -> {{
@@ -20,5 +21,5 @@ echo(link) -> {{
 }}
 map asd createScriptHint(echo)
 
-let configpath = '@@HOME/.cvimrc'
+let configpath = '/Users/mv185101/.cvimrc'
 set localconfig
