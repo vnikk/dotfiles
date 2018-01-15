@@ -72,6 +72,7 @@ filetype plugin indent on    " required
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_confirm_extra_conf = 0
 
 "auto-pairs
 noremap <leader>at :call AutoPairsToggle()<CR>
@@ -151,6 +152,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+"highlight 100th column
+set colorcolumn=100
 
 " Highlight redundant whitespaces
 hi redundant_spaces ctermbg=blue guibg=blue
