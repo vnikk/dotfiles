@@ -1,0 +1,25 @@
+map S B
+map l lastUsedTab
+set smoothscroll
+map x :q<CR>
+map , passKeys
+map sj :open http://jira.ncr.com/browse/DAN-
+map sl :open https://www.lingvolive.com/en-us/
+let hintcharacters = "qweradsfghjkl"
+set noautofocus
+map zv :tabnew vk.com/im<CR>
+map zf :tabnew m.facebook.com/messages<CR>
+map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
+let @@reddit_prog = 'http://www.reddit.com/r/programming'
+getIP() -> {{
+httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
+            function(res) { Status.setMessage('IP: ' + res.ip); });
+}}
+map ASD :call getIP<CR>
+echo(link) -> {{
+  alert(link.href);
+}}
+map asd createScriptHint(echo)
+
+let configpath = '/Users/mv185101/.cvimrc'
+set localconfig

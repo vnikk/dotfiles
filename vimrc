@@ -20,6 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
+"TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -75,6 +76,7 @@ let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_confirm_extra_conf = 0
 
 "auto-pairs
 let g:AutoPairsUseInsertedCount = 1
@@ -147,6 +149,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+"highlight 100th column
+set colorcolumn=100
 
 " Highlight redundant whitespaces
 hi redundant_spaces ctermbg=blue guibg=blue
