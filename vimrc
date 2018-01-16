@@ -37,14 +37,26 @@ Plugin 'gregsexton/gitv'
 Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
-"Plugin 'jiangmiao/auto-pairs'
-Plugin 'auto-pairs-gentle'
+Plugin 'jiangmiao/auto-pairs'
+"Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
 "Plugin 'huawenyu/neogdb.vim'
 "http://www.vim.org/scripts/script.php?script_id=3039
+
+"Plugin 'vim-scripts/OmniCppComplete'
+"Plugin 'Rip-Rip/clang_complete'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"""""""""""""""""""""""""""""
+" PLUGIN SETTINGS
+"""""""""""""""""""""""""""""
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
@@ -53,19 +65,11 @@ endif
 "if v:version >= 703 && has("patch598")
     Plugin 'Valloric/YouCompleteMe'
 "endif
-"Plugin 'vim-scripts/OmniCppComplete'
-"Plugin 'Rip-Rip/clang_complete'
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -73,17 +77,10 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "auto-pairs
-noremap <leader>at :call AutoPairsToggle()<CR>
 let g:AutoPairsUseInsertedCount = 1
-
-
-"let g:AutoPairsShortcutToggle   = '<leader>at'
-"let g:AutoPairsShortcutFastWrap = '<C-e>'
-"let g:AutoPairsShortcutJump     = '<leader>aw'
-"TODO fix
-"noremap <leader>aw :call AutoPairsFastWrap()<CR>
-inoremap <C-e> *@<C-R>=AutoPairsFastWrap()<CR>
-
+noremap <leader>ap :call AutoPairsToggle()<CR>
+inoremap <C-e> <C-R>=AutoPairsFastWrap()<CR>
+inoremap <C-]> <C-R>=AutoPairsShortcutJump()<CR>
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
@@ -286,11 +283,19 @@ cnoremap <Esc>d <S-right><Delete>
 cabbrev h tab help
 
 "System clipboard interaction
-noremap <leader>y "*yy
-"TODO paste inline
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <leader>y "*y
+if system("uname -s") =~ "Linux"
+    vnoremap <leader>y "+y
+    noremap <leader>y "+yy
+    "TODO paste inline
+    noremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
+    noremap <leader>P :set paste<CR>"+P<CR>:set nopaste<CR>
+else
+    vnoremap <leader>y "*y
+    noremap <leader>y "*yy
+    "TODO paste inline
+    noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+    noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+endif
 
 " Tags
 map <C-b> :pop<CR>

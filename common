@@ -12,7 +12,7 @@ alias l='ls -CF'
 if [ $(uname) = "Linux" ]; then
 	alias l='ls -CF --group-directories-first'
     alias get='sudo apt install'
-    alias here=nautilus .
+    alias here="nautilus . &"
 
     dimon()
     {

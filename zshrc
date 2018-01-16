@@ -44,11 +44,13 @@ POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 
 if [ $(uname) = "Linux" ]; then
-    ZSH_THEME="my" # could be "random"
+    ZSH_THEME="bira" #"my" #could be random
     curl wttr.in
     export EDITOR='vim'
+    stty -ixon
+    cd ~/Uni
 else
-	#ZSH_THEME="bira" #peepcode"
+    #ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
     export EDITOR='mvim -v'
 fi
@@ -142,3 +144,8 @@ alias rgp='rg --type=cpp '
 alias rgj='rg --type=js '
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
+
+#set convert-meta on
+
+#export NVM_DIR="/home/wut/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
