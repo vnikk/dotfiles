@@ -45,7 +45,6 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 
 if [ $(uname) = "Linux" ]; then
     ZSH_THEME="bira" #"my" #could be random
-    curl wttr.in
     export EDITOR='vim'
     stty -ixon
     cd ~/Uni
@@ -149,3 +148,6 @@ bindkey -s 'u' 'cd ..'
 
 #export NVM_DIR="/home/wut/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ $(uname) = "Linux" ]; then
+    curl wttr.in
+fi
