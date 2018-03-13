@@ -1,10 +1,13 @@
 map S B
 map l lastUsedTab
+map yf gy
 set smoothscroll
+map yt :duplicate<CR>
 map x :q<CR>
 map , passKeys
+map ? :tabnew https://github.com/1995eaton/chromium-vim<CR>
 map sj :open http://jira.ncr.com/browse/DAN-
-map sl :open https://www.lingvolive.com/en-us/
+map sl :open https://www.lingvolive.com/en-us/translate/en-ru/
 let hintcharacters = "qweradsfghjkl"
 set noautofocus
 map zv :tabnew vk.com/im<CR>
