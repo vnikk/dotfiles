@@ -1,0 +1,7 @@
+.top_notify_count, .top_nav_btn_icon, .top_profile_name, .top_profile_img, .top_home_logo{
+vtsibility: hidden;
+}
+
+#top_audio_player{
+visibility: shown;
+}
