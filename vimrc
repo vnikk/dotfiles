@@ -423,6 +423,10 @@ function! s:get_visual_selection()
   return join(lines, "\n")
 endfunction
 
+function! GoCurrentFileDir()
+    cd %:p:h
+endfunction
+nnoremap <leader>gcd :call GoCurrentFileDir()<CR>
 
 "TODO supposed to open file by symlink
 "noremap <leader>ev :execute 'e ' . resolve(expand(%))<CR>
