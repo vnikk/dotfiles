@@ -3,10 +3,12 @@ map l lastUsedTab
 set smoothscroll
 map x :q<CR>
 map , passKeys
+map yt :duplicate<CR>
 map sj :open http://jira.ncr.com/browse/DAN-
-map sl :open https://www.lingvolive.com/en-us/
+map sl :open https://www.lingvolive.com/ru-ru/translate/en-ru/
 let hintcharacters = "qweradsfghjkl"
 set noautofocus
+map cv :tabnew https://github.com/1995eaton/chromium-vim<CR>
 map zv :tabnew vk.com/im<CR>
 map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
@@ -21,5 +23,5 @@ echo(link) -> {{
 }}
 map asd createScriptHint(echo)
 
-let configpath = '/Users/mv185101/.cvimrc'
+let configpath = '/home/wut/.cvimrc'
 set localconfig
