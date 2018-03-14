@@ -119,7 +119,7 @@ gmodc()
 }
 
 vks() {
-    node $HOME/shell/vk_send/vk_send.js $*
+    node $HOME/my/vk_send/vk_send.js $*
 }
 
 alias .="source"
