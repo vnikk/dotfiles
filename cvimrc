@@ -12,6 +12,7 @@ let hintcharacters = "qweradsfghjkl"
 set noautofocus
 map cv :tabnew https://github.com/1995eaton/chromium-vim<CR>
 map zv :tabnew vk.com/im<CR>
+map zt :tabnew web.telegram.org<CR>
 map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
