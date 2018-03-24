@@ -131,6 +131,7 @@ alias eali="vi ~/.zaliasrc"
 alias gs="git stash"
 alias gsp="git stash pop"
 alias gsl="git stash list"
+alias vi="vi -p"
 
 bindkey '^ ' autosuggest-accept
 
