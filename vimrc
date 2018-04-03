@@ -291,15 +291,13 @@ cabbrev h tab help
 if system("uname -s") =~ "Linux"
     vnoremap <leader>y "+y
     noremap <leader>y "+yy
-    "TODO paste inline
-    noremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
-    noremap <leader>P :set paste<CR>"+P<CR>:set nopaste<CR>
+    noremap <leader>p o<Esc>:set paste<CR>"+p<CR>:set nopaste<CR>
+    noremap <leader>P O<Esc>:set paste<CR>"+P<CR>:set nopaste<CR>
 else
     vnoremap <leader>y "*y
     noremap <leader>y "*yy
-    "TODO paste inline
-    noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-    noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+    noremap <leader>p o<Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
+    noremap <leader>P O<Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
 endif
 
 " Tags
