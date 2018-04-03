@@ -120,7 +120,7 @@ gmodc()
 }
 
 vks() {
-    node $HOME/my/vk_send/vk_send.js $*
+    node $HOME/my/vk_send/vk_send.js $* &
 }
 
 alias .="source"
@@ -152,3 +152,4 @@ bindkey -s 'u' 'cd ..'
 if [ $(uname) = "Linux" ]; then
     curl wttr.in
 fi
+alias checksizes='for i in */; do du -sh web/; done'
