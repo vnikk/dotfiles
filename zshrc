@@ -14,7 +14,7 @@ if [ $(uname) = "Linux" ]; then
     export EDITOR='vim'
     stty -ixon
     cd ~/Uni
-    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions)
+    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle)
 
     copyy()
     {
@@ -25,7 +25,7 @@ else
     #ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
     export EDITOR='mvim -v'
-    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions jira)
+    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle jira docker)
 
     copyy()
     {
@@ -108,7 +108,7 @@ alias eali="vi ~/.zaliasrc"
 alias gs="git stash"
 alias gsp="git stash pop"
 alias gsl="git stash list"
-alias vi="vi -p"
+alias vi="$EDITOR -p"
 alias v="f -e \"$EDITOR\""
 alias ff="find . -iname"
 alias rgp='rg --type=cpp '
