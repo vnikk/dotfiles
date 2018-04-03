@@ -3,60 +3,36 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
-# Powerlevel9k has to be above ZSH_THEME
-POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-remotebranch git-aheadbehind git-stash git-tagname)
-POWERLEVEL9K_MODE="awesome-fontconfig"#flat
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir status vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()#status load ram)
-POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="red"
-POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="yellow"
-POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="green"
-POWERLEVEL9K_RAM_ELEMENTS=(ram_free)
-
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="clear"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="clear"
-POWERLEVEL9K_LOAD_WARNING_BACKGROUND="clear"
-POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="clear"
-POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="red"
-POWERLEVEL9K_LOAD_WARNING_FOREGROUND="yellow"
-POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="green"
-POWERLEVEL9K_LOAD_BACKGROUND="clear"
-POWERLEVEL9K_LOAD_BACKGROUND="clear"
-POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
-POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
-POWERLEVEL9K_RAM_BACKGROUND="clear"
-POWERLEVEL9K_RAM_FOREGROUND="bold white"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="210"#"36"
-
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND="clear"
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND="2"
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="clear"
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="yellow"
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="clear"
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="3"
-
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
+if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
+    # Powerlevel9k has to be above ZSH_THEME
+    source ~/.dotfiles/powerlevel9k
+fi
 
 if [ $(uname) = "Linux" ]; then
+    curl wttr.in
     ZSH_THEME="bira" #"my" #could be random
     export EDITOR='vim'
     stty -ixon
     cd ~/Uni
     plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions)
+
+    copyy()
+    {
+        echo -n "$*" | xclip
+    }
 else
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
     #ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
     export EDITOR='mvim -v'
     plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions jira)
+
+    copyy()
+    {
+        echo -n "$*" | pbcopy
+    }
 fi
 
-#TODO no work
 DISABLE_AUTO_TITLE="true"
 
 # test
@@ -103,12 +79,6 @@ aliaz()
     alias | grep $1
 }
 
-#TODO maek cross-platform
-copyy()
-{
-    echo -n "$*" | pbcopy
-}
-
 gmod()
 {
     git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1
@@ -123,6 +93,12 @@ vks() {
     node $HOME/my/vk_send/vk_send.js $* &
 }
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+bindkey -s 'l' 'l'
+bindkey -s 'u' 'cd ..'
+bindkey '^ ' autosuggest-accept
+
 alias .="source"
 alias sz="source ~/.zshrc"
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
@@ -133,24 +109,10 @@ alias gs="git stash"
 alias gsp="git stash pop"
 alias gsl="git stash list"
 alias vi="vi -p"
-
-bindkey '^ ' autosuggest-accept
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-alias etmux="vi ~/.tmux.conf"
 alias v="f -e \"$EDITOR\""
 alias ff="find . -iname"
 alias rgp='rg --type=cpp '
 alias rgj='rg --type=js '
-bindkey -s 'l' 'l'
-bindkey -s 'u' 'cd ..'
+alias checksizes='for i in */; do du -sh web/; done'
 
 #set convert-meta on
-
-#export NVM_DIR="/home/wut/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-if [ $(uname) = "Linux" ]; then
-    curl wttr.in
-fi
-alias checksizes='for i in */; do du -sh web/; done'
