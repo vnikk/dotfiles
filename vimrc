@@ -390,6 +390,9 @@ nmap <leader>t :TagbarToggle<CR>
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
 
+" new tab for search with mappings
+nnoremap <leader>m :tabe<CR>:redir @"><CR>:silent map<CR>:redir END<CR>p
+
 " Turn off
 nnoremap <F1> <nop>
 nnoremap $ <nop>
