@@ -48,12 +48,15 @@ if [ $(uname) = "Linux" ]; then
     export EDITOR='vim'
     stty -ixon
     cd ~/Uni
+    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions)
 else
     #ZSH_THEME="bira" #peepcode"
     ZSH_THEME="powerlevel9k/powerlevel9k"
     export EDITOR='mvim -v'
+    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions jira)
 fi
 
+#TODO no work
 DISABLE_AUTO_TITLE="true"
 
 # test
@@ -63,8 +66,6 @@ ENABLE_CORRECTION="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 

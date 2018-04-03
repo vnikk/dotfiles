@@ -15,6 +15,9 @@ map zv :tabnew vk.com/im<CR>
 map zt :tabnew web.telegram.org<CR>
 map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
+map gI fullImageHint
+
+let mapleader = ','
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
