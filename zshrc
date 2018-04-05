@@ -9,7 +9,7 @@ if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
 fi
 
 #globalias
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle)
+plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
 
 if [ $(uname) = "Linux" ]; then
     curl wttr.in
@@ -18,12 +18,14 @@ if [ $(uname) = "Linux" ]; then
     stty -ixon
     cd ~/Uni
     COPY=xclip
+    plugins=($plugins pip)
 else
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
     ZSH_THEME="powerlevel9k/powerlevel9k" #"bira" #peepcode"
     export EDITOR='mvim -v'
     plugins=($plugins jira docker)
     COPY=pbcopy
+    PER_DIRECTORY_HISTORY_TOGGLE=''
 fi
 
 copyy()
@@ -87,6 +89,10 @@ vks() {
     node $HOME/my/vk_send/vk_send.js $* &
 }
 
+mcd() {
+    mkdir $1; cd $1
+}
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -s 'l' 'l'
@@ -109,5 +115,6 @@ alias rgp='rg --type=cpp '
 alias rgj='rg --type=js '
 alias z='nocorrect fasd_cd -d'
 alias checksizes='for i in */; do du -sh web/; done'
+alias mkdir='mkdir -pv'
 
 #set convert-meta on
