@@ -1,0 +1,17 @@
+// ==UserScript==
+// @name         VK
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://vk.com/audios131644300
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    document.getElementById('layer_bg').click();
+    document.getElementById('content').click();
+    document.getElementsByClassName('top_audio_player_title_wrap')[0].setAttribute("onclick", '');
+})();
