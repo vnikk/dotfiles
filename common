@@ -1,6 +1,5 @@
 function sess(){ vi -S ~/.vim/sessions/"$1"; }
 
-alias xclip='xclip -selection c'
 alias xlog="git xlog"
 alias flux='~/shell/xflux -l 50°06'
 
@@ -10,6 +9,7 @@ alias la='ls -AF'
 alias l='ls -CF'
 
 if [ $(uname) = "Linux" ]; then
+    alias xclip='xclip -selection c'
 	alias l='ls -CF --group-directories-first'
     alias get='sudo apt install'
     alias here="nautilus . &"

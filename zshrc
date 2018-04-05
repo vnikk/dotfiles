@@ -8,34 +8,30 @@ if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
     source ~/.dotfiles/powerlevel9k
 fi
 
+#globalias
+plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle)
+
 if [ $(uname) = "Linux" ]; then
     curl wttr.in
     ZSH_THEME="bira" #"my" #could be random
     export EDITOR='vim'
     stty -ixon
     cd ~/Uni
-    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle)
-
-    copyy()
-    {
-        echo -n "$*" | xclip
-    }
+    COPY=xclip
 else
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-    #ZSH_THEME="bira" #peepcode"
-    ZSH_THEME="powerlevel9k/powerlevel9k"
+    ZSH_THEME="powerlevel9k/powerlevel9k" #"bira" #peepcode"
     export EDITOR='mvim -v'
-    plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle jira docker)
-
-    copyy()
-    {
-        echo -n "$*" | pbcopy
-    }
+    plugins=($plugins jira docker)
+    COPY=pbcopy
 fi
 
-DISABLE_AUTO_TITLE="true"
+copyy()
+{
+    echo -n "$*" | eval ${COPY}
+}
 
-# test
+DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -44,8 +40,6 @@ ENABLE_CORRECTION="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -113,6 +107,7 @@ alias v="f -e \"$EDITOR\""
 alias ff="find . -iname"
 alias rgp='rg --type=cpp '
 alias rgj='rg --type=js '
+alias z='nocorrect fasd_cd -d'
 alias checksizes='for i in */; do du -sh web/; done'
 
 #set convert-meta on
