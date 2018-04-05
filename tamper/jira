@@ -1,0 +1,17 @@
+// ==UserScript==
+// @name         Jira
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    document.getElementsByClassName('aui-button ghx-compact-toggle js-compact-toggle')[1].click();
+    document.getElementById('ghx-pool').click();
+
+})();
