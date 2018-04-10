@@ -18,6 +18,10 @@ function colors() {
 function other() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+    git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux/themes
+    mkdir ~/.tmux/plugins/
+    git clone https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
+    git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
     #list to make sure is installed
     #Cscope
 }
