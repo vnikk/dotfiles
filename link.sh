@@ -17,6 +17,8 @@ function colors() {
 
 function other() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    mkdir -p ~/.oh-my-zsh/themes
+    git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
     #list to make sure is installed
     #Cscope
