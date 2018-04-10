@@ -20,6 +20,10 @@ function other() {
     mkdir -p ~/.oh-my-zsh/themes
     git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+    git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux/themes
+    mkdir ~/.tmux/plugins/
+    git clone https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
+    git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
     #list to make sure is installed
     #Cscope
 }
