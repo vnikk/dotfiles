@@ -18,6 +18,7 @@ endif
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
 "TODO does it work with ycm?
