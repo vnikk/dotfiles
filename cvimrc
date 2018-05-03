@@ -21,6 +21,13 @@ map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
 map gI fullImageHint
 
+"rus
+"TODO add all from vimium setup
+map о j
+map л k
+map в d
+map г u
+
 let mapleader = ','
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
 getIP() -> {{
