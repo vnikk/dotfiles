@@ -3,14 +3,15 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
+# Powerlevel9k has to be above ZSH_THEME
 if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
-    # Powerlevel9k has to be above ZSH_THEME
     source ~/.dotfiles/powerlevel9k
 fi
 
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
 
+#TODO to ~/.config/z_home
 if [ $(uname) = "Linux" ]; then
     curl wttr.in
     ZSH_THEME="bira" #"my" #could be random
@@ -19,13 +20,10 @@ if [ $(uname) = "Linux" ]; then
     cd ~/Uni
     COPY=xclip
     plugins=($plugins pip)
-else
-    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-    ZSH_THEME="powerlevel9k/powerlevel9k" #"bira" #peepcode"
-    export EDITOR='mvim -v'
-    plugins=($plugins jira docker)
-    COPY=pbcopy
-    PER_DIRECTORY_HISTORY_TOGGLE=''
+fi
+
+if [ -f ~/.config/z_work ]; then
+    source ~/.config/z_work
 fi
 
 copyy()
@@ -52,8 +50,9 @@ fi
 
 # Personal aliases, though better in ZSH_CUSTOM
 
-if [ -f ~/.zaliasrc ]; then
-    source ~/.zaliasrc
+#TODO fix home zalias
+if [ -f ~/.config/zaliasrc ]; then
+    source ~/.config/zaliasrc
 fi
 
 if [ -f ~/.dotfiles/common ]; then
