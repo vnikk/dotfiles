@@ -257,6 +257,9 @@ else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
+vnoremap < <gv
+vnoremap > >gv
+
 " name_with_underscores -> NamesInCameCase
 vnoremap <leader>+ :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
 " :s#_\(\l\)#\u\1#g
