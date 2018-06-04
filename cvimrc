@@ -8,26 +8,30 @@ map yf gy
 set smoothscroll
 map yt :duplicate<CR>
 map x :q<CR>
-map , passKeys
-map ? :tabnew https://github.com/1995eaton/chromium-vim<CR>
+map \ passKeys
+map ? :help<CR>
 map sj :open http://jira.ncr.com/browse/DAN-
 map sl :open https://www.lingvolive.com/en-us/translate/en-ru/
 let hintcharacters = "qweradsfghjkl"
 set noautofocus
 map cv :tabnew https://github.com/1995eaton/chromium-vim<CR>
-map zv :tabnew vk.com/im<CR>
-map zt :tabnew web.telegram.org<CR>
+map zV :tabnew vk.com/im<CR>
+map zv :buffer vk
+map <leader>v :tabnew vk.com/im<CR>
+map <leader>t :tabnew web.telegram.org<CR>
 map zf :tabnew m.facebook.com/messages<CR>
 map zb :tabnew http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771<CR>
 map gI fullImageHint
+map O :tabnew<space>
+set scalehints
+map <leader>r :source /home/wut/.cvimrc<CR>
 
-let mapleader = ','
-let @@reddit_prog = 'http://www.reddit.com/r/programming'
+let completionengines = ['google', 'google-image', 'youtube', 'google-maps', 'wikipedia', 'wiktionary', 'wolframalpha']
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
             function(res) { Status.setMessage('IP: ' + res.ip); });
 }}
-map ASD :call getIP<CR>
+"map ASD :call getIP<CR>
 echo(link) -> {{
   alert(link.href);
 }}
