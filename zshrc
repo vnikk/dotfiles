@@ -16,9 +16,9 @@ if [ $(uname) = "Linux" ]; then
     ZSH_THEME="bira" #"my" #could be random
     export EDITOR='vim'
     stty -ixon
-    cd ~/Uni
     COPY=xclip
     plugins=($plugins pip)
+    PER_DIRECTORY_HISTORY_TOGGLE=''
 else
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
     ZSH_THEME="powerlevel9k/powerlevel9k" #"bira" #peepcode"
@@ -63,6 +63,7 @@ fi
 newalias()
 {
     echo "alias $1='$2'" >> ~/.zshrc;
+    alias $1="$2"
 }
 
 background()
@@ -93,7 +94,7 @@ mcd() {
     mkdir $1; cd $1
 }
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
@@ -118,3 +119,16 @@ alias checksizes='for i in */; do du -sh web/; done'
 alias mkdir='mkdir -pv'
 
 #set convert-meta on
+
+#export NVM_DIR="/home/wut/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#no work
+alias shutd=sudo swapoff -a && systemctl poweroff=''
+
+# added by Miniconda3 installer
+export PATH="/home/wut/.local/node-v8.11.1-linux-x64/bin:/home/wut/.local/miniconda3/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+alias ex='extract'
+alias andr='cd /run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C011%5D/Internal\ storage/Download'
+alias dow='cd'
+alias dow='cd ~/Downloads'
