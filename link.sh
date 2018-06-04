@@ -30,3 +30,20 @@ case $1 in
 esac
 
 
+function load_tmux() {
+    tmux_home=~/.dotfiles
+    tmux_version="$(tmux -V | cut -c 6-)"
+
+    if [[ $(echo "$tmux_version >= 2.5" | bc) -eq 1 ]] ; then
+        tmux source-file "$tmux_home/tmux_home_2.5"
+        exit
+    #elif [[ $(echo "$tmux_version >= 1.9" | bc) -eq 1 ]] ; then
+        #tmux source-file "$tmux_home/tmux_1.9_to_2.1.conf"
+        #exit
+    else
+        tmux source-file "$tmux_home/tmux_work_"
+        exit
+    fi
+}
+
+verify_tmux_version
