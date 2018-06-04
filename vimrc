@@ -18,6 +18,7 @@ endif
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
 "TODO does it work with ycm?
@@ -25,6 +26,14 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Bundle 'jistr/vim-nerdtree-tabs'
+
+Plugin 'tpope/vim-dispatch'
+
+Plugin 'ludovicchabant/vim-gutentags'
+"https://dmitryfrank.com/articles/vim_project_code_navigation
+"Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/vimprj'
+"Plugin 'vim-scripts/DfrankUtil'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -35,7 +44,7 @@ Plugin 'gregsexton/gitv'
 "Plugin 'junegunn/vim-easy-align'
 "TODO lin only
 "Plugin 'KabbAmine/vCoolor.vim'
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
 Plugin 'jiangmiao/auto-pairs'

@@ -27,6 +27,13 @@ set scalehints
 map <leader>r :source /home/wut/.cvimrc<CR>
 
 let completionengines = ['google', 'google-image', 'youtube', 'google-maps', 'wikipedia', 'wiktionary', 'wolframalpha']
+"rus
+"TODO add all from vimium setup
+map о j
+map л k
+map в d
+map г u
+
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
             function(res) { Status.setMessage('IP: ' + res.ip); });
