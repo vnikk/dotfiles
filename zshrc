@@ -11,18 +11,9 @@ fi
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
 
-#TODO to ~/.config/z_home
-if [ $(uname) = "Linux" ]; then
-    curl wttr.in
-    ZSH_THEME="bira" #"my" #could be random
-    export EDITOR='vim'
-    stty -ixon
-    cd ~/Uni
-    COPY=xclip
-    plugins=($plugins pip)
-fi
-
-if [ -f ~/.config/z_work ]; then
+if [ -f ~/.config/z_home ]; then
+    source ~/.config/z_home
+else if [ -f ~/.config/z_work ]; then
     source ~/.config/z_work
 fi
 
@@ -62,6 +53,7 @@ fi
 newalias()
 {
     echo "alias $1='$2'" >> ~/.zshrc;
+    alias $1="$2"
 }
 
 background()
@@ -96,7 +88,7 @@ cl() {
     cd $1; l
 }
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
@@ -123,3 +115,15 @@ alias mkdir='mkdir -pv'
 
 #set convert-meta on
 alias -- -='popd'
+
+#export NVM_DIR="/home/wut/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#no work
+alias shutd=sudo swapoff -a && systemctl poweroff=''
+
+# added by Miniconda3 installer
+export PATH="/home/wut/.local/node-v8.11.1-linux-x64/bin:/home/wut/.local/miniconda3/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+alias ex='extract'
+alias andr='cd /run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C011%5D/Internal\ storage/Download'
+alias dow='cd ~/Downloads'

@@ -1,4 +1,4 @@
-set nocp " better at start!
+"set nocp " better at start!
 filetype off
 
 """""""""""""""""""""""""""""
@@ -54,6 +54,8 @@ Plugin 'urbainvaes/vim-tmux-pilot'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
+Plugin 'benmills/vimux'
+Plugin 'vimwiki/vimwiki'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
@@ -525,6 +527,13 @@ function! SwapTwoArgs()
     s/(\(.*\), \(.*\))/(\2, \1)/
 endfunction
 nnoremap <leader>sa :call SwapTwoArgs()<CR>
+
+" open snippets
+function! Snippets()
+    tabe ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
+    vs ~/.vim/bundle/vim-snippets/snippets/c.snippets
+endfunction
+nnoremap <leader>sn :call Snippets()<CR>
 
 " copies current file name as C++ header
 function! YankHeader()
