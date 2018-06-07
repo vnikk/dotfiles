@@ -29,6 +29,11 @@ map в d
 map г u
 
 let mapleader = ','
+
+site '*://*.youtube.com/*' {
+    map x 0:quit<CR>
+}
+
 let @@reddit_prog = 'http://www.reddit.com/r/programming'
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},
