@@ -50,6 +50,10 @@ Plugin 'thinca/vim-localrc'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'urbainvaes/vim-tmux-pilot'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'tpope/vim-commentary'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
@@ -67,6 +71,17 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
+
+" Vim-Tmux-Pilot
+
+" Uncomment to enable navigation of vim tabs
+let g:pilot_mode='wintab'
+
+" Uncomment to enable creation of vim splits automatically
+let g:pilot_boundary='create'
+
+" A useful mapping to use with this plugin
+" nnoremap <nowait> <c-d> :q<cr>
 
 " system specific
 if filereadable(expand("~/.vim/otherrc"))

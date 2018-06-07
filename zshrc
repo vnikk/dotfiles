@@ -92,6 +92,10 @@ mcd() {
     mkdir $1; cd $1
 }
 
+cl() {
+    cd $1; l
+}
+
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -s 'l' 'l'
@@ -118,3 +122,4 @@ alias checksizes='for i in */; do du -sh web/; done'
 alias mkdir='mkdir -pv'
 
 #set convert-meta on
+alias -- -='popd'
