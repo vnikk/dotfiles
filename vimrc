@@ -19,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
 "TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
@@ -29,7 +29,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'tpope/vim-dispatch'
 
-Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'ludovicchabant/vim-gutentags'
 "https://dmitryfrank.com/articles/vim_project_code_navigation
 "Plugin 'vim-scripts/indexer.tar.gz'
 "Plugin 'vim-scripts/vimprj'
@@ -50,12 +50,13 @@ Plugin 'thinca/vim-localrc'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
-Plugin 'urbainvaes/vim-tmux-pilot'
+"Plugin 'urbainvaes/vim-tmux-pilot'
 Plugin 'tommcdo/vim-exchange'
+Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
