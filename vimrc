@@ -66,6 +66,10 @@ Plugin 'benmills/vimux'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
+"if v:version >= 703 && has("patch598")
+    "Plugin 'Valloric/YouCompleteMe'
+"endif
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,9 +94,6 @@ let g:pilot_boundary='create'
 if filereadable(expand("~/.vim/otherrc"))
     source ~/.vim/otherrc
 endif
-"if v:version >= 703 && has("patch598")
-    Plugin 'Valloric/YouCompleteMe'
-"endif
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
