@@ -3,7 +3,7 @@ let mapleader = ','
 map <leader>t :tabnew<space>
 map t :buffer<space>
 map <A-f> createMultiHint
-map l lastUsedTab
+map a lastUsedTab
 map yf gy
 set smoothscroll
 map yt :duplicate<CR>
