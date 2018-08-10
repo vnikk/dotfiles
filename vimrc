@@ -301,6 +301,7 @@ vnoremap <CR> :
 noremap <silent> zp "+[p
 nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
+"TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap Y y$

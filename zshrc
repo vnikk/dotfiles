@@ -115,6 +115,7 @@ alias -- -='popd'
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
+# TODO move to local
 # added by Miniconda3 installer
 export PATH="/home/wut/.local/node-v8.11.1-linux-x64/bin:/home/wut/.local/miniconda3/bin:$PATH"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
