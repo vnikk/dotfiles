@@ -87,6 +87,8 @@ source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
 bindkey '^ ' autosuggest-accept
+bindkey '' up-line-or-beginning-search
+bindkey '' down-line-or-search
 
 alias .="source"
 alias sz="source ~/.zshrc"
