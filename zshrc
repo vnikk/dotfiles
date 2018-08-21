@@ -13,7 +13,7 @@ plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions
 
 if [ -f ~/.config/z_home ]; then
     source ~/.config/z_home
-else if [ -f ~/.config/z_work ]; then
+elif [ -f ~/.config/z_work ]; then
     source ~/.config/z_work
 fi
 
@@ -105,7 +105,6 @@ alias v="f -e \"$EDITOR\""
 alias ff="find . -iname"
 alias rgp='rg --type=cpp '
 alias rgj='rg --type=js '
-alias z='nocorrect fasd_cd -d'
 alias checksizes='for i in */; do du -sh web/; done'
 alias mkdir='mkdir -pv'
 
@@ -116,8 +115,6 @@ alias mkdir='mkdir -pv'
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
-# added by Miniconda3 installer
-export PATH="/home/wut/.local/node-v8.11.1-linux-x64/bin:/home/wut/.local/miniconda3/bin:$PATH"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias ex='extract'
 alias andr='cd /run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C011%5D/Internal\ storage/Download'
