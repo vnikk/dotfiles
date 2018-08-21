@@ -117,6 +117,4 @@ alias shutd=sudo swapoff -a && systemctl poweroff=''
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias ex='extract'
-alias andr='cd /run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C011%5D/Internal\ storage/Download'
-alias dow='cd'
 alias dow='cd ~/Downloads'
