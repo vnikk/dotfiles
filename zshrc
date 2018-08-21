@@ -90,23 +90,23 @@ bindkey '^ ' autosuggest-accept
 bindkey '' up-line-or-beginning-search
 bindkey '' down-line-or-search
 
-alias .="source"
-alias sz="source ~/.zshrc"
-alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s zip=unzip
-alias ez='vi ~/.zshrc'
-alias eali="vi ~/.zaliasrc"
-alias gs="git stash"
-alias gsp="git stash pop"
-alias gsl="git stash list"
-alias glgp="git pull --no-edit && git push"
-alias vi="$EDITOR -p"
-alias v="f -e \"$EDITOR\""
-alias ff="find . -iname"
-alias rgp='rg --type=cpp '
-alias rgj='rg --type=js '
 alias checksizes='for i in */; do du -sh web/; done'
+alias eali="vi ~/.zaliasrc"
+alias ez='vi ~/.zshrc'
+alias ff="find . -iname"
+alias glgp="git pull --no-edit && git push"
+alias gs="git stash"
+alias gsl="git stash list"
+alias gsp="git stash pop"
 alias mkdir='mkdir -pv'
+alias rgj='rg --type=js '
+alias rgp='rg --type=cpp '
+alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
+alias .="source"
+alias -s zip=unzip
+alias sz="source ~/.zshrc"
+alias v="f -e \"$EDITOR\""
+alias vi="$EDITOR -p"
 
 #set convert-meta on
 alias -- -='popd'
