@@ -19,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdTree'
 "TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
@@ -29,7 +29,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'tpope/vim-dispatch'
 
-Plugin 'ludovicchabant/vim-gutentags'
+"Plugin 'ludovicchabant/vim-gutentags'
 "https://dmitryfrank.com/articles/vim_project_code_navigation
 "Plugin 'vim-scripts/indexer.tar.gz'
 "Plugin 'vim-scripts/vimprj'
@@ -50,8 +50,13 @@ Plugin 'thinca/vim-localrc'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
+"Plugin 'urbainvaes/vim-tmux-pilot'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
@@ -60,6 +65,10 @@ Plugin 'vimwiki/vimwiki'
 
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
+
+"if v:version >= 703 && has("patch598")
+    "Plugin 'Valloric/YouCompleteMe'
+"endif
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,13 +79,21 @@ filetype plugin indent on    " required
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+" Vim-Tmux-Pilot
+
+" Uncomment to enable navigation of vim tabs
+let g:pilot_mode='wintab'
+
+" Uncomment to enable creation of vim splits automatically
+let g:pilot_boundary='create'
+
+" A useful mapping to use with this plugin
+" nnoremap <nowait> <c-d> :q<cr>
+
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
     source ~/.vim/otherrc
 endif
-"if v:version >= 703 && has("patch598")
-    Plugin 'Valloric/YouCompleteMe'
-"endif
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
@@ -258,6 +275,9 @@ if isdirectory(expand("~/danube"))
 else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
+
+vnoremap < <gv
+vnoremap > >gv
 
 " name_with_underscores -> NamesInCameCase
 vnoremap <leader>+ :s/\%V_\([a-z]\)/\u\1/g<CR>gUl

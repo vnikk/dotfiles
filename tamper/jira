@@ -13,5 +13,6 @@
 
     setTimeout(()=> document.getElementsByClassName('aui-button ghx-compact-toggle js-compact-toggle')[0].click(), 500);
     document.getElementById('ghx-pool').click();
+    document.getElementsByClassName('ghx-iconfont aui-icon aui-icon-small aui-iconfont-close-dialog')[0].setAttribute('onclick', '');
 
 })();

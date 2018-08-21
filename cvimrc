@@ -3,7 +3,7 @@ let mapleader = ','
 map <leader>t :tabnew<space>
 map t :buffer<space>
 map <A-f> createMultiHint
-map l lastUsedTab
+map a lastUsedTab
 map yf gy
 set smoothscroll
 map yt :duplicate<CR>
@@ -33,6 +33,12 @@ map о j
 map л k
 map в d
 map г u
+
+let mapleader = ','
+
+site '*://*.youtube.com/*' {
+    map x 0:quit<CR>
+}
 
 getIP() -> {{
 httpRequest({url: 'http://api.ipify.org/?format=json', json: true},

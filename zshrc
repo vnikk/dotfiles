@@ -3,10 +3,7 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
-# Powerlevel9k has to be above ZSH_THEME
-if [ -d ~/.oh-my-zsh/custom/themes/powerlevel9k ]; then
-    source ~/.dotfiles/powerlevel9k
-fi
+cd ~
 
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
@@ -17,7 +14,7 @@ elif [ -f ~/.config/z_work ]; then
     source ~/.config/z_work
 fi
 
-copyy()
+cop()
 {
     echo -n "$*" | eval ${COPY}
 }
@@ -32,14 +29,11 @@ ENABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
 
+# don't save command if space at the begining
+setopt HIST_IGNORE_SPACE
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-fi
-
-# Personal aliases, though better in ZSH_CUSTOM
 
 #TODO fix home zalias
 if [ -f ~/.config/zaliasrc ]; then
@@ -84,11 +78,17 @@ mcd() {
     mkdir $1; cd $1
 }
 
+cl() {
+    cd $1; l
+}
+
 source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
 bindkey '^ ' autosuggest-accept
+bindkey '' up-line-or-beginning-search
+bindkey '' down-line-or-search
 
 alias .="source"
 alias sz="source ~/.zshrc"
@@ -109,6 +109,7 @@ alias checksizes='for i in */; do du -sh web/; done'
 alias mkdir='mkdir -pv'
 
 #set convert-meta on
+alias -- -='popd'
 
 #export NVM_DIR="/home/wut/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -118,3 +119,5 @@ alias shutd=sudo swapoff -a && systemctl poweroff=''
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias ex='extract'
 alias dow='cd ~/Downloads'
+#zprof
+alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
