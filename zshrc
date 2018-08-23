@@ -30,10 +30,7 @@ elif [ -f ~/.config/z_work ]; then
     source ~/.config/z_work
 fi
 
-#TODO fix home zalias
-if [ -f ~/.config/zaliasrc ]; then
-    source ~/.config/zaliasrc
-fi
+#TODO move home zalias to z_home
 
 if [ -f ~/.dotfiles/common ]; then
     source ~/.dotfiles/common
