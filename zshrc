@@ -16,6 +16,8 @@ ENABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
 
+source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
@@ -80,8 +82,6 @@ cl() {
     cd $1; l
 }
 
-source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
 bindkey '^ ' autosuggest-accept
@@ -105,9 +105,9 @@ alias -s zip=unzip
 alias sz="source ~/.zshrc"
 alias v="f -e \"$EDITOR\""
 alias vi="$EDITOR -p"
+alias -- -='popd'
 
 #set convert-meta on
-alias -- -='popd'
 
 #export NVM_DIR="/home/wut/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
