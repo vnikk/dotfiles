@@ -87,8 +87,8 @@ source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
 bindkey '^ ' autosuggest-accept
-bindkey '' up-line-or-beginning-search
-bindkey '' down-line-or-search
+bindkey '' history-beginning-search-backward
+bindkey '' history-beginning-search-forward
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
