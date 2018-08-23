@@ -292,6 +292,7 @@ nnoremap zx :q<CR>
 inoremap jk <ESC>
 inoremap JK <ESC>
 inoremap jK <ESC>
+inoremap Jk <ESC>
 nnoremap <leader>q :set number!<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
@@ -304,7 +305,7 @@ vnoremap <silent> zy "+y
 "TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
-nnoremap Y y$
+
 "cnoremap <C-A> <HOME>
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
@@ -319,13 +320,18 @@ cnoremap <Esc>d <S-right><Delete>
 "cnoremap <C-g>  <C-c>noremap <C-D> <DEL>
 cabbrev h tab help
 
+"TODO testing default global yank
+"nnoremap Y y$
+
 "System clipboard interaction
 if system("uname -s") =~ "Linux"
+    nnoremap Y "+y$
     vnoremap <leader>y "+y
     noremap <leader>y "+yy
     noremap <leader>p o<Esc>:set paste<CR>"+p<CR>:set nopaste<CR>
     noremap <leader>P O<Esc>:set paste<CR>"+P<CR>:set nopaste<CR>
 else
+    nnoremap Y "*y$
     vnoremap <leader>y "*y
     noremap <leader>y "*yy
     noremap <leader>p o<Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
