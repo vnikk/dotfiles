@@ -3,21 +3,8 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
-cd ~
-
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
-
-if [ -f ~/.config/z_home ]; then
-    source ~/.config/z_home
-elif [ -f ~/.config/z_work ]; then
-    source ~/.config/z_work
-fi
-
-cop()
-{
-    echo -n "$*" | eval ${COPY}
-}
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -35,6 +22,12 @@ setopt HIST_IGNORE_SPACE
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+if [ -f ~/.config/z_home ]; then
+    source ~/.config/z_home
+elif [ -f ~/.config/z_work ]; then
+    source ~/.config/z_work
+fi
+
 #TODO fix home zalias
 if [ -f ~/.config/zaliasrc ]; then
     source ~/.config/zaliasrc
@@ -43,6 +36,11 @@ fi
 if [ -f ~/.dotfiles/common ]; then
     source ~/.dotfiles/common
 fi
+
+cop()
+{
+    echo -n "$*" | eval ${COPY}
+}
 
 newalias()
 {
