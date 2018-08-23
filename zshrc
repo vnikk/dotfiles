@@ -90,24 +90,23 @@ bindkey '^ ' autosuggest-accept
 bindkey '' up-line-or-beginning-search
 bindkey '' down-line-or-search
 
-alias .="source"
-alias sz="source ~/.zshrc"
-alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
-alias -s zip=unzip
-alias ez='vi ~/.zshrc'
-alias eali="vi ~/.zaliasrc"
-alias gs="git stash"
-alias gsp="git stash pop"
-alias gsl="git stash list"
-alias glgp="git pull --no-edit && git push"
-alias vi="$EDITOR -p"
-alias v="f -e \"$EDITOR\""
-alias ff="find . -iname"
-alias rgp='rg --type=cpp '
-alias rgj='rg --type=js '
-alias z='nocorrect fasd_cd -d'
 alias checksizes='for i in */; do du -sh web/; done'
+alias eali="vi ~/.zaliasrc"
+alias ez='vi ~/.zshrc'
+alias ff="find . -iname"
+alias glgp="git pull --no-edit && git push"
+alias gs="git stash"
+alias gsl="git stash list"
+alias gsp="git stash pop"
 alias mkdir='mkdir -pv'
+alias rgj='rg --type=js '
+alias rgp='rg --type=cpp '
+alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
+alias .="source"
+alias -s zip=unzip
+alias sz="source ~/.zshrc"
+alias v="f -e \"$EDITOR\""
+alias vi="$EDITOR -p"
 
 #set convert-meta on
 alias -- -='popd'
@@ -117,12 +116,8 @@ alias -- -='popd'
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
-# TODO move to local
-# added by Miniconda3 installer
-export PATH="/home/wut/.local/node-v8.11.1-linux-x64/bin:/home/wut/.local/miniconda3/bin:$PATH"
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 alias ex='extract'
-alias andr='cd /run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C011%5D/Internal\ storage/Download'
 alias dow='cd ~/Downloads'
 #zprof
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'

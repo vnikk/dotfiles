@@ -1,0 +1,34 @@
+{
+  "settingsVersion": "1.62.4",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "1234567890"
+    },
+    {
+      "pattern": "https?://coolwanglu.github.io/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "map q visitPreviousTab\nmap sl Vomnibar.activate keyword=l \nmap sc Vomnibar.activate keyword=c \nmap sg Vomnibar.activate keyword=gt \nmap zm toggleMuteTab all \nmap st Vomnibar.activate keyword=t \nmap zv createTab https://vk.com/im?sel=131644300 \nmap zx copyCurrentUrl openCopiedUrlInCurrentTab \nmap zf createTab https://m.facebook.com/messages\nmap zz enterVisualMode scrollDown \nmap - passNextKey normal \nmap , passNextKey insert\nmap zb createTab http://jira.ncr.com/secure/RapidBoard.jspa?rapidView=7771\n#mapkey <c-c> <c-[> \nmap <m-f> LinkHints.activateModeWithQueue\nmap so Vomnibar.activate keyword=o \n\n#раскладка \nmap о scrollDown \nmap л scrollUp \nmap р scrollLeft \nmap д scrollRight \nmap пп scrollToTop \nmap П scrollToBottom \nmap яР scrollToLeft \nmap яД scrollToRight \nmap <с-у> scrollDown \nmap <с-н> scrollUp \n\nmap в scrollPageDown \nmap г scrollPageUp \nmap к reload \nmap пы toggleViewSource \n\nmap ш enterInsertMode\n\nmap Р goBack \nmap Д goForward \nmap пг goUp \nmap пГ goToRoot \n\nmap пш focusInput \n\n#map а LinkHints.activateMode \n#map А LinkHints.activateModeToOpenInNewTab \nmap <a-а> LinkHints.activateModeWithQueue \n\n#map . enterFindMode \nmap т performFind \nmap Т performBackwardsFind \n\nmap хх goPrevious \nmap ъъ goNext \n\nmap нн copyCurrentUrl \nmap на LinkHints.activateModeToCopyLinkUrl \n\nmap з openCopiedUrlInCurrentTab \nmap З openCopiedUrlInNewTab \n\nmap Л nextTab \nmap О previousTab \nmap пе nextTab \nmap пЕ previousTab \nmap п0 firstTab \nmap п; lastTab \n\n\nmap ц moveTabToNewWindow \nmap е createTab \nmap не duplicateTab \nmap ч removeTab \nmap Ч restoreTab \n\nmap щ Vomnibar.activate \nmap Щ Vomnibar.activateInNewTab \n\nmap Е Vomnibar.activateTabSelection \n\nmap и Vomnibar.activateBookmarks \nmap И Vomnibar.activateBookmarksInNewTab \n\nmap па nextFrame \n\nmap ь Marks.activateCreateMode \nmap ё Marks.activateGotoMode \n\nmap <a-з> togglePinTab \n\nmap ББ moveTabLeft \nmap ЮЮ moveTabRight \n\nmap м enterVisualMode \nmap М enterVisualLineMode",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: http://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n#l: https://www.lingvolive.com/en-us/translate/en-ru/%s\nl: https://translate.google.com/#auto/ru/%s\nlu: https://www.google.com/search?btnI=1&q=%s\nc: https://slovnik.seznam.cz/ru-cz/?q=%s \ngt: https://translate.google.com/?q=%s#auto/ru/ \nt: http://thesaurus.com/browse/%s\no: http://jira.ncr.com/browse/DAN-%s\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: http://www.google.com/search?q=%s Google\n# l: http://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: http://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: http://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
