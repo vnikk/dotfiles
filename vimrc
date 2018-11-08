@@ -317,6 +317,7 @@ cnoremap <M-d>  <S-right><Delete>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
+cnoremap qq q!
 "cnoremap <C-g>  <C-c>noremap <C-D> <DEL>
 cabbrev h tab help
 
