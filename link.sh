@@ -17,6 +17,7 @@ function colors() {
 
 function other() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    mkdir ~/.vim/sessions
     vim +PluginInstall +qall
 
     mkdir -p ~/.oh-my-zsh/themes
@@ -36,6 +37,7 @@ function other() {
 case $1 in
     'colors') colors;;
     'normal') normal;;
+    'python') python;;
     *) colors; normal; other
 esac
 
@@ -54,6 +56,12 @@ function load_tmux() {
         tmux source-file "$tmux_home/tmux_work_"
         exit
     fi
+}
+
+function python() {
+    pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
+    pip install jupyter_nbextensions_configurator
+    jupyter nbextensions_configurator enable --user
 }
 
 verify_tmux_version
