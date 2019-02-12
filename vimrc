@@ -540,6 +540,12 @@ function! Snippets()
 endfunction
 nnoremap <leader>sn :call Snippets()<CR>
 
+" copies full file name
+function! YankFile()
+    let @*=expand("%")
+endfunction
+nnoremap <leader>yf :call YankFile()<CR>
+
 " copies current file name as C++ header
 function! YankHeader()
     let head =expand("%")

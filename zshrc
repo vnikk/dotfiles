@@ -3,6 +3,8 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
+export EDITOR=vim
+
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
 
@@ -16,7 +18,7 @@ ENABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE

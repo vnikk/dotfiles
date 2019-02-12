@@ -179,7 +179,8 @@ stty -ixon
 
 newalias()
 {
-    echo "alias $1" >> ~/dotfiles/bashrc;
+    echo "alias $1" >> ~/.dotfiles/bashrc;
+    alias $1
 }
 
 alias godot="cd ~/.dotfiles"
@@ -195,3 +196,7 @@ alias ..="cd .."
 alias gp="git push"
 alias gst="git status"
 alias gc="git commit -v"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64/
+alias act='source /home.stud/viazomyk/workspace/venv/bin/activate'
+alias ipython='act && ipython'
+function wcl { cat $1 | wc -l; }
