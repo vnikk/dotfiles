@@ -3,21 +3,8 @@ export TERM="xterm-256color"
 
 export ZSH=~/.oh-my-zsh
 
-cd ~
-
 #globalias
 plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
-
-if [ -f ~/.config/z_home ]; then
-    source ~/.config/z_home
-elif [ -f ~/.config/z_work ]; then
-    source ~/.config/z_work
-fi
-
-cop()
-{
-    echo -n "$*" | eval ${COPY}
-}
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -29,20 +16,30 @@ ENABLE_CORRECTION="true"
 
 source $ZSH/oh-my-zsh.sh
 
+source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-#TODO fix home zalias
-if [ -f ~/.config/zaliasrc ]; then
-    source ~/.config/zaliasrc
+if [ -f ~/.config/z_home ]; then
+    source ~/.config/z_home
+elif [ -f ~/.config/z_work ]; then
+    source ~/.config/z_work
 fi
+
+#TODO move home zalias to z_home
 
 if [ -f ~/.dotfiles/common ]; then
     source ~/.dotfiles/common
 fi
+
+cop()
+{
+    echo -n "$*" | eval ${COPY}
+}
 
 newalias()
 {
@@ -82,13 +79,11 @@ cl() {
     cd $1; l
 }
 
-source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
 bindkey '^ ' autosuggest-accept
-bindkey '' up-line-or-beginning-search
-bindkey '' down-line-or-search
+bindkey '' history-beginning-search-backward
+bindkey '' history-beginning-search-forward
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
@@ -107,9 +102,9 @@ alias -s zip=unzip
 alias sz="source ~/.zshrc"
 alias v="f -e \"$EDITOR\""
 alias vi="$EDITOR -p"
+alias -- -='popd'
 
 #set convert-meta on
-alias -- -='popd'
 
 #export NVM_DIR="/home/wut/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
