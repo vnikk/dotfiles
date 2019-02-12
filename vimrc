@@ -17,6 +17,7 @@ endif
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'mhinz/vim-startify'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
 "Plugin 'majutsushi/tagbar'
@@ -150,14 +151,8 @@ set mouse=a
 if filereadable(expand("~/.vimenv"))
     so ~/.vimenv
 endif
-if matchstr(expand("%:p:h"), 'workspace') == 'workspace'
-    cd ~/workspace/server
-endif
-if isdirectory(expand("~/workspace"))
-    set path+=~/workspace/server
-else
-    set path+=~
-endif
+
+set path+=~
 set backspace=indent,eol,start " fix backspace
 "is said to show whitespace at the EOL
 set listchars+=trail:-
@@ -602,6 +597,13 @@ endfunction
 function! MkSes(name)
     execute "mks! ~/.vim/sessions/" . a:name
 endfunction
+nnoremap <leader>ms :call MkSes(
+
+"TODO load last
+function! LoadSes()
+    execute "!ls ~/.vim/sessions/"
+endfunction
+nnoremap <leader>ls :call LoadSes(
 
 function! GetSes()
     execute "!ls ~/.vim/sessions/"
