@@ -20,6 +20,10 @@ function other() {
     mkdir ~/.vim/sessions
     vim +PluginInstall +qall
 
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.local/
+    chsh -s /bin/zsh
+    `which curl` && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
     mkdir -p ~/.oh-my-zsh/themes
     git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
 
