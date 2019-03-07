@@ -14,8 +14,6 @@ ENABLE_CORRECTION="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-source $ZSH/oh-my-zsh.sh
-
 source ~/.local/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # don't save command if space at the begining
@@ -100,8 +98,12 @@ alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias .="source"
 alias -s zip=unzip
 alias sz="source ~/.zshrc"
-alias v="f -e \"$EDITOR\""
-alias vi="$EDITOR -p"
+if [ ! -z $EDITOR ]; then
+    alias vi="$EDITOR -p"
+    alias v="f -e \"$EDITOR\""
+else
+    echo 'Editor unset!'
+fi
 alias -- -='popd'
 
 #set convert-meta on
@@ -116,3 +118,5 @@ alias ex='extract'
 alias dow='cd ~/Downloads'
 #zprof
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
+
+source $ZSH/oh-my-zsh.sh
