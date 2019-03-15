@@ -1,5 +1,7 @@
 function sess(){ vi -S ~/.vim/sessions/"$1"; }
 
+function rmsess(){ rm ~/.vim/sessions/"$1"; }
+
 alias xlog="git xlog"
 alias flux='~/shell/xflux -l 50°06'
 
