@@ -6,7 +6,7 @@ export ZSH=~/.oh-my-zsh
 export EDITOR=vim
 
 #globalias
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload)
+plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload virtualenv)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -23,24 +23,33 @@ source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+source ~/.install/fasd/bin/fasd
+eval "$(~/.install/fasd/bin/fasd --init auto)"
 
-if [ -f ~/.config/z_home ]; then
-    source ~/.config/z_home
-elif [ -f ~/.config/z_work ]; then
-    source ~/.config/z_work
+if [ -f ~/.config/z_home.sh ]; then
+    source ~/.config/z_home.sh
+elif [ -f ~/.config/z_work.sh ]; then
+    source ~/.config/z_work.sh
 fi
 
 #TODO move home zalias to z_home
 
-if [ -f ~/.dotfiles/common ]; then
-    source ~/.dotfiles/common
+if [ -f ~/.dotfiles/common.sh ]; then
+    source ~/.dotfiles/common.sh
 fi
 
 cop()
 {
     echo -n "$*" | eval ${COPY}
+}
+
+# newfunc()
+#{
+#}
+
+pgr()
+{
+    ps -ef | grep "$1"
 }
 
 newalias()
@@ -80,6 +89,13 @@ mcd() {
 cl() {
     cd $1; l
 }
+
+
+# FASD {
+bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
+bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
+bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
+# }
 
 bindkey -s 'l' 'l'
 bindkey -s 'u' 'cd ..'
