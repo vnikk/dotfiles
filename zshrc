@@ -105,7 +105,10 @@ bindkey '' history-beginning-search-forward
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
+alias sz="source ~/.zshrc"
+alias szz='source ~/.config/z_*'
 alias ez='vi ~/.zshrc'
+alias ezz='vi ~/.config/z_*'
 alias ff="find . -iname"
 alias glgp="git pull --no-edit && git push"
 alias gs="git stash"
@@ -117,7 +120,6 @@ alias rgp='rg --type=cpp '
 alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
 alias .="source"
 alias -s zip=unzip
-alias sz="source ~/.zshrc"
 alias v="f -e \"$EDITOR\""
 alias vi="$EDITOR -p"
 alias -- -='popd'
