@@ -57,6 +57,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
+Plugin 'mattboehm/vim-unstack'
 "Plugin 'vimwiki/vimwiki'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
@@ -68,7 +69,7 @@ Plugin 'benmills/vimux'
 "Plugin 'Rip-Rip/clang_complete'
 
 "if v:version >= 703 && has("patch598")
-    "Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
@@ -76,9 +77,18 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
+" Setting leader here so it works for plugins
+let mapleader = "\<Space>"
+
 """""""""""""""""""""""""""""
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
+
+"YouCompleteMe
+nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
+
+" Vim stacktrace
+let g:unstack_mapkey='<leader>ss'
 
 " Vim-Tmux-Pilot
 
@@ -146,7 +156,6 @@ set splitbelow
 set splitright
 filetype plugin on
 filetype indent on
-let mapleader = "\<Space>"
 set mouse=a
 if filereadable(expand("~/.vimenv"))
     so ~/.vimenv
