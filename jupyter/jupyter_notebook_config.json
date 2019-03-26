@@ -1,6 +1,8 @@
 {
   "NotebookApp": {
     "nbserver_extensions": {
+      "jupyterlab_git": true,
+      "jupyterlab_commands.extension": true,
       "jupyter_nbextensions_configurator": true
     }
   }
