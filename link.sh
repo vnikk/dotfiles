@@ -24,10 +24,11 @@ function other() {
     vim +PluginInstall +qall
 
     if [ ! -d ~/.oh-my-zsh ]; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        `which curl` && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
 
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
+    chsh -s /bin/zsh
 
     mkdir -p ~/.oh-my-zsh/themes
     if [ ! -d ~/.oh-my-zsh/themes/powerlevel9k ]; then
