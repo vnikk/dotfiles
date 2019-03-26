@@ -449,6 +449,7 @@ nnoremap Q @@
 nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
+let g:NERDTreeWinPos = 'right'
 
 " Smart tab autocomplete
 function! SuperTab()
@@ -549,8 +550,9 @@ nnoremap <leader>sa :call SwapTwoArgs()<CR>
 
 " open snippets
 function! Snippets()
-    tabe ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
-    vs ~/.vim/bundle/vim-snippets/snippets/c.snippets
+    tabe ~/.vim/bundle/vim-snippets/snippets/python.snippets
+    "tabe ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
+    "vs ~/.vim/bundle/vim-snippets/snippets/c.snippets
 endfunction
 nnoremap <leader>sn :call Snippets()<CR>
 
@@ -621,11 +623,23 @@ function! VisualSelection(direction, extra_filter) range
     l:saved_reg
 endfunction
 
-" Make session
-function! MkSes(name)
+" Make home session
+function! MkHomeSes(name)
     execute "mks! ~/.vim/sessions/" . a:name
 endfunction
-nnoremap <leader>ms :call MkSes(
+nnoremap <leader>ms :call MkHomeSes(
+
+" TODO Make session in current folder
+function! MkFolderSes(name)
+    execute "mks! ~/.vim/sessions/" . a:name
+endfunction
+"nnoremap <leader>ms :call MkFolderSes(
+
+" TODO Make session in current folder
+function! OverwriteSession(name)
+    execute "mks! ~/.vim/sessions/" . a:name
+endfunction
+"nnoremap <leader>ms :call MkFolderSes(
 
 "TODO load last
 function! LoadSes()
