@@ -183,6 +183,7 @@ set ignorecase
 set smartcase
 
 "highlight 100th column
+"TODO dont wrap on next line
 set colorcolumn=100
 
 " Highlight redundant whitespaces
@@ -298,6 +299,7 @@ inoremap JK <ESC>
 inoremap jK <ESC>
 inoremap Jk <ESC>
 nnoremap <leader>q :set number!<CR>
+nnoremap <leader>sp :set syntax=python<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 vnoremap . :norm.<CR>
@@ -419,8 +421,8 @@ if !has('unix')
 else
     nnoremap <leader>K :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 endif
-nnoremap <C-t> :tabnew<CR>
-inoremap <C-t> <Esc>:tabnew<CR>
+nnoremap <C-t> :tabnew 
+inoremap <C-t> <Esc>:tabnew 
 " nmap <leader>t <C-w><C-]><C-w>T
 "mnemonic: OpenWindow
 nmap <leader>ow <C-w>T
@@ -433,6 +435,9 @@ noremap <silent> <leader>rw :%s/\s\+$//e<CR>
 
 " new tab for search with mappings
 nnoremap <leader>m :tabe<CR>:redir @"><CR>:silent map<CR>:redir END<CR>p
+
+" Execution
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
 " Turn off
 nnoremap <F1> <nop>
