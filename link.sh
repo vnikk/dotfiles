@@ -27,6 +27,8 @@ function other() {
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     fi
 
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
+
     mkdir -p ~/.oh-my-zsh/themes
     if [ ! -d ~/.oh-my-zsh/themes/powerlevel9k ]; then
         git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
