@@ -194,7 +194,6 @@ match redundant_spaces  /\s\+\%#\@<!$/
 
 " Access colors present in 256 colorspace
 let base16colorspace=256
-"set t_Co=256
 "set background=dark
 syntax on "has to be before colorscheme
 
@@ -208,6 +207,8 @@ if has("unix")
 endif
 "TODO check for truecolor
 set t_Co=256
+" fixes issue with black lines after text in non-black colorscheme
+let &t_ut=''
 
 " GUI
 if has('gui_running')
