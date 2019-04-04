@@ -6,49 +6,49 @@
       }
     }
   },
-  "Notebook": {
-    "Header": false,
-    "Toolbar": true
-  },
-  "toc2": {
-    "toc_window_display": true,
-    "toc_cell": false
+  "runtools": {
+    "run_color": "#9f505c",
+    "marked_color": "#4bbc7f",
+    "scheduled_color": "#38c0ca"
   },
   "Cell": {
     "cm_config": {
       "lineNumbers": true
     }
   },
+  "toc2": {
+    "toc_cell": false,
+    "toc_window_display": true
+  },
   "load_extensions": {
+    "hinteterland/hinteterland": true,
     "collapsible_headings/main": true,
-    "skip-traceback/main": true,
-    "hide_input/main": true,
-    "execute_time/main": true,
-    "toc2/main": true,
-    "table_beautifier/main": true,
+    "nbextensions_configurator/config_menu/main": true,
     "autoscroll/main": true,
-    "init_cell/main": true,
-    "contrib_nbextensions_help_item/main": true,
+    "move_selected_cells/main": true,
+    "scratchpad/main": true,
+    "hide_input/main": true,
+    "table_beautifier/main": true,
     "keyboard_shortcut_editor/main": true,
     "execute_time": true,
-    "move_selected_cells/main": true,
-    "hinterland/hinterland": true,
-    "select_keymap/main": true,
-    "snippets_menu/main": true,
-    "autoscroll": true,
-    "execute_time/ExecuteTime": true,
-    "codefolding/main": false,
-    "scratchpad/main": true,
-    "hinteterland/hinteterland": true,
-    "snippets/main": true,
-    "notify/notify": true,
     "hineterland/hineterland": true,
+    "snippets_menu/main": true,
+    "snippets/main": true,
+    "execute_time/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "notify/notify": true,
+    "codefolding/main": false,
+    "skip-traceback/main": true,
+    "init_cell/main": true,
+    "hinterland/hinterland": true,
+    "execute_time/ExecuteTime": true,
     "runtools/main": true,
-    "nbextensions_configurator/config_menu/main": true
+    "toc2/main": true,
+    "autoscroll": true,
+    "select_keymap/main": true
   },
-  "runtools": {
-    "marked_color": "#4bbc7f",
-    "run_color": "#9f505c",
-    "scheduled_color": "#38c0ca"
+  "Notebook": {
+    "Toolbar": true,
+    "Header": false
   }
 }
