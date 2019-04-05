@@ -6,6 +6,11 @@ function normal() {
     ln -s -f $PWD/tmux.conf ~/.tmux.conf
 }
 
+function term() {
+    # sets colorschemes for terminal
+    bash -c  "$(wget -qO- https://git.io/vQgMr)"
+}
+
 function colors() {
     mkdir -p ~/.vim/colors
     cd colorschemes
@@ -58,7 +63,8 @@ case $1 in
     'colors') colors;;
     'normal') normal;;
     'python') python;;
-    *) colors; normal; other
+    'term') term;;
+    *) colors; normal; other; term
 esac
 
 
