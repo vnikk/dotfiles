@@ -63,6 +63,16 @@ newalias()
     alias $1="$2"
 }
 
+newaliaz()
+{
+    if [ -f ~/.config/z_home.sh ]; then
+        echo "alias $1='$2'" >> ~/.config/z_home.sh
+    elif [ -f ~/.config/z_work.sh ]; then
+        echo "alias $1='$2'" >> ~/.config/z_work;
+    fi
+    alias $1="$2"
+}
+
 background()
 {
     "$@" 2>/dev/null &
@@ -95,6 +105,9 @@ cl() {
     cd $1; l
 }
 
+addshebang() {
+    echo -e "#!/usr/bin/env bash\n$(cat $1)" > $1
+}
 
 # FASD {
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
@@ -102,8 +115,10 @@ bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
 bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
 # }
 
-bindkey -s 'l' 'l'
-bindkey -s 'u' 'cd ..'
+bindkey -s 'l' 'l
+'
+bindkey -s 'u' 'cd ..
+'
 bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
@@ -122,7 +137,7 @@ alias gsp="git stash pop"
 alias mkdir='mkdir -pv'
 alias rgj='rg --type=js '
 alias rgp='rg --type=cpp '
-alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
+alias savetheme="echo \"$RANDOM_THEME\" >> ~/.dotfiles/zsh_themes"
 alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
