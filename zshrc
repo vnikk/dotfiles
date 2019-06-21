@@ -23,8 +23,13 @@ source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-source ~/.install/fasd/bin/fasd
-eval "$(~/.install/fasd/bin/fasd --init auto)"
+source ~/.install/fasd/fasd
+eval "$(~/.install/fasd/fasd --init auto)"
+
+alias fsx="xcv x"
+alias fsc="xcv c"
+alias fsv="xcv v"
+alias fsl="xcv l"
 
 if [ -f ~/.config/z_home.sh ]; then
     source ~/.config/z_home.sh
