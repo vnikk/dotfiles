@@ -3,7 +3,14 @@ function normal() {
     ln -s -f $PWD/bashrc ~/.bashrc
     ln -s -f $PWD/zshrc ~/.zshrc
     ln -s -f $PWD/vimrc ~/.vimrc
-    ln -s -f $PWD/tmux.conf ~/.tmux.conf
+    ln -s -f $PWD/tmux_work.conf ~/.tmux.conf
+}
+
+function fasd() {
+    git clone https://github.com/clvv/fasd ~/.install/fasd
+    pushd ~/.install/fasd
+    PREFIX=$HOME make install
+    popd
 }
 
 function term() {
@@ -48,7 +55,7 @@ function other() {
         git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
     fi
 
-    if [ ! -d ~/.oh-my-zsh/themes/powerlevel9k ]; then
+    if [ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions ]; then
         git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
     fi
 
@@ -67,14 +74,16 @@ function other() {
     #Cscope
 }
 
-case $1 in
-    'colors') colors;;
-    'normal') normal;;
-    'python') python;;
-    'term') term;;
-    'gitalias') gitalias;;
-    *) colors; normal; other; gitalias; term
-esac
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    case $1 in
+        'colors') colors;;
+        'normal') normal;;
+        'python') python;;
+        'term') term;;
+        'gitalias') gitalias;;
+        *) colors; normal; other; gitalias; term
+    esac
+fi
 
 
 function load_tmux() {
