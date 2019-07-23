@@ -70,7 +70,7 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'Rip-Rip/clang_complete'
 
 "if v:version >= 703 && has("patch598")
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
@@ -403,6 +403,8 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " Line join
 nnoremap <leader>j J
 nnoremap <leader>k i
+
+"%!python -m json.tool
 
 " Esc cancels highlight
 " :let @/ = ""
