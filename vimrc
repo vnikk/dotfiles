@@ -36,6 +36,7 @@ Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vimprj'
 "Plugin 'vim-scripts/DfrankUtil'
 
+Plugin 'easymotion/vim-easymotion'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
