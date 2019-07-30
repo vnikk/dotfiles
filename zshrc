@@ -5,8 +5,7 @@ export ZSH=~/.oh-my-zsh
 
 export EDITOR=vim
 
-#globalias
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload virtualenv)
+plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload virtualenv globalias)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -23,8 +22,8 @@ source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-source ~/.install/fasd/fasd
-eval "$(~/.install/fasd/fasd --init auto)"
+[ ! `which fasd` ] && source ~/.install/fasd/fasd
+[ ! `which fasd` ] && eval "$(~/.install/fasd/fasd --init auto)"
 
 alias fsx="xcv x"
 alias fsc="xcv c"
@@ -120,6 +119,7 @@ bindkey -s 'l' 'l
 '
 bindkey -s 'u' 'cd ..
 '
+bindkey ' ' magic-space
 bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
@@ -148,6 +148,10 @@ else
     echo 'Editor unset!'
 fi
 alias -- -='popd'
+alias -g VI=" | vi -"
+alias -g ~="~/"
+alias -g ~.="~/."
+
 
 #set convert-meta on
 
