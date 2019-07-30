@@ -59,6 +59,7 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
+Plugin 'wakatime/vim-wakatime'
 "Plugin 'vimwiki/vimwiki'
 "Plugin 'gilligan/vim-lldb'
 "TRY:
@@ -454,6 +455,7 @@ nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
 let g:NERDTreeWinPos = 'right'
+autocmd BufWinEnter * NERDTreeMirror
 
 " Smart tab autocomplete
 function! SuperTab()
