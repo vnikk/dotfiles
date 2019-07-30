@@ -35,41 +35,40 @@ function gitalias() {
     git config --global alias.lg1 "log --graph --pretty=format:\"%C(yellow)%h%Creset %ad  %s%C(cyan)%d%Creset %C(green)[%an]%Creset\" --date=short"
 }
 
+function install_folder() {
+    if [ ! -d $1 ]; then
+        eval "${@:5}"
+    else
+        echo $1 already installed
+    fi
+}
+
+function git_install() {
+    install_folder ${@: -1} $@
+}
+
 function other() {
     mkdir ~/.vim/sessions
 
-    if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    fi
+    git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
 
-    if [ ! -d ~/.oh-my-zsh ]; then
-        `which curl` && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
+    install_folder ~/.oh-my-zsh `which curl` && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
+    git_install git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
     chsh -s /bin/zsh
 
     mkdir -p ~/.oh-my-zsh/themes
-    if [ ! -d ~/.oh-my-zsh/themes/powerlevel9k ]; then
-        git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
-    fi
-
-    if [ ! -d $ZSH_CUSTOM/plugins/zsh-autosuggestions ]; then
-        git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    fi
+    git_install git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
 
     curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
-    if [ ! -d ~/.tmux/themes ]; then
-        git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux/themes
-    fi
-    mkdir ~/.tmux/plugins/
-    if [ ! -d ~/.tmux/plugins/tmux-fingers ]; then
-        git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
-    fi
-    if [ ! -d ~/.tmux/plugins/tmux-open ]; then
-        git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
-    fi
+    git_install git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux/themes
+
+    cp ees.zsh-theme ~/.oh-my-zsh/custom/themes/
+
+    mkdir -p ~/.tmux/plugins/
+    git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
+    git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
     #list to make sure is installed
     #Cscope
 }
@@ -81,7 +80,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'python') python;;
         'term') term;;
         'gitalias') gitalias;;
-        *) colors; normal; other; gitalias; term
+        *) colors; other; normal; gitalias; term
     esac
 fi
 
