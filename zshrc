@@ -168,3 +168,4 @@ alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
 export ZSH_THEME=ees
 source $ZSH/oh-my-zsh.sh
+alias gapac='gapa && print -z gc -m \''

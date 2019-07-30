@@ -313,6 +313,8 @@ nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
 "TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>ez :tabe ~/.zshrc<CR>
+nnoremap <leader>ezz :tabe ~/.config/z_*<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 
 "cnoremap <C-A> <HOME>
