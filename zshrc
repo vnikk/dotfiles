@@ -151,12 +151,6 @@ alias -- -='popd'
 alias -g VI=" | vi -"
 alias -g ~="~/"
 alias -g ~.="~/."
-
-
-#set convert-meta on
-
-#export NVM_DIR="/home/wut/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
