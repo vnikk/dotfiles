@@ -59,8 +59,10 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
-Plugin 'wakatime/vim-wakatime'
-"Plugin 'vimwiki/vimwiki'
+"Plugin 'wakatime/vim-wakatime'
+Plugin 'vimwiki/vimwiki'
+Plugin 'tyru/open-browser.vim'
+
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
