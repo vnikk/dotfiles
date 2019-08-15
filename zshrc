@@ -5,7 +5,8 @@ export ZSH=~/.oh-my-zsh
 
 export EDITOR=vim
 
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload virtualenv globalias)
+export PATH=$PATH:~/.install/fasd/bin
+plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -22,19 +23,17 @@ source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-[ ! `which fasd` ] && source ~/.install/fasd/fasd
-[ ! `which fasd` ] && eval "$(~/.install/fasd/fasd --init auto)"
-
 alias fsx="xcv x"
 alias fsc="xcv c"
 alias fsv="xcv v"
 alias fsl="xcv l"
 
 if [ -f ~/.config/z_home.sh ]; then
-    source ~/.config/z_home.sh
+    LOCALFILE=~/.config/z_home.sh
 elif [ -f ~/.config/z_work.sh ]; then
-    source ~/.config/z_work.sh
+    LOCALFILE=~/.config/z_work.sh
 fi
+source $LOCALFILE
 
 #TODO move home zalias to z_home
 
@@ -47,9 +46,17 @@ cop()
     echo -n "$*" | eval ${COPY}
 }
 
-# newfunc()
-#{
-#}
+newfunz()
+{
+    eval "$1() { $2 }"
+    echo "$1() { $2 }" >> $LOCALFILE
+}
+
+newfuns()
+{
+    eval "$1() { $2 }"
+    echo "$1() { $2 }" >> $LOCALFILE
+}
 
 pgr()
 {
@@ -70,6 +77,14 @@ newaliaz()
         echo "alias $1='$2'" >> ~/.config/z_work.sh;
     fi
     alias $1="$2"
+}
+
+alias nas=newalias
+alias naz=newaliaz
+
+pinst()
+{
+    conda install $1 || pip install $1
 }
 
 background()
