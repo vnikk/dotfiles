@@ -141,6 +141,19 @@ let g:syntastic_java_checkers = []
 " Clang complete
 let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang.so"
 
+"OpenBrowser
+"open vim repo
+function! OpnB()
+    let s:var = trim(expand('<cWORD>'), "'")
+    execute ":OpenBrowser http://github.com/" . s:var
+endfunction
+noremap <leader>ov :call OpnB()<CR>
+
+"VimWiki
+let g:vimwiki_list = [{'path': '~/my/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+
 
 """""""""""""""""""""""""""""
 " SETTINGS
