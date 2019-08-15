@@ -1,68 +1,154 @@
 {
   "python.pythonPath": "/anaconda3/bin/python3",
-    "python.formatting.provider": "yapf",
-    // "python.formatting.yapfArgs": ["--style", "{BASED_ON_STYLE: google, split_before_logical_operator: True, split_penalty_arithmetic_operator: 0, split_penalty_logical_operator: 0, SPLIT_PENALTY_AFTER_OPENING_BRACKET: '1000000'}"],
-    "git.autofetch": true,
-    "vim.insertModeKeyBindings": [
-        {
-          "before": ["j", "k"],
-          "after": ["<Esc>"]
-        }
+  "python.formatting.provider": "yapf",
+  // "python.formatting.yapfArgs": ["--style", "{BASED_ON_STYLE: google, split_before_logical_operator: True, split_penalty_arithmetic_operator: 0, split_penalty_logical_operator: 0, SPLIT_PENALTY_AFTER_OPENING_BRACKET: '1000000'}"],
+  "git.autofetch": true,
+  "vim.debug.loggingLevelForConsole": "debug",
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.showmodename": false,
+  "vim.surround": true,
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
       ],
-      "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [":"],
-            "commands": [
-              "vim.showQuickpickCmdLine",
-            ]
-        },
-        {
-          "before": ["ZZ"],
-          "commands": [":x"]
-        },
-        {
-          "before": ["zx"],
-          "commands": [":q"]
-        },
-        {
-          "before": ["S"],
-          "commands": [":w"]
-        },
-        {
-          "before": ["J"],
-          "commands": [":tabprevious"]
-        },
-        {
-          "before": ["K"],
-          "commands": [":tabnext"]
-        },
-        {
-          "before": ["<C-n>"],
-          "commands": [":nohl"]
-        }
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
       ],
-      "vim.leader": "<space>",
-      "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false
-      },
-      "[python]": {},
-      "extensions.ignoreRecommendations": false,
-      "files.autoSave": "afterDelay",
-      "vim.easymotion": true,
-      "vim.easymotionMarkerFontFamily": "Menlo",
-      "vim.easymotionMarkerFontSize": "12",
-      "vim.easymotionMarkerBackgroundColor": "#539ab8",
-      "vim.easymotionMarkerYOffset": 4,
-      "vim.foldfix": true,
-      "workbench.editor.enablePreview": false,
-      "python.dataScience.sendSelectionToInteractiveWindow": true,
-      "vscode_custom_css.imports": [
-        "file:///Users/viazovsk/synthwave84.css"
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
       ],
-      "workbench.colorTheme": "SynthWave '84",
-      "vscode_custom_css.policy": true,
-      "vscode_custom_css.statusbar": false,
-      "gitlens.statusBar.enabled": false,
-      "window.zoomLevel": 1
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    },
+    {
+      "before": [
+        "Z",
+        "Z"
+      ],
+      "commands": [
+        ":wq"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "m"
+      ],
+      "commands": [
+        "bookmarks.toggle"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b"
+      ],
+      "commands": [
+        "bookmarks.list"
+      ]
+    },
+    {
+      "before": [
+        ":"
+      ],
+      "commands": [
+        // "vim.showQuickpickCmdLine",
+        "workbench.action.showCommands",
+      ]
+    },
+    {
+      "before": [
+        "ZZ"
+      ],
+      "commands": [
+        ":x"
+      ]
+    },
+    {
+      "before": [
+        "zx"
+      ],
+      "commands": [
+        ":q"
+      ]
+    },
+    {
+      "before": [
+        "S"
+      ],
+      "commands": [
+        ":w"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "commands": [
+        ":tabprevious"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        ":tabnext"
+      ]
+    },
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.visualstar": true,
+  "vim.debug.silent": false,
+  "vim.handleKeys": {
+    "<C-f>": false
+  },
+  "[python]": {},
+  "extensions.ignoreRecommendations": false,
+  "files.autoSave": "afterDelay",
+  "vim.easymotion": true,
+  "vim.easymotionMarkerFontFamily": "Menlo",
+  "vim.easymotionMarkerFontSize": "12",
+  "vim.easymotionMarkerBackgroundColor": "#539ab8",
+  "vim.easymotionMarkerYOffset": 4,
+  "vim.foldfix": true,
+  "workbench.editor.enablePreview": false,
+  "python.dataScience.sendSelectionToInteractiveWindow": true,
+  "vscode_custom_css.imports": [
+    "file:///Users/viazovsk/synthwave84.css"
+  ],
+  "workbench.colorTheme": "SynthWave '84",
+  "vscode_custom_css.policy": true,
+  "vscode_custom_css.statusbar": false,
+  "gitlens.statusBar.enabled": false,
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "'Fira Code', Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true
 }
