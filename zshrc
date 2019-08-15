@@ -139,6 +139,14 @@ bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
 
+# alt-x : insert last command result
+zmodload -i zsh/parameter
+insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+bindkey '^[x' insert-last-command-output
+
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
 alias sz="source ~/.zshrc"
@@ -177,4 +185,4 @@ alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
 export ZSH_THEME=ees
 source $ZSH/oh-my-zsh.sh
-alias gapac='gapa && print -z gc -m \''
+alias gapac="gapa && print -z gc -m '"
