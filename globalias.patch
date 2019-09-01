@@ -1,0 +1,32 @@
+diff --git a/plugins/globalias/globalias.plugin.zsh b/plugins/globalias/globalias.plugin.zsh
+index 9602a96..c0e21da 100644
+--- a/plugins/globalias/globalias.plugin.zsh
++++ b/plugins/globalias/globalias.plugin.zsh
+@@ -1,17 +1,14 @@
+ globalias() {
+-   zle _expand_alias
+-   zle expand-word
+-   zle self-insert
++   if [[ $LBUFFER =~ ' [A-Z0-9~]+$' ]]; then
++       zle _expand_alias
++       zle expand-word
++   else
++       zle self-insert
++   fi
+ }
+-zle -N globalias
+-
+-# space expands all aliases, including global
+-bindkey -M emacs " " globalias
+-bindkey -M viins " " globalias
+ 
+-# control-space to make a normal space
+-bindkey -M emacs "^ " magic-space
+-bindkey -M viins "^ " magic-space
++zle -N globalias
+ 
+-# normal space during searches
+-bindkey -M isearch " " magic-space
++bindkey " " globalias
++bindkey "^ " magic-space           # control-space to bypass completion
++bindkey -M isearch " " magic-space # normal space during searches

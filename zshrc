@@ -5,8 +5,8 @@ export ZSH=~/.oh-my-zsh
 
 export EDITOR=vim
 
-#globalias
-plugins=(git git-extras z fasd bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle per-directory-history tmux vundle zsh_reload virtualenv)
+export PATH=$PATH:~/.install/fasd/bin
+plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -23,14 +23,17 @@ source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-source ~/.install/fasd/bin/fasd
-eval "$(~/.install/fasd/bin/fasd --init auto)"
+alias fsx="xcv x"
+alias fsc="xcv c"
+alias fsv="xcv v"
+alias fsl="xcv l"
 
 if [ -f ~/.config/z_home.sh ]; then
-    source ~/.config/z_home.sh
+    LOCALFILE=~/.config/z_home.sh
 elif [ -f ~/.config/z_work.sh ]; then
-    source ~/.config/z_work.sh
+    LOCALFILE=~/.config/z_work.sh
 fi
+source $LOCALFILE
 
 #TODO move home zalias to z_home
 
@@ -43,9 +46,17 @@ cop()
     echo -n "$*" | eval ${COPY}
 }
 
-# newfunc()
-#{
-#}
+newfunz()
+{
+    eval "$1() { $2 }"
+    echo "$1() { $2 }" >> $LOCALFILE
+}
+
+newfuns()
+{
+    eval "$1() { $2 }"
+    echo "$1() { $2 }" >> $LOCALFILE
+}
 
 pgr()
 {
@@ -56,6 +67,24 @@ newalias()
 {
     echo "alias $1='$2'" >> ~/.zshrc;
     alias $1="$2"
+}
+
+newaliaz()
+{
+    if [ -f ~/.config/z_home.sh ]; then
+        echo "alias $1='$2'" >> ~/.config/z_home.sh
+    elif [ -f ~/.config/z_work.sh ]; then
+        echo "alias $1='$2'" >> ~/.config/z_work.sh;
+    fi
+    alias $1="$2"
+}
+
+alias nas=newalias
+alias naz=newaliaz
+
+pinst()
+{
+    conda install $1 || pip install $1
 }
 
 background()
@@ -90,6 +119,9 @@ cl() {
     cd $1; l
 }
 
+addshebang() {
+    echo -e "#!/usr/bin/env bash\n$(cat $1)" > $1
+}
 
 # FASD {
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
@@ -97,11 +129,23 @@ bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
 bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
 # }
 
-bindkey -s 'l' 'l'
-bindkey -s 'u' 'cd ..'
+# if rebind this to s then l can be used in tmux
+bindkey -s 'l' 'l
+'
+bindkey -s 'u' 'cd ..
+'
+bindkey ' ' magic-space
 bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
+
+# alt-x : insert last command result
+zmodload -i zsh/parameter
+insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+bindkey '^[x' insert-last-command-output
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
@@ -117,7 +161,7 @@ alias gsp="git stash pop"
 alias mkdir='mkdir -pv'
 alias rgj='rg --type=js '
 alias rgp='rg --type=cpp '
-alias savetheme="echo \"$RANDOM_THEME\" >> ~/shell/zsh_themes"
+alias savetheme="echo \"\$RANDOM_THEME\" >> ~/.dotfiles/zsh_themes"
 alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
@@ -127,11 +171,9 @@ else
     echo 'Editor unset!'
 fi
 alias -- -='popd'
-
-#set convert-meta on
-
-#export NVM_DIR="/home/wut/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+alias -g VI=" | vi -"
+alias -g ~="~/"
+alias -g ~.="~/."
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
@@ -141,4 +183,6 @@ alias dow='cd ~/Downloads'
 #zprof
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
+export ZSH_THEME=ees
 source $ZSH/oh-my-zsh.sh
+alias gapac="gapa && print -z gc -m '"

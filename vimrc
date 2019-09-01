@@ -36,6 +36,7 @@ Plugin 'tpope/vim-dispatch'
 "Plugin 'vim-scripts/vimprj'
 "Plugin 'vim-scripts/DfrankUtil'
 
+Plugin 'easymotion/vim-easymotion'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
@@ -58,7 +59,10 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
-"Plugin 'vimwiki/vimwiki'
+"Plugin 'wakatime/vim-wakatime'
+Plugin 'vimwiki/vimwiki'
+Plugin 'tyru/open-browser.vim'
+
 "Plugin 'gilligan/vim-lldb'
 "TRY:
 "Plugin 'gisodal/vimgdb'
@@ -69,7 +73,7 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'Rip-Rip/clang_complete'
 
 "if v:version >= 703 && has("patch598")
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
@@ -136,6 +140,19 @@ let g:syntastic_java_checkers = []
 
 " Clang complete
 let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang.so"
+
+"OpenBrowser
+"open vim repo
+function! OpnB()
+    let s:var = trim(expand('<cWORD>'), "'")
+    execute ":OpenBrowser http://github.com/" . s:var
+endfunction
+noremap <leader>ov :call OpnB()<CR>
+
+"VimWiki
+let g:vimwiki_list = [{'path': '~/my/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 
 """""""""""""""""""""""""""""
@@ -311,6 +328,8 @@ nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
 "TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>ez :tabe ~/.zshrc<CR>
+nnoremap <leader>ezz :tabe ~/.config/z_*<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
 
 "cnoremap <C-A> <HOME>
@@ -403,6 +422,8 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>j J
 nnoremap <leader>k i
 
+"%!python -m json.tool
+
 " Esc cancels highlight
 " :let @/ = ""
 nnoremap <esc> :noh<return><esc>
@@ -451,6 +472,7 @@ nnoremap <leader>n :NERDTree<CR>
 let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
 let g:NERDTreeWinPos = 'right'
+autocmd BufWinEnter * NERDTreeMirror
 
 " Smart tab autocomplete
 function! SuperTab()
