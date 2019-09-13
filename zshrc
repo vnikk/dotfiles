@@ -147,8 +147,11 @@ insert-last-command-output() {
 zle -N insert-last-command-output
 bindkey '^[x' insert-last-command-output
 
+source $ZSH/oh-my-zsh.sh
+
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
+alias l='ls -G'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
 alias ez='vi ~/.zshrc'
@@ -184,5 +187,4 @@ alias dow='cd ~/Downloads'
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
 export ZSH_THEME=ees
-source $ZSH/oh-my-zsh.sh
 alias gapac="gapa && print -z gc -m '"
