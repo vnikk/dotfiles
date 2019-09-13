@@ -35,6 +35,12 @@ function gitalias() {
     git config --global alias.lg1 "log --graph --pretty=format:\"%C(yellow)%h%Creset %ad  %s%C(cyan)%d%Creset %C(green)[%an]%Creset\" --date=short"
 }
 
+function ohmyzsh() {
+    echo installing ohmyzsh
+    `which curl` || sudo apt install curl
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+}
+
 function install_folder() {
     if [ ! -d $1 ]; then
         eval "${@:5}"
@@ -48,7 +54,7 @@ function git_install() {
 }
 
 function other() {
-    mkdir ~/.vim/sessions
+    mkdir -p ~/.vim/sessions
 
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
@@ -57,6 +63,9 @@ function other() {
 
     git_install git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
     chsh -s /bin/zsh
+
+    ZSH_CUSTOM=~/.oh-my-zsh/custom
+    git_install git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
     mkdir -p ~/.oh-my-zsh/themes
     git_install git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
@@ -69,6 +78,7 @@ function other() {
     mkdir -p ~/.tmux/plugins/
     git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
     git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
+
     #list to make sure is installed
     #Cscope
 }
@@ -80,10 +90,10 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'python') python;;
         'term') term;;
         'gitalias') gitalias;;
+        'ohmyzsh') ohmyzsh;;
         *) colors; other; normal; gitalias; term
     esac
 fi
-
 
 function load_tmux() {
     tmux_home=~/.dotfiles
@@ -92,11 +102,8 @@ function load_tmux() {
     if [[ $(echo "$tmux_version >= 2.5" | bc) -eq 1 ]] ; then
         tmux source-file "$tmux_home/tmux_home_2.5"
         exit
-    #elif [[ $(echo "$tmux_version >= 1.9" | bc) -eq 1 ]] ; then
-        #tmux source-file "$tmux_home/tmux_1.9_to_2.1.conf"
-        #exit
     else
-        tmux source-file "$tmux_home/tmux_work_"
+        tmux source-file "$tmux_home/tmux_work"
         exit
     fi
 }
@@ -106,5 +113,3 @@ function python() {
     pip install jupyter_nbextensions_configurator
     jupyter nbextensions_configurator enable --user
 }
-
-verify_tmux_version
