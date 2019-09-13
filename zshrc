@@ -187,4 +187,11 @@ alias dow='cd ~/Downloads'
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
 export ZSH_THEME=ees
-alias gapac="gapa && print -z gc -m '"
+alias gapac="gapa && print -z gc -m \'"
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=138" #"fg=#87af87" #",bg=cyan,bold,underline"
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
