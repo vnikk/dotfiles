@@ -473,6 +473,10 @@ let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
 let g:NERDTreeWinPos = 'right'
 autocmd BufWinEnter * NERDTreeMirror
+" close on file close
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      \ && b:NERDTreeType == "primary") | q | endif
+
 
 " Smart tab autocomplete
 function! SuperTab()
