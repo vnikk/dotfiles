@@ -191,6 +191,7 @@ alias gapac="gapa && print -z gc -m \'"
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=138" #"fg=#87af87" #",bg=cyan,bold,underline"
 typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
