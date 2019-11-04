@@ -3,6 +3,7 @@ function normal() {
     ln -s -f $PWD/bashrc ~/.bashrc
     ln -s -f $PWD/zshrc ~/.zshrc
     ln -s -f $PWD/vimrc ~/.vimrc
+    ln -s -f $PWD/ideavimrc ~/.ideavimrc
     ln -s -f $PWD/tmux_work.conf ~/.tmux.conf
 }
 
