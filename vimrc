@@ -52,6 +52,7 @@ Plugin 'thinca/vim-localrc'
 Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
 Plugin 'wesQ3/vim-windowswap'
+"Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'urbainvaes/vim-tmux-pilot'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'kana/vim-textobj-user'
@@ -249,11 +250,6 @@ let g:ctrlp_clear_cache_on_exit = 0
 set whichwrap+=<,>,[,]
 set scrolloff=7
 
-" Overlength TODO fix breaking of redundant_spaces
-"highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
-"highlight OverLength cterm=underline guibg=#592929
-"match OverLength /\%111v.\+/
-
 " Other
 set pastetoggle=<F10>
 
@@ -299,17 +295,9 @@ else
     map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
 endif
 
+" Basic
 vnoremap < <gv
 vnoremap > >gv
-
-" name_with_underscores -> NamesInCameCase
-vnoremap <leader>+ :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
-" :s#_\(\l\)#\u\1#g
-" CamelCase -> name_with_underscores
-vnoremap <leader>_ m":s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>`"viwugul
-" :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
-
-" Basic
 nnoremap S :w<CR>
 nnoremap zx :q<CR>
 inoremap jk <ESC>
@@ -422,6 +410,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>j J
 nnoremap <leader>k i
 
+" TODO
 "%!python -m json.tool
 
 " Esc cancels highlight
@@ -473,6 +462,10 @@ let g:NERDTreeMapJumpFirstChild = 'H'
 let g:NERDTreeMapJumpLastChild = 'L'
 let g:NERDTreeWinPos = 'right'
 autocmd BufWinEnter * NERDTreeMirror
+" close on file close
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      \ && b:NERDTreeType == "primary") | q | endif
+
 
 " Smart tab autocomplete
 function! SuperTab()
@@ -487,6 +480,10 @@ endfunction
 map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Navigate quickfix list
+noremap <silent> <leader>] :cn<CR>zz
+noremap <silent> <leader>[ :cp<CR>zz
 
 """"""""""""""""""""""""""""""
 " FUNCTIONS
@@ -694,26 +691,3 @@ function! Csc()
 endfunction
 command! Csc call Csc()
 """""""""""""""""""""""""""""
-" Omni completion
-" set ofu=syntaxcomplete#Complete
-
-" Airline bundle
-"let g:airline_powerline_fonts=1
-"set laststatus=2
-"let g:airline_theme='hybrid'
-"let g:airline#extensions#tabline#enabled=1
-
-" Markdown bundle
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" let g:vim_markdown_folding_disabled=1
-"let g:vim_markdown_initial_foldlevel=1
-
-
-" Tagbar bundle
-"nmap <C-m> :TagbarToggle<CR>
-
-"for win
-"set noeol fileformat=dos " binary
-" Navigate quickfix list
-noremap <silent> <leader>] :cn<CR>zz
-noremap <silent> <leader>[ :cp<CR>zz

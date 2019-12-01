@@ -1,0 +1,70 @@
+" Basic
+vnoremap < <gv
+vnoremap > >gv
+nnoremap S :w<CR>
+nnoremap zx :q<CR>
+inoremap jk <ESC>
+inoremap JK <ESC>
+inoremap jK <ESC>
+inoremap Jk <ESC>
+nnoremap <CR> :
+vnoremap <CR> :
+
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+
+" Movement
+nnoremap j gj
+nnoremap k gk
+nnoremap B ^
+nnoremap E $
+vnoremap E $
+vnoremap B ^
+onoremap B ^
+onoremap E $
+
+" Move in insert mode
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+
+" Characters / selections shifting
+nnoremap <C-h> hxph
+nnoremap <C-l> xp
+vnoremap <C-h> xhP`[v`]
+vnoremap <C-l> xp`[v`]
+
+" Tab shifting; dont change <leader><tab> - intereferes with <C-i>
+vnoremap <leader><tab> >><Esc>1v
+nnoremap <leader><tab> >>
+vnoremap <leader>> >><Esc>1v
+nnoremap <leader>> >>
+nnoremap <leader>< <<
+vnoremap <leader>< <1v
+inoremap <S-Tab>< <C-d>
+
+" Line moving
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Line join
+nnoremap <leader>j J
+nnoremap <leader>k i
+
+" Opening / switching tabs
+nnoremap J :tabprevious<cr>
+"vnoremap J <Esc>:tabprevious<cr>
+vnoremap J nop
+nnoremap K :tabnext<cr>
+"vnoremap K <Esc>:tabnext<cr>
+vnoremap K nop

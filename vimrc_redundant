@@ -1,0 +1,41 @@
+
+" Overlength TODO fix breaking of redundant_spaces
+"highlight OverLength ctermbg=NONE ctermfg=NONE cterm=underline guibg=#592929
+"highlight OverLength cterm=underline guibg=#592929
+"match OverLength /\%111v.\+/
+
+"""""""""""""""""""""""""""""
+" MAPPING
+"""""""""""""""""""""""""""""
+
+" name_with_underscores -> NamesInCameCase
+vnoremap <leader>+ :s/\%V_\([a-z]\)/\u\1/g<CR>gUl
+" :s#_\(\l\)#\u\1#g
+" CamelCase -> name_with_underscores
+vnoremap <leader>_ m":s/\%V\<\@!\([A-Z]\)/\_\l\1/g<CR>`"viwugul
+" :s#\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
+
+
+"""""""""""""""""""""""""""""
+" OTHER
+"""""""""""""""""""""""""""""
+" Omni completion
+" set ofu=syntaxcomplete#Complete
+
+" Airline bundle
+"let g:airline_powerline_fonts=1
+"set laststatus=2
+"let g:airline_theme='hybrid'
+"let g:airline#extensions#tabline#enabled=1
+
+" Markdown bundle
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" let g:vim_markdown_folding_disabled=1
+"let g:vim_markdown_initial_foldlevel=1
+
+
+" Tagbar bundle
+"nmap <C-m> :TagbarToggle<CR>
+
+"for win
+"set noeol fileformat=dos " binary
