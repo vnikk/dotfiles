@@ -1,11 +1,9 @@
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
-
 export ZSH=~/.oh-my-zsh
-
 export EDITOR=vim
-
 export PATH=$PATH:~/.install/fasd/bin
+
 plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
 
 DISABLE_AUTO_TITLE="true"
@@ -17,7 +15,6 @@ ENABLE_CORRECTION="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $ZSH/oh-my-zsh.sh
-
 source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # don't save command if space at the begining
