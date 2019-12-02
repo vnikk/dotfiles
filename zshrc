@@ -152,6 +152,7 @@ source $ZSH/oh-my-zsh.sh
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
 alias l='ls -G'
+alias la='ls -Ga'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
 alias ez='vi ~/.zshrc'
