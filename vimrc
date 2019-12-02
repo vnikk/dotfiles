@@ -153,6 +153,7 @@ noremap <leader>ov :call OpnB()<CR>
 "VimWiki
 let g:vimwiki_list = [{'path': '~/my/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_map_prefix = '<Leader>e'
 autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 
