@@ -153,6 +153,7 @@ noremap <leader>ov :call OpnB()<CR>
 "VimWiki
 let g:vimwiki_list = [{'path': '~/my/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_map_prefix = '<Leader>e'
 autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 
@@ -217,6 +218,12 @@ syntax on "has to be before colorscheme
 
 colorscheme gruvbox
 set background=dark
+" Fixes new tmux config pane in vim
+if &term =~# '256color' && ( &term =~# '^screen'  || &term =~# '^tmux'  )
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+        set termguicolors
+endif
 if has("unix")
     if system("uname -s") =~ "Darwin"
         hi Normal guibg=NONE ctermbg=NONE
