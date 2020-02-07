@@ -95,13 +95,22 @@ nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
 " Vim stacktrace
 let g:unstack_mapkey='<leader>ss'
 
+"TODO remove
 " Vim-Tmux-Pilot
 
-" Uncomment to enable navigation of vim tabs
-let g:pilot_mode='wintab'
+"" Uncomment to enable navigation of vim tabs
+"let g:pilot_mode='wintab'
 
-" Uncomment to enable creation of vim splits automatically
-let g:pilot_boundary='create'
+"" Uncomment to enable creation of vim splits automatically
+"let g:pilot_boundary='create'
+
+"let g:tmux_navigator_no_mappings = 1
+
+"nnoremap <silent> ì :TmuxNavigateLeft<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 " A useful mapping to use with this plugin
 " nnoremap <nowait> <c-d> :q<cr>
