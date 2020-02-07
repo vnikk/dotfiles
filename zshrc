@@ -123,6 +123,28 @@ addshebang() {
     echo -e "#!/usr/bin/env bash\n$(cat $1)" > $1
 }
 
+# VIM MODE!!!
+# from https://dougblack.io/words/zsh-vi-mode.html
+bindkey -v
+# kills <ESC> lag
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
 # FASD {
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
 bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
@@ -131,8 +153,6 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 
 # if rebind this to s then l can be used in tmux
 bindkey -s 'l' 'l
-'
-bindkey -s 'u' 'cd ..
 '
 bindkey ' ' magic-space
 bindkey '^ ' autosuggest-accept
@@ -148,6 +168,9 @@ zle -N insert-last-command-output
 bindkey '^[x' insert-last-command-output
 
 source $ZSH/oh-my-zsh.sh
+#must be under "oh-my-zsh"
+bindkey -s 'u' 'cd ..
+'
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias eali="vi ~/.zaliasrc"
@@ -181,7 +204,7 @@ alias -g ~.="~/."
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export JUPYTER_CONFIG_DIR=~/.dotfiles/jupyter
 alias ex='extract'
 alias dow='cd ~/Downloads'
 #zprof
