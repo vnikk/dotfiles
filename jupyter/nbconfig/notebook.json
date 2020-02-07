@@ -1,8 +1,16 @@
 {
   "keys": {
     "command": {
+      "unbind": [
+        "k",
+        "j",
+        "shift-k",
+        "shift-j"
+      ],
       "bind": {
-        "alt-i": "hide_input:toggle-cell-input-display"
+        "alt-i": "hide_input:toggle-cell-input-display",
+        "j": "jupyter-notebook:move-cell-down",
+        "k": "jupyter-notebook:move-cell-up"
       }
     }
   },
