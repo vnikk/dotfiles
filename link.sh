@@ -110,6 +110,7 @@ function load_tmux() {
 }
 
 function python() {
+    # installing all this from jupyter notebook can help
     pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
     pip install jupyter_nbextensions_configurator
     jupyter nbextensions_configurator enable --user
