@@ -12,6 +12,7 @@ map("yf", "ya");
 unmap("P");
 map("P", "cc");
 map('F', 'gf');
+map('t', 'T');
 
 
 settings.hintAlign = "left";
