@@ -122,7 +122,8 @@ addshebang() {
 
 # VIM MODE!!!
 # from https://dougblack.io/words/zsh-vi-mode.html
-bindkey -v
+# breaks "per word history"
+#bindkey -v
 # kills <ESC> lag
 
 bindkey '^P' up-history
