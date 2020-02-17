@@ -333,9 +333,10 @@ nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
 "TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
-nnoremap <leader>ez :tabe ~/.zshrc<CR>
-nnoremap <leader>ezz :tabe ~/.config/z_*<CR>
+nnoremap <leader>oz :tabe ~/.zshrc<CR>
+nnoremap <leader>ozz :tabe ~/.config/z_*<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
+nnoremap <leader>os :tabe ~/.config/surf.js<CR>
 
 "cnoremap <C-A> <HOME>
 cnoremap <C-a>  <Home>
@@ -472,6 +473,9 @@ nnoremap <F1> <nop>
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
+
+" Comment line, edit line
+noremap <leader>ce yyP<plug>NERDCommenterComment<C-o>C
 
 " Nerdtree bundle, NERDTree mappings:
 nnoremap <leader>n :NERDTree<CR>
