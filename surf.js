@@ -13,6 +13,7 @@ unmap("P");
 map("P", "cc");
 map('F', 'gf');
 map('t', 'T');
+aceVimMap('jk', '<Esc>', 'insert');
 
 
 settings.hintAlign = "left";
@@ -26,11 +27,7 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
     });
 });
 
-
-
-
-
-
+Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde;');
 
 // from: https://github.com/brookhong/Surfingkeys/wiki/Color-Themes
 settings.theme = `
