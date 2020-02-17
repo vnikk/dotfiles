@@ -218,3 +218,4 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+alias gdc='git diff --cached'
