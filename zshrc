@@ -38,10 +38,9 @@ if [ -f ~/.dotfiles/common.sh ]; then
     source ~/.dotfiles/common.sh
 fi
 
-cop()
-{
-    echo -n "$*" | eval ${COPY}
-}
+# TODO why here?
+source $ZSH/oh-my-zsh.sh
+source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 newfunz()
 {
