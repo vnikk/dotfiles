@@ -89,6 +89,11 @@ let mapleader = "\<Space>"
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+"Git (fugitive)
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gs :Gstatus<CR>
+
 "YouCompleteMe
 nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
 
@@ -473,6 +478,9 @@ nnoremap <F1> <nop>
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
+
+" close preview window
+nmap gpc :pc<CR>
 
 " Comment line, edit line
 noremap <leader>ce yyP<plug>NERDCommenterComment<C-o>C
