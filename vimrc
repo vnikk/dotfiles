@@ -94,6 +94,10 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
+"Kite
+nmap <silent> <buffer> gK :KiteDocsAtCursor<CR>
+nnoremap <leader>k :KiteDocsAtCursor<CR>
+
 "YouCompleteMe
 nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
 
