@@ -1,0 +1,6 @@
+# show binary representation of keys entered
+$ showkey -a Press any keys - Ctrl-D will terminate this program
+or
+$ od -t x1
+
+
