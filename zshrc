@@ -3,6 +3,7 @@ export TERM="xterm-256color"
 export ZSH=~/.oh-my-zsh
 export EDITOR=vim
 export PATH=$PATH:~/.install/fasd/bin
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
 
@@ -13,9 +14,6 @@ ENABLE_CORRECTION="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-source $ZSH/oh-my-zsh.sh
-source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
@@ -156,6 +154,50 @@ bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
 
+# fzf
+# https://junegunn.kr/2016/07/fzf-git/
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+gt() {
+  # "Nothing to see here, move along"
+  is_in_git_repo || return
+
+  # Pass the list of the tags to fzf-tmux
+  # - "{}" in preview option is the placeholder for the highlighted entry
+  # - Preview window can display ANSI colors, so we enable --color=always
+  # - We can terminate `git show` once we have $LINES lines
+  git tag --sort -version:refname |
+    fzf --multi --preview-window right:70% \
+        --preview 'git show --color=always {} | head -'$LINES
+}
+# TODO
+#bindkey '' '$(gt)'
+
+fbr() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+fco() {
+  local tags branches target
+  branches=$(
+    git --no-pager branch --all \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+    | sed '/^$/d') || return
+  tags=$(
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$branches"; echo "$tags") |
+    fzf --no-hscroll --no-multi -n 2 \
+        --ansi) || return
+  git checkout $(awk '{print $2}' <<<"$target" )
+}
+#####################
+
 # alt-x : insert last command result
 zmodload -i zsh/parameter
 insert-last-command-output() {
@@ -207,7 +249,6 @@ alias dow='cd ~/Downloads'
 #zprof
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
 
-export ZSH_THEME=ees
 alias gapac="gapa && print -z gc -m \'"
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=138" #"fg=#87af87" #",bg=cyan,bold,underline"
@@ -218,3 +259,8 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 alias gdc='git diff --cached'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
