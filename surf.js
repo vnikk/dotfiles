@@ -17,6 +17,7 @@ aceVimMap('jk', '<Esc>', 'insert');
 
 
 settings.hintAlign = "left";
+settings.enableAutoFocus = false;
 Hints.characters = 'asdfgqwercv';
 imap('jk', "<Esc>");
 
@@ -26,6 +27,12 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
         searchSelectedWith('http://images.google.com/searchbyimage?image_url=', false, false, '');
     });
 });
+
+addSearchAliasX('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
+
+addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=%s');
+
+addSearchAliasX('w', 'thesaurus', 'https://thesaurus.com/browse/');
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde;');
 
