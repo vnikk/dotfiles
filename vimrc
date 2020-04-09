@@ -188,7 +188,8 @@ set numberwidth=4
 set number
 set noshowmode
 set cursorline
-set statusline=%<%f\ %n\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %n\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2
 set rulerformat=#%n\ %l,%c%V%=%P
 set splitbelow
 set splitright
@@ -435,16 +436,13 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Line join
 nnoremap <leader>j J
-nnoremap <leader>k i
 
 " TODO
 "%!python -m json.tool
 
-" Esc cancels highlight
-" :let @/ = ""
-nnoremap <esc> :noh<return><esc>
+nnoremap <leader>/ :noh<return>
 " TODO immediate ESC
-nnoremap <esc>^[ <esc>^[
+"nnoremap <esc>^[ <esc>^[
 
 " Opening / switching tabs
 nnoremap J :tabprevious<cr>
