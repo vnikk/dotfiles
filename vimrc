@@ -708,6 +708,28 @@ function! GetSes()
     execute "!ls ~/.vim/sessions/"
 endfunction
 
+function! s:Resolve() abort
+    let current = expand('%')
+    let resolved = resolve(current)
+    if current !~# '[\/][\/]' && current !=# resolved
+        silent execute 'keepalt file' fnameescape(resolved)
+        return 'edit'
+    endif
+    return ''
+endfunction
+
+command -bar Resolve execute s:Resolve()
+
+augroup resolve
+    autocmd!
+    autocmd BufReadPost * nested
+                \ if exists('*FugitiveExtractGitDir') && !exists('b:git_dir') &&
+                \     expand('%') !=# resolve(expand('%')) &&
+                \     len(FugitiveExtractGitDir(resolve(expand('%')))) |
+                \   Resolve |
+                \ endif
+augroup END
+
 """""""""""""""""""""""""""""
 function! s:VSetSearch()
     let temp = @@
