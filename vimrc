@@ -552,6 +552,12 @@ endfunction
 function! CopyName()
     let @*=expand('%:p')
 endfunction
+nnoremap <leader>yy :call CopyName()<CR>
+
+" copies full file name
+function! YankFile()
+    let @*=expand("%")
+endfunction
 
 " toggle between showing and hiding redundant whitespaces
 let g:isWhitespaceOn = 2
@@ -601,17 +607,17 @@ nnoremap <leader>sa :call SwapTwoArgs()<CR>
 
 " open snippets
 function! Snippets()
-    tabe ~/.vim/bundle/vim-snippets/snippets/python.snippets
+    let ft = &filetype
+    echo ft
+    if ft == 'python'
+        tabe ~/.vim/bundle/vim-snippets/snippets/python.snippets
+    elseif ft == 'sh'
+        tabe ~/.vim/bundle/vim-snippets/snippets/sh.snippets
+    endif
     "tabe ~/.vim/bundle/vim-snippets/snippets/cpp.snippets
     "vs ~/.vim/bundle/vim-snippets/snippets/c.snippets
 endfunction
 nnoremap <leader>sn :call Snippets()<CR>
-
-" copies full file name
-function! YankFile()
-    let @*=expand("%")
-endfunction
-nnoremap <leader>yf :call YankFile()<CR>
 
 " copies current file name as C++ header
 function! YankHeader()
