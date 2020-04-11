@@ -34,7 +34,7 @@ addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=%s');
 
 addSearchAliasX('w', 'thesaurus', 'https://thesaurus.com/browse/');
 
-Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde;');
+Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
 
 // from: https://github.com/brookhong/Surfingkeys/wiki/Color-Themes
 settings.theme = `
