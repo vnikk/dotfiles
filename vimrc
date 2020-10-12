@@ -25,7 +25,7 @@ Plugin 'scrooloose/nerdTree'
 "TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Bundle 'jistr/vim-nerdtree-tabs'
 
 Plugin 'tpope/vim-dispatch'
@@ -63,6 +63,15 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
+Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'psf/black'
+Plugin 'kreskij/vim-reminder-tips'
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'khzaw/vim-conceal'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'stsewd/fzf-checkout.vim'
 
 "Plugin 'gilligan/vim-lldb'
 "TRY:
@@ -89,14 +98,64 @@ let mapleader = "\<Space>"
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+" fzf
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+"Vim Reminder Tips
+call reminder_tips#Setup()
+"AddImportantTip 'Example Important Tip'
+AddReminderTip 'Lookbehind: \(whats before\)\@<=text'
+AddReminderTip 'Lookahead: \(whats before\)\@=text'
+AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
+AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
+"AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
+AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
+AddReminderTip 'Convert to unix: w ++ff=unix'
+AddReminderTip '[Text Object] Inside Function: if'
+AddReminderTip '[Text Object] Around Function: af'
+AddReminderTip '[Text Object] Inside Class: ic'
+AddReminderTip '[Text Object] Around Class: ac'
+AddReminderTip '[Text Object] ]] : Move (forward) to the beginning of the next Python class.'
+AddReminderTip '[Text Object] ][ : Move (forward) to the end of the current Python class.'
+AddReminderTip '[Text Object] [[ : Move (backward) to beginning of the current Python class.'
+AddReminderTip '[Text Object] [] : Move (backward) to end of the previous Python class.'
+AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next Python method or function.'
+AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
+AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
+AddReminderTip 'Go to Current file Directory: <leader>gcd'
+
+" WindowSwap: want immediate <leader>p for paste
+let g:windowswap_map_keys = 0
+
+" Vimux
+let g:VimuxOrientation = "h"
+let g:VimuxUseNearest = 1
+map <leader>vp :call VimuxRunCommand("")<CR>
+map <leader>vl :VimuxRunLastCommand<CR>
+map <leader>vx :VimuxInterruptRunner<CR>
+function! VimuxSlime()
+    call VimuxSendText(@v)
+    call VimuxSendKeys("Enter")
+endfunction
+vmap <leader>vr "vy :call VimuxSlime()<CR>
+function! VimuxRepeat()
+    call VimuxSendKeys("C-p")
+    call VimuxSendKeys("Enter")
+endfunction
+map <leader>vr :call VimuxRepeat()<CR>
+
+" Slime
+let g:slime_target = "tmux"
+
+" Easymotion
+map <Leader>, <Plug>(easymotion-prefix)
+
 "Git (fugitive)
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
-
-"Kite
-nmap <silent> <buffer> gK :KiteDocsAtCursor<CR>
-nnoremap <leader>k :KiteDocsAtCursor<CR>
 
 "YouCompleteMe
 nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
@@ -175,6 +234,20 @@ let g:vimwiki_list = [{'path': '~/my/vimwiki/',
 let g:vimwiki_map_prefix = '<Leader>e'
 autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
+" NERDCommenter
+" Comment line, edit line
+"noremap <leader>ce yyP<plug>NERDCommenterComment<C-o>C
+
+" Nerdtree bundle, NERDTree mappings:
+nnoremap <leader>n :NERDTree<CR>
+let g:NERDTreeMapJumpFirstChild = 'H'
+let g:NERDTreeMapJumpLastChild = 'L'
+let g:NERDTreeWinPos = 'right'
+"autocmd BufWinEnter * NERDTreeMirror
+" close on file close
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+      \ && b:NERDTreeType == "primary") | q | endif
+
 
 """""""""""""""""""""""""""""
 " SETTINGS
@@ -188,22 +261,17 @@ set numberwidth=4
 set number
 set noshowmode
 set cursorline
-set statusline=%<%f\ %n\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set rulerformat=#%n\ %l,%c%V%=%P
 set splitbelow
 set splitright
 filetype plugin on
-filetype indent on
 set mouse=a
-if filereadable(expand("~/.vimenv"))
-    so ~/.vimenv
-endif
-
 set path+=~
 set backspace=indent,eol,start " fix backspace
 "is said to show whitespace at the EOL
 set listchars+=trail:-
+set history=500
 
 " automatically reload vimrc when it's saved TODO fix sequential save freeze
 "au BufWritePost .vimrc so ~/.vimrc
@@ -286,12 +354,7 @@ set fdo-=search
 " Don't start new comment on a new line
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
-
-if isdirectory(expand("~/danube"))
-    set tags=~/.vim/stl_tags,~/danube/tags
-else
-    set tags=~/.vim/stl_tags,~/tags
-endif
+set tags=./.tags,./tags,~/.tags
 
 set wildmenu
 set wildmode=list:longest,full
@@ -341,7 +404,6 @@ vnoremap <CR> :
 noremap <silent> zp "+[p
 nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
-"TODO close empty window
 nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>oz :tabe ~/.zshrc<CR>
 nnoremap <leader>ozz :tabe ~/.config/z_*<CR>
@@ -356,9 +418,6 @@ cnoremap <C-d>  <Delete>
 cnoremap <M-b>  <S-Left>
 cnoremap <M-f>  <S-Right>
 cnoremap <M-d>  <S-right><Delete>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><Delete>
 cnoremap qq q!
 "cnoremap <C-g>  <C-c>noremap <C-D> <DEL>
 cabbrev h tab help
@@ -385,6 +444,8 @@ endif
 map <C-b> :pop<CR>
 nmap <F4> :TagbarToggle<CR>
 map <silent> gf :tabf <cfile><CR>
+nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
 
 " Replace
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
@@ -435,12 +496,13 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Line join
+" TODO remove space after (
 nnoremap <leader>j J
 
 " TODO
 "%!python -m json.tool
 
-nnoremap <leader>/ :noh<return>
+nnoremap <leader><leader> :noh<CR>:pc<CR>
 " TODO immediate ESC
 "nnoremap <esc>^[ <esc>^[
 
@@ -474,9 +536,13 @@ nnoremap <leader>m :tabe<CR>:redir @"><CR>:silent map<CR>:redir END<CR>p
 
 " Execution
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+noremap <buffer> <F10> :exec '!python3 -m pdb' shellescape(@%, 1)<cr>
 
 " Turn off
 nnoremap <F1> <nop>
+if system("uname -s") =~ "Darwin"
+    nnoremap <F1> <Esc>
+endif
 nnoremap $ <nop>
 nnoremap ^ <nop>
 nnoremap Q @@
@@ -484,27 +550,6 @@ nnoremap Q @@
 " close preview window
 nmap gpc :pc<CR>
 
-" Comment line, edit line
-noremap <leader>ce yyP<plug>NERDCommenterComment<C-o>C
-
-" Nerdtree bundle, NERDTree mappings:
-nnoremap <leader>n :NERDTree<CR>
-let g:NERDTreeMapJumpFirstChild = 'H'
-let g:NERDTreeMapJumpLastChild = 'L'
-let g:NERDTreeWinPos = 'right'
-autocmd BufWinEnter * NERDTreeMirror
-" close on file close
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-      \ && b:NERDTreeType == "primary") | q | endif
-
-
-" Smart tab autocomplete
-function! SuperTab()
-    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
-        return "\<Tab>"
-    else
-        return "\<C-n>"
-endfunction
 
 " Show Highlight group for debug
 " further: http://vimdoc.sourceforge.net/htmldoc/eval.html#synstack()
@@ -515,6 +560,9 @@ map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Navigate quickfix list
 noremap <silent> <leader>] :cn<CR>zz
 noremap <silent> <leader>[ :cp<CR>zz
+
+" Commands
+command Cnt :%s///gn
 
 """"""""""""""""""""""""""""""
 " FUNCTIONS
@@ -529,6 +577,25 @@ function! s:get_visual_selection()
   let lines[0] = lines[0][col1 - 1:]
   return join(lines, "\n")
 endfunction
+
+" Smart tab autocomplete
+function! SuperTab()
+    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+        return "\<Tab>"
+    else
+        return "\<C-n>"
+endfunction
+
+function! SwitchBg()
+    let bg = &background
+    if bg == 'dark'
+        set background=light
+    else
+        set background=dark
+    endif
+    "echom &bg
+endfunction
+nnoremap <leader>bg :call SwitchBg()<CR>
 
 function! GoCurrentFileDir()
     cd %:p:h
@@ -572,20 +639,8 @@ function! ToggleWhitespaces()
         hi redundant_spaces ctermbg=blue guibg=blue
         let g:isWhitespaceOn = 1
     endif
-
 endfunction
-
 nnoremap <leader>w :call ToggleWhitespaces()<CR>
-
-" make table with equal signs
-function! EvenEquals()
-    let lnum1 = getpos("'<")[1]
-    echom lnum1
-    let lnum2 = getpos("'>")[1]
-    while lnum1 <= lnum2
-        let lnum1 += 1
-    endwhile
-endfunction
 
 " foldmethod: manual <-> syntax
 function! SetFoldmethod()
@@ -654,13 +709,9 @@ function! OpenOther()
         endif
     endif
 endfunction
-
 nnoremap <leader>oo :call OpenOther()<CR>
 
 " Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -679,6 +730,8 @@ function! VisualSelection(direction, extra_filter) range
     let @" =
     l:saved_reg
 endfunction
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " Make home session
 function! MkHomeSes(name)
@@ -750,3 +803,4 @@ function! Csc()
 endfunction
 command! Csc call Csc()
 """""""""""""""""""""""""""""
+nnoremap <leader><leader> :noh<CR>:pc<CR>
