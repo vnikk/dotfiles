@@ -4,6 +4,7 @@ function normal() {
     ln -s -f $PWD/zshrc ~/.zshrc
     ln -s -f $PWD/vimrc ~/.vimrc
     ln -s -f $PWD/ideavimrc ~/.ideavimrc
+    # TODO link appr
     ln -s -f $PWD/tmux_work.conf ~/.tmux.conf
 }
 
@@ -16,7 +17,8 @@ function fasd() {
 
 function term() {
     # sets colorschemes for terminal
-    bash -c  "$(wget -qO- https://git.io/vQgMr)"
+    #bash -c  "$(wget -qO- https://git.io/vQgMr)"
+    :
 }
 
 function colors() {
@@ -53,12 +55,14 @@ function gitalias() {
 
 function ohmyzsh() {
     echo installing ohmyzsh
-    `which curl` || sudo apt install curl
+    which curl 1>/dev/null || sudo apt install curl
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 function install_folder() {
     if [ ! -d $1 ]; then
+        echo install
+        echo "${@:5}"
         eval "${@:5}"
     else
         echo $1 already installed
@@ -66,16 +70,29 @@ function install_folder() {
 }
 
 function git_install() {
-    install_folder ${@: -1} $@
+    DIR=${@: -1}
+    if [ ! -d $DIR ]; then
+        eval "${@}"
+    else
+        echo $DIR already installed
+    fi
 }
 
 function other() {
     mkdir -p ~/.vim/sessions
+    mkdir -p ~/.vim/bundle
+    mkdir -p ~/.install
+
+    which vim 1>/dev/null || sudo apt install -y vim-gtk3
+    which zsh 1>/dev/null || sudo apt install -y zsh
+    which tmux 1>/dev/null || sudo apt install -y tmux
 
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    vim +PluginInstall +qall
+    #vim --noplugin -u NONE +PluginInstall +qall
+    # is broken. have to skip errors
+    vim --noplugin +PluginInstall +qall
 
-    install_folder ~/.oh-my-zsh `which curl` && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    install_folder ~/.oh-my-zsh $(which curl) && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
     git_install git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.install/zsh-syntax-highlighting
     chsh -s /bin/zsh
@@ -84,9 +101,11 @@ function other() {
     git_install git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
     mkdir -p ~/.oh-my-zsh/themes
-    git_install git clone https://github.com/bhilburn/powerlevel9k ~/.oh-my-zsh/themes/powerlevel9k
+    git_install git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.install/powerlevel10k
 
-    curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+    if [ ! -f ~/.git-prompt.sh ]; then
+        curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
+    fi
     git_install git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux/themes
 
     cp ees.zsh-theme ~/.oh-my-zsh/custom/themes/
@@ -99,7 +118,13 @@ function other() {
     #Cscope
 }
 
+function reminder() {
+    echo REMINDER:
+    echo copy content of surf.js to ff
+}
+
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    which curl 1>/dev/null || sudo apt install curl
     case $1 in
         'colors') colors;;
         'normal') normal;;
@@ -107,7 +132,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'term') term;;
         'gitalias') gitalias;;
         'ohmyzsh') ohmyzsh;;
-        *) colors; other; normal; gitalias; term
+        *) colors; other; normal; gitalias; term; reminder
     esac
 fi
 

@@ -63,6 +63,7 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
+Plugin 'dense-analysis/ale'
 
 "Plugin 'gilligan/vim-lldb'
 "TRY:
@@ -95,8 +96,9 @@ nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
 "Kite
-nmap <silent> <buffer> gK :KiteDocsAtCursor<CR>
-nnoremap <leader>k :KiteDocsAtCursor<CR>
+"nmap <silent> <buffer> gK :KiteDocsAtCursor<CR>
+"nnoremap <leader>k :KiteDocsAtCursor<CR>
+"set statusline=%<%f\ %n\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 "YouCompleteMe
 nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
@@ -188,7 +190,6 @@ set numberwidth=4
 set number
 set noshowmode
 set cursorline
-set statusline=%<%f\ %n\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 set rulerformat=#%n\ %l,%c%V%=%P
 set splitbelow
@@ -236,7 +237,12 @@ let base16colorspace=256
 "set background=dark
 syntax on "has to be before colorscheme
 
-colorscheme gruvbox
+try
+    colorscheme gruvbox
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme balancees
+endtry
+
 set background=dark
 " Fixes new tmux config pane in vim
 if &term =~# '256color' && ( &term =~# '^screen'  || &term =~# '^tmux'  )
@@ -515,6 +521,14 @@ map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Navigate quickfix list
 noremap <silent> <leader>] :cn<CR>zz
 noremap <silent> <leader>[ :cp<CR>zz
+
+" Markdown specific
+filetype plugin on
+autocmd FileType markdown source expand("~/.dotfiles/md-settings.vim")
+augroup MD_settings
+    "the command below execute the script for the specific filetype C
+augroup END
+
 
 """"""""""""""""""""""""""""""
 " FUNCTIONS

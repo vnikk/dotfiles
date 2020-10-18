@@ -1,19 +1,20 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
 export ZSH=~/.oh-my-zsh
 export EDITOR=vim
-export PATH=$PATH:~/.install/fasd/bin
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
+plugins=(git git-extras z per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
@@ -173,7 +174,8 @@ gt() {
         --preview 'git show --color=always {} | head -'$LINES
 }
 # TODO
-#bindkey '' '$(gt)'
+#bindkey '' '$(gt)
+#'
 
 fbr() {
   local branches branch
@@ -260,7 +262,10 @@ ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 alias gdc='git diff --cached'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# P10K
+source ~/.install/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
