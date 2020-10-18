@@ -199,6 +199,7 @@ alias gc="git commit -v"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64/
 alias act='source /home.stud/viazomyk/workspace/venv/bin/activate'
 alias ipython='act && ipython'
+alias slp='systemctl suspend'
 function wcl { cat $1 | wc -l; }
 
 # >>> conda initialize >>>
