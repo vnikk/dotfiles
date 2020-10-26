@@ -159,7 +159,7 @@ nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
 "YouCompleteMe
-nnoremap <leader>gd :tab YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
 
 " Vim stacktrace
 let g:unstack_mapkey='<leader>ss'
