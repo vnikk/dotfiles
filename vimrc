@@ -303,6 +303,7 @@ match redundant_spaces  /\s\+\%#\@<!$/
 let base16colorspace=256
 "set background=dark
 syntax on "has to be before colorscheme
+set synmaxcol=5000
 
 colorscheme gruvbox
 set background=dark
@@ -377,13 +378,9 @@ command! W w !sudo tee % > /dev/null
 " <C-[> is free to map
 
 " Run ctags
-" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f .<CR>
 "TODO work in tmux
-if isdirectory(expand("~/danube"))
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/danube/tags<CR>
-else
-    map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f ~/tags<CR>
-endif
+nmap <leader>t :!ctags -R ./.tags<CR>
 
 " Basic
 vnoremap < <gv
@@ -502,7 +499,6 @@ nnoremap <leader>j J
 " TODO
 "%!python -m json.tool
 
-nnoremap <leader><leader> :noh<CR>:pc<CR>
 " TODO immediate ESC
 "nnoremap <esc>^[ <esc>^[
 
@@ -526,7 +522,7 @@ inoremap <C-t> <Esc>:tabnew
 nmap <leader>ow <C-w>T
 nmap <leader>f <C-w>gf
 nmap <leader>od gD:vs<CR><C-W>W<C-o>
-nmap <leader>t :TagbarToggle<CR>
+"nmap <leader>t :TagbarToggle<CR>
 
 " remove trailing whitespace
 noremap <silent> <leader>rw :%s/\s\+$//e<CR>
