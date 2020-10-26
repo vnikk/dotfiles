@@ -4,16 +4,13 @@ export ZSH=~/.oh-my-zsh
 export EDITOR=vim
 export PATH=$PATH:~/.install/fasd/bin
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export KEYTIMEOUT=1
 
-plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
+#tmux globalias
+plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle vundle zsh_reload virtualenv )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
@@ -30,8 +27,6 @@ elif [ -f ~/.config/z_work.sh ]; then
 fi
 source $LOCALFILE
 
-#TODO move home zalias to z_home
-
 if [ -f ~/.dotfiles/common.sh ]; then
     source ~/.dotfiles/common.sh
 fi
@@ -39,14 +34,9 @@ fi
 # TODO why here?
 source $ZSH/oh-my-zsh.sh
 source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.dotfiles/forgit.plugin.zsh
 
-newfunz()
-{
-    eval "$1() { $2 }"
-    echo "$1() { $2 }" >> $LOCALFILE
-}
-
-newfuns()
+newfun()
 {
     eval "$1() { $2 }"
     echo "$1() { $2 }" >> $LOCALFILE
@@ -62,6 +52,7 @@ newalias()
     echo "alias $1='$2'" >> ~/.zshrc;
     alias $1="$2"
 }
+alias nas=newalias
 
 newaliaz()
 {
@@ -72,25 +63,25 @@ newaliaz()
     fi
     alias $1="$2"
 }
-
-alias nas=newalias
 alias naz=newaliaz
-
-pinst()
-{
-    conda install $1 || pip install $1
-}
 
 background()
 {
     "$@" 2>/dev/null &
 }
 
+falias()
+{
+    print -z $(alias | fzf)
+}
+alias fali=falias
+
 aliaz()
 {
     alias | grep $1
 }
 
+# TODO fzf
 gmod()
 {
     git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1
@@ -101,6 +92,7 @@ gmodc()
     git checkout $(git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1)
 }
 
+# TODO TG
 vks() {
     node $HOME/my/vk_send/vk_send.js $* &
 }
@@ -138,7 +130,6 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-export KEYTIMEOUT=1
 
 # FASD {
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
@@ -196,6 +187,19 @@ fco() {
         --ansi) || return
   git checkout $(awk '{print $2}' <<<"$target" )
 }
+
+# doesn't let run vi/vim
+#v() {
+    #[ $# -gt 0 ] && fasd -f -e ${EDITOR} "$*" && return
+    #local file
+    #file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vi "${file}" || return 1
+#}
+
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
 #####################
 
 # alt-x : insert last command result
@@ -212,7 +216,6 @@ bindkey -s 'u' 'cd ..
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias eali="vi ~/.zaliasrc"
 alias l='ls -G'
 alias la='ls -Ga'
 alias sz="source ~/.zshrc"
@@ -224,10 +227,15 @@ alias glgp="git pull --no-edit && git push"
 alias gs="git stash"
 alias gsl="git stash list"
 alias gsp="git stash pop"
+alias gdc='git diff --cached'
+alias gpp='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
+alias gapac="gapa && print -z gc -m \'"
+alias gad='git ls-files  -m --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
 alias mkdir='mkdir -pv'
 alias rgj='rg --type=js '
 alias rgp='rg --type=cpp '
-alias savetheme="echo \"\$RANDOM_THEME\" >> ~/.dotfiles/zsh_themes"
+alias dot='cd ~/.dotfiles'
+alias dow='cd ~/Downloads'
 alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
@@ -239,17 +247,14 @@ fi
 alias -- -='popd'
 alias -g VI=" | vi -"
 alias -g ~="~/"
-alias -g ~.="~/."
+#alias -g '~.'="~/."
 #no work
 alias shutd=sudo swapoff -a && systemctl poweroff=''
 
 export JUPYTER_CONFIG_DIR=~/.dotfiles/jupyter
 alias ex='extract'
-alias dow='cd ~/Downloads'
 #zprof
 alias debug_zsh='zsh -xv 2>&1 | ts -i "%.s" > zsh_startup.log'
-
-alias gapac="gapa && print -z gc -m \'"
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=138" #"fg=#87af87" #",bg=cyan,bold,underline"
 typeset -A ZSH_HIGHLIGHT_STYLES
@@ -258,9 +263,11 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
-alias gdc='git diff --cached'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias chx='chmod +x '
+alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
+alias remember-key='ssh-add ~/.ssh/id_rsa'
