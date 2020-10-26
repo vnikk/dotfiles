@@ -72,6 +72,7 @@ Plugin 'khzaw/vim-conceal'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
+"Plugin 'dense-analysis/ale'
 
 "Plugin 'gilligan/vim-lldb'
 "TRY:
@@ -305,7 +306,12 @@ let base16colorspace=256
 syntax on "has to be before colorscheme
 set synmaxcol=5000
 
-colorscheme gruvbox
+try
+    colorscheme gruvbox
+catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme balancees
+endtry
+
 set background=dark
 " Fixes new tmux config pane in vim
 if &term =~# '256color' && ( &term =~# '^screen'  || &term =~# '^tmux'  )
@@ -471,6 +477,7 @@ nnoremap ) vib<Esc>
 
 " Characters / selections shifting
 nnoremap <C-h> hxph
+" <C-l> could redraw a screen
 nnoremap <C-l> xp
 vnoremap <C-h> xhP`[v`]
 vnoremap <C-l> xp`[v`]
@@ -560,9 +567,27 @@ noremap <silent> <leader>[ :cp<CR>zz
 " Commands
 command Cnt :%s///gn
 
+" Markdown specific
+filetype plugin on
+autocmd FileType markdown source expand("~/.dotfiles/md-settings.vim")
+augroup MD_settings
+    "the command below execute the script for the specific filetype C
+augroup END
+
 """"""""""""""""""""""""""""""
 " FUNCTIONS
 """"""""""""""""""""""""""""""
+
+" Google selection
+function! s:VGoogle()
+    let temp = @@
+    norm! vgvy
+    let s:search = substitute(escape(@", '\'), '\n', '\\n', 'g')
+    execute 'silent :!open --new -a "Google Chrome" --args ' . '"http://google.com/search?q='.s:search.'"'
+    let @@ = temp
+endfunction
+vnoremap <silent> <leader>gg :call <SID>VGoogle()<CR>:redraw!<CR>
+
 " IN PROGRESS
 function! s:get_visual_selection()
   " Why is this not a built-in Vim script function?!
@@ -783,7 +808,7 @@ augroup END
 function! s:VSetSearch()
     let temp = @@
     norm! gvy
-    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    "let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
     let @@ = temp
 endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
