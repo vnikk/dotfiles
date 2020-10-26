@@ -1,6 +1,6 @@
 {
   "python.pythonPath": "/anaconda3/bin/python3",
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "black",
   // "python.formatting.yapfArgs": ["--style", "{BASED_ON_STYLE: google, split_before_logical_operator: True, split_penalty_arithmetic_operator: 0, split_penalty_logical_operator: 0, SPLIT_PENALTY_AFTER_OPENING_BRACKET: '1000000'}"],
   "git.autofetch": true,
   "vim.debug.loggingLevelForConsole": "debug",
@@ -11,6 +11,11 @@
   "vim.sneak": true,
   "vim.sneakUseIgnorecaseAndSmartcase": true,
   "vim.camelCaseMotion.enable": true,
+  "vim.useCtrlKeys": true,
+  "vim.handleKeys": {
+    "<C-f>": false,
+    "<C-j>": true
+  },
   "vim.insertModeKeyBindings": [
     {
       "before": [
@@ -23,6 +28,22 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "ddp"
+      ]
+    },
+    {
+      "before": [
+        "<C-r>"
+      ],
+      "after": [
+        ":q"
+      ]
+    },
     {
       "before": [
         ">"
@@ -127,9 +148,6 @@
   "vim.leader": "<space>",
   "vim.visualstar": true,
   "vim.debug.silent": false,
-  "vim.handleKeys": {
-    "<C-f>": false
-  },
   "[python]": {},
   "extensions.ignoreRecommendations": false,
   "files.autoSave": "afterDelay",
@@ -148,7 +166,8 @@
   "vscode_custom_css.policy": true,
   "vscode_custom_css.statusbar": false,
   "gitlens.statusBar.enabled": false,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "editor.fontFamily": "'Fira Code', Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "git.suggestSmartCommit": false
 }
