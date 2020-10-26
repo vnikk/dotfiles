@@ -1,0 +1,32 @@
+#set folder=imaps://imap.mail.yahoo.com/
+#set imap_user=email@yahoo.com
+#set spoolfile=+INBOX
+##mailboxes=+INBOX
+#unset imap_passive
+
+
+source "gpg -dq ~/.mutt/passwords.gpg |"
+#set imap_user = "email@yahoo.com"
+#set imap_pass = "password"
+#set smtp_url = "smtp://$imap_user:$imap_pass@smtp.mail.yahoo.com:587"
+set smtp_url = "smtp://smtp.mail.yahoo.com:587"
+#set smtp_pass = "password"
+#set from = "username@yahoo.com"
+set realname = "Your real name"
+set folder = "imaps://imap.mail.yahoo.com:993"
+set spoolfile = "+INBOX"
+set postponed="+[Gmail]/Drafts"
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+set move = no
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+set imap_check_subscribed
+
+# Some tweaks
+set imap_keepalive = 300
+set mail_check = 90
+set timeout = 15
+set charset = iso-8859-1
+set ssl_starttls = yes
