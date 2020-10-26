@@ -28,7 +28,3 @@ if [ $(uname) = "Linux" ]; then
         gsettings set org.gnome.desktop.session idle-delay 0
     }
 fi
-
-if [ -f ~/shell/xcv ]; then
-    source ~/shell/xcv 1>/dev/null
-fi
