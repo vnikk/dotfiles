@@ -5,6 +5,6 @@
     // *************************************
 
     // Selected Theme
-    // [missing schema description]
-    "theme": "Material Darker"
+    // Application-level visual styling theme
+    "theme": "JupyterLab Dark"
 }

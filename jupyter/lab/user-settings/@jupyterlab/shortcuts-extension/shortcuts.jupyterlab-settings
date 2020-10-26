@@ -1,0 +1,46 @@
+{
+    "shortcuts": [
+//         {
+//             "command": "notebook:merge-cells",
+//             "keys": [
+//                 "Ctrl Shift F"
+//             ],
+//             "selector": "body"
+//         },
+        {
+            "command": "documentsearch:start",
+            "keys": [
+                "Ctrl Shift F"
+            ],
+            "selector": "body"
+        },
+        {
+            "command": "notebook:run-all-below",
+            "keys": [
+                "Ctrl Shift R"
+            ],
+            "selector": "body"
+        },
+        {
+            "command": "notebook:run-all-above",
+            "keys": [
+                "Ctrl Shift A"
+            ],
+            "selector": "body"
+        },
+        {
+            "command": "kernelmenu:change",
+            "keys": [
+                "Ctrl Shift K"
+            ],
+            "selector": "body"
+        },
+        {
+            "command": "runmenu:restart-and-run-all",
+            "keys": [
+                "Ctrl Accel R"
+            ],
+            "selector": "[data-jp-code-runner]"
+        }
+    ]
+}

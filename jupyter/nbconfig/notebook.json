@@ -57,6 +57,6 @@
   },
   "Notebook": {
     "Toolbar": true,
-    "Header": false
+    "Header": true
   }
 }
