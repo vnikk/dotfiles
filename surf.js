@@ -28,9 +28,23 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
     });
 });
 
+// Google
+mapkey('<Space>1', '#1get first google result', function () {
+    document.querySelectorAll('.r')[0].children[0].click();
+}, {domain: /google\.com/});
+mapkey('<Space>2', '#1get first google result', function () {
+    document.querySelectorAll('.r')[1].children[0].click();
+}, {domain: /google\.com/});
+mapkey('<Space>3', '#1get first google result', function () {
+    document.querySelectorAll('.r')[2].children[0].click();
+}, {domain: /google\.com/});
+mapkey('<Space>4', '#1get first google result', function () {
+    document.querySelectorAll('.r')[3].children[0].click();
+}, {domain: /google\.com/});
+
 addSearchAliasX('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
 
-addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=%s');
+addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=');
 
 addSearchAliasX('w', 'thesaurus', 'https://thesaurus.com/browse/');
 
