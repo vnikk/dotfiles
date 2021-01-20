@@ -95,6 +95,8 @@ Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+packadd! vimspector
+
 
 " Setting leader here so it works for plugins
 let mapleader = "\<Space>"
@@ -103,10 +105,21 @@ let mapleader = "\<Space>"
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+" vim-test; 'vimterminal'
+let test#strategy = 'dispatch'
+let g:dispatch_compilers = {}
+let g:dispatch_compilers['./vendor/bin/'] = ''
+let g:dispatch_compilers['pytest'] = 'AWS_PROFILE=scited SCITED_ENV=DEV pytest'
+
+" Vimspector
+let g:vimspector_enable_mappings = 'HUMAN'
+
 " fzf
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+
 
 "Vim Reminder Tips
 call reminder_tips#Setup()
@@ -130,6 +143,7 @@ AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next P
 AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
 AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
 AddReminderTip 'Go to Current file Directory: <leader>gcd'
+AddReminderTip ':Files to search files by name (fzf)'
 
 " WindowSwap: want immediate <leader>p for paste
 let g:windowswap_map_keys = 0
@@ -205,10 +219,14 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_confirm_extra_conf = 0
 
 "auto-pairs
+"let g:AutoPairsFlyMode = 1
 let g:AutoPairsUseInsertedCount = 1
+let g:AutoPairsShortcutJump = '<M-n>'
+"let g:AutoPairsShortcutBackInsert = '<M-b>'
 noremap <leader>ap :call AutoPairsToggle()<CR>
 inoremap <C-e> <C-R>=AutoPairsFastWrap()<CR>
-inoremap <C-]> <C-R>=AutoPairsShortcutJump()<CR>
+"inoremap <C-]> <C-R>=AutoPairsJump()<CR>
+"inoremap <C-]> <esc>:call AutoPairsJump()<CR>i
 
 " Omni
 let OmniCpp_NamespaceSearch = 2 " must set 'path' var properly
