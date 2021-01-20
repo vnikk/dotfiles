@@ -401,7 +401,7 @@ command! W w !sudo tee % > /dev/null
 """""""""""""
 
 """""""""""""""""""""""""""""
-" MAPPING
+" MAPPINGS
 """""""""""""""""""""""""""""
 " <C-[> is free to map
 
@@ -413,13 +413,14 @@ nmap <leader>t :!ctags -R ./.tags<CR>
 " Basic
 vnoremap < <gv
 vnoremap > >gv
+vnoremap J j
 nnoremap S :w<CR>
 nnoremap zx :q<CR>
 inoremap jk <ESC>
 inoremap JK <ESC>
 inoremap jK <ESC>
 inoremap Jk <ESC>
-nnoremap <leader>q :set number!<CR>
+"nnoremap <leader>q :set number!<CR>
 nnoremap <leader>sp :set syntax=python<CR>
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
@@ -429,7 +430,8 @@ vnoremap <CR> :
 noremap <silent> zp "+[p
 nnoremap <silent> zy "+yy
 vnoremap <silent> zy "+y
-nnoremap <leader>rc :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>vi :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
+nnoremap <leader>vs :source $MYVIMRC<cr>
 nnoremap <leader>oz :tabe ~/.zshrc<CR>
 nnoremap <leader>ozz :tabe ~/.config/z_*<CR>
 nnoremap <leader>sr :source $MYVIMRC<cr>
