@@ -867,7 +867,7 @@ augroup END
 function! s:VSetSearch()
     let temp = @@
     norm! gvy
-    "let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
     let @@ = temp
 endfunction
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
@@ -883,4 +883,6 @@ function! Csc()
 endfunction
 command! Csc call Csc()
 """""""""""""""""""""""""""""
-nnoremap <leader><leader> :noh<CR>:pc<CR>
+"nnoremap <leader><leader> :noh<CR>:pc<CR>
+nnoremap <leader>/ :execute "noh\|pc"<cr>
+
