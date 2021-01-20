@@ -46,6 +46,10 @@ addSearchAliasX('t', 'translate', 'https://translate.google.com/#view=home&op=tr
 
 addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=');
 
+mapkey('ol', '#8Open Search with alias l', function() {
+    Front.openOmnibar({type: "SearchEngine", extra: "l"});
+});
+
 addSearchAliasX('w', 'thesaurus', 'https://thesaurus.com/browse/');
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
