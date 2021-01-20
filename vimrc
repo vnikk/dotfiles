@@ -785,6 +785,12 @@ function! OpenOther()
 endfunction
 nnoremap <leader>oo :call OpenOther()<CR>
 
+function! OpenTest()
+    exe "vsplit" "test/test_".fnameescape(expand("%"))
+endfunction
+nnoremap <leader>ot :call OpenTest()<CR>
+"nnoremap <leader>ot :execute 'vs "test/test_"' . resolve(fnameescape(expand("%")))<CR>
+
 " Visual mode pressing * or # searches for the current selection
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
