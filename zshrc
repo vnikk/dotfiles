@@ -4,6 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+export POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
 
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
@@ -13,8 +14,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
 # fasd?
-# TODO you-should-use home
-plugins=(git git-extras z per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv globalias)
+# TODO home globalias
+plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -41,7 +42,6 @@ fi
 # TODO why here?
 source $ZSH/oh-my-zsh.sh
 source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.dotfiles/forgit.plugin.zsh
 
 newfun()
 {
@@ -97,6 +97,16 @@ gmod()
 gmodc()
 {
     git checkout $(git status | grep modified | tr -s ' ' | cut -f 2 -d ' ' | grep $1)
+}
+
+git_conflict()
+{
+    git status | pcregrep -Mo '(?s)(?=resolution..).*Changes' | grep : | cut -d ':' -f 2
+}
+
+conflict()
+{
+    git_conflict | xargs vi
 }
 
 # TODO TG
@@ -218,9 +228,12 @@ insert-last-command-output() {
 zle -N insert-last-command-output
 bindkey '^[x' insert-last-command-output
 
+# TODO why twice?
 source $ZSH/oh-my-zsh.sh
 #must be under "oh-my-zsh"
 bindkey -s 'u' 'cd ..
+'
+bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
@@ -240,8 +253,6 @@ alias gpp='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 alias gapac="gapa && print -z gc -m \'"
 alias gad='git ls-files  -m --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
 alias mkdir='mkdir -pv'
-alias rgj='rg --type=js '
-alias rgp='rg --type=cpp '
 alias dot='cd ~/.dotfiles'
 alias dow='cd ~/Downloads'
 alias .="source"
@@ -272,14 +283,15 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.dotfiles/forgit.plugin.zsh
 alias chx='chmod +x '
 alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
 
+eval "$(direnv hook zsh)"
+
 # P10K
-# TODO install home
-source ~/.install/powerlevel10k/powerlevel10k.zsh-theme
+# TODO install home Powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
