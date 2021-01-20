@@ -434,8 +434,8 @@ nnoremap <leader>vi :execute 'tabe ' . resolve(expand($MYVIMRC))<CR>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 nnoremap <leader>oz :tabe ~/.zshrc<CR>
 nnoremap <leader>ozz :tabe ~/.config/z_*<CR>
-nnoremap <leader>sr :source $MYVIMRC<cr>
 nnoremap <leader>os :tabe ~/.config/surf.js<CR>
+nnoremap <leader>i <C-w><S-t>
 
 "cnoremap <C-A> <HOME>
 cnoremap <C-a>  <Home>
