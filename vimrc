@@ -69,13 +69,17 @@ Plugin 'kreskij/vim-reminder-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'khzaw/vim-conceal'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
 "Plugin 'dense-analysis/ale'
+" TESTING
+Plugin 'vim-test/vim-test'
 
 "Plugin 'gilligan/vim-lldb'
 "TRY:
+"stefandtw/quickfix-reflector.vim
 "Plugin 'gisodal/vimgdb'
 "Plugin 'huawenyu/neogdb.vim'
 "http://www.vim.org/scripts/script.php?script_id=3039
@@ -84,7 +88,7 @@ Plugin 'stsewd/fzf-checkout.vim'
 "Plugin 'Rip-Rip/clang_complete'
 
 "if v:version >= 703 && has("patch598")
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
