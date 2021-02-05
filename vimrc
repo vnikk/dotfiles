@@ -175,6 +175,8 @@ map <Leader>, <Plug>(easymotion-prefix)
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :GBranches<CR>
+nnoremap <leader>ga :G add %<CR>
 
 "YouCompleteMe
 nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
