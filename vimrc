@@ -169,7 +169,7 @@ map <leader>vr :call VimuxRepeat()<CR>
 let g:slime_target = "tmux"
 
 " Easymotion
-map <Leader>, <Plug>(easymotion-prefix)
+map <leader><leader> <Plug>(easymotion-prefix)
 
 "Git (fugitive)
 nnoremap <leader>gc :Gcommit<CR>
