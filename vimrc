@@ -885,6 +885,12 @@ function! Csc()
 endfunction
 command! Csc call Csc()
 """""""""""""""""""""""""""""
+function! FilterScores()
+    %s/M\d\+ \(.\....\).*/\1/e
+    %y+
+endfunction
+command! FilterScores call FilterScores()
+"""""""""""""""""""""""""""""
 "nnoremap <leader><leader> :noh<CR>:pc<CR>
 nnoremap <leader>/ :execute "noh\|pc"<cr>
 
