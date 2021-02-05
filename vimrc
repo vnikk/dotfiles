@@ -179,7 +179,7 @@ nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>ga :G add %<CR>
 
 "YouCompleteMe
-nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
+nnoremap gd :tab YcmCompleter GoTo<CR>
 
 " Vim stacktrace
 let g:unstack_mapkey='<leader>ss'
