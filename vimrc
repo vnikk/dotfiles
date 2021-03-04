@@ -410,7 +410,7 @@ command! W w !sudo tee % > /dev/null
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f .<CR>
 "TODO work in tmux
-nmap <leader>t :!ctags -R ./.tags<CR>
+nmap <leader>t :!ctags -R -o .tags<CR>
 
 " Basic
 vnoremap < <gv
