@@ -177,6 +177,28 @@ nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>ga :G add %<CR>
+nnoremap <leader>ge :Gtabe 
+
+" Coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gn :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>r <plug>(coc-rename)
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
 
 "YouCompleteMe
 nnoremap gd :tab YcmCompleter GoTo<CR>
