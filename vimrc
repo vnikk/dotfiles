@@ -283,16 +283,17 @@ endfunction
 vnoremap <leader>ob :call OpenBrowser()<CR>
 
 "open vim repo
-function! OpnB()
+function! OpenGit()
     let s:var = trim(expand('<cWORD>'), "'")
     execute ":OpenBrowser http://github.com/" . s:var
 endfunction
-noremap <leader>ov :call OpnB()<CR>
+noremap <leader>ov :call OpenGit()<CR>
 
 "VimWiki
 let g:vimwiki_list = [{'path': '~/my/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<Leader>e'
+let g:vimwiki_global_ext = 0
 autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 " NERDCommenter
@@ -343,6 +344,9 @@ set shiftwidth=4
 set expandtab
 "?
 set autoindent
+set smartindent
+set smarttab
+set softtabstop=4
 
 " Smart search
 set hlsearch
@@ -366,8 +370,14 @@ let base16colorspace=256
 syntax on "has to be before colorscheme
 set synmaxcol=5000
 
+let g:python_highlight_all = 1
 try
-    colorscheme gruvbox
+    set termguicolors
+    let g:tokyonight_style = 'storm'
+    let g:tokyonight_disable_italic_comment = 1
+    colorscheme tokyonight
+    "colorscheme galaxian
+    "colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme balancees
 endtry
