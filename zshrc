@@ -150,6 +150,9 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 # }
 
 # if rebind this to s then l can be used in tmux
+# iterm2: this needs mapping of cmd or opt combination
+bindkey -s 's' 'gst
+'
 bindkey -s 'l' 'l
 '
 bindkey ' ' magic-space
