@@ -254,8 +254,8 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls -G'
-alias la='ls -Ga'
+alias l='ls'
+alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
 alias ez='vi ~/.zshrc'
