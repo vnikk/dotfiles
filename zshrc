@@ -23,11 +23,6 @@ ENABLE_CORRECTION="true"
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-alias fsx="xcv x"
-alias fsc="xcv c"
-alias fsv="xcv v"
-alias fsl="xcv l"
-
 if [ -f ~/.config/z_home.sh ]; then
     LOCALFILE=~/.config/z_home.sh
 elif [ -f ~/.config/z_work.sh ]; then
