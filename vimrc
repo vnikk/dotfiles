@@ -412,10 +412,14 @@ if has('gui_running')
     au GUIEnter * simalt ~x
 endif
 
+set tags=./.tags,./tags,~/.tags
+
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_extensions = ['tag', 'mixed']
 
 " Movement
 " backspace and arrows cross line boundaries
