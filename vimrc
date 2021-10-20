@@ -271,6 +271,17 @@ let g:syntastic_python_checkers = ['pyflakes']
 let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang.so"
 
 "OpenBrowser
+"open link in browser
+function! OpenBrowser()
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:link = @"
+    let @" = l:saved_reg
+    execute ":OpenBrowser " . l:link
+endfunction
+vnoremap <leader>ob :call OpenBrowser()<CR>
+
 "open vim repo
 function! OpnB()
     let s:var = trim(expand('<cWORD>'), "'")
