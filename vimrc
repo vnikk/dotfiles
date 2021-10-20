@@ -230,6 +230,9 @@ let g:unstack_mapkey='<leader>ss'
 if filereadable(expand("~/.vim/otherrc"))
     source ~/.vim/otherrc
 endif
+if filereadable(expand("~/.local/vimrc"))
+    source ~/.local/vimrc
+endif
 
 if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
