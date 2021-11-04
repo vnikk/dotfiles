@@ -111,6 +111,7 @@ function other() {
     cp ees.zsh-theme ~/.oh-my-zsh/custom/themes/
 
     mkdir -p ~/.tmux/plugins/
+    git_install git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
     git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
 
