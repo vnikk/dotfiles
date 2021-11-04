@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 export POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
@@ -288,6 +290,7 @@ source ~/.dotfiles/forgit.plugin.zsh
 alias chx='chmod +x '
 alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
+alias python=python3
 
 eval "$(direnv hook zsh)"
 
