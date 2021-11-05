@@ -23,7 +23,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -72,7 +72,7 @@
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -107,12 +107,14 @@ font:
   normal:
      #Font family
 
-     Default:
-       - MesloLGS NF, Regular
+     #Default:
+       #- MesloLGS NF, Regular
+       #- MesloLGS NF, Regular
+       #- Menlo
        #- (macOS) Menlo
        #- (Linux/BSD) monospace
        #- (Windows) Consolas
-    #family: monospace
+    family: "MesloLGS NF"
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
