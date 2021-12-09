@@ -17,67 +17,81 @@ endif
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'mhinz/vim-startify'
-Plugin 'kien/ctrlp.vim'
+" Themes
 Plugin 'morhetz/gruvbox'
-"Plugin 'majutsushi/tagbar'
+Plugin 'ghifarit53/tokyonight-vim'
+Plugin 'evprkr/galaxian-vim'
+
+" File management
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdTree'
+"Plugin 'majutsushi/tagbar'
+
+" Syntax
 "TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
+
+" Coding
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Bundle 'jistr/vim-nerdtree-tabs'
-
-Plugin 'tpope/vim-dispatch'
-
-"Plugin 'ludovicchabant/vim-gutentags'
-"https://dmitryfrank.com/articles/vim_project_code_navigation
-"Plugin 'vim-scripts/indexer.tar.gz'
-"Plugin 'vim-scripts/vimprj'
-"Plugin 'vim-scripts/DfrankUtil'
-
-Plugin 'easymotion/vim-easymotion'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'vim-test/vim-test'
+Plugin 'tpope/vim-surround'
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'codota/tabnine-vim'
+"Plugin 'ludovicchabant/vim-gutentags'
+
+" UI
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Bundle 'jistr/vim-nerdtree-tabs'
+
+" Util
+Plugin 'mhinz/vim-startify'
+Plugin 'tpope/vim-dispatch'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
+Plugin 'easymotion/vim-easymotion'
 "Plugin 'junegunn/vim-easy-align'
 "TODO lin only
 "Plugin 'KabbAmine/vCoolor.vim'
 "Plugin 'ervandew/supertab'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
-Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
-Plugin 'wesQ3/vim-windowswap'
+"Plugin 'wesQ3/vim-windowswap'
 "Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'urbainvaes/vim-tmux-pilot'
 Plugin 'tommcdo/vim-exchange'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
-Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'psf/black'
 Plugin 'kreskij/vim-reminder-tips'
+"Plugin 'michaelb/vim-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
-Plugin 'khzaw/vim-conceal'
+"Plugin 'khzaw/vim-conceal'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
 "Plugin 'dense-analysis/ale'
-" TESTING
-Plugin 'vim-test/vim-test'
 
 "Plugin 'gilligan/vim-lldb'
+"https://dmitryfrank.com/articles/vim_project_code_navigation
+"Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/vimprj'
+"Plugin 'vim-scripts/DfrankUtil'
 "TRY:
 "stefandtw/quickfix-reflector.vim
 "Plugin 'gisodal/vimgdb'
@@ -87,8 +101,11 @@ Plugin 'vim-test/vim-test'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
+Plugin 'neoclide/coc.nvim'
+" run :CocInstall coc-pyright
+
 "if v:version >= 703 && has("patch598")
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
@@ -177,7 +194,7 @@ nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :GBranches<CR>
 nnoremap <leader>ga :G add %<CR>
-nnoremap <leader>ge :Gtabe 
+nnoremap <leader>gt :Gtabe 
 
 " Coc
 nmap <silent> gd <Plug>(coc-definition)
@@ -197,11 +214,16 @@ function! s:show_documentation()
 endfunction
 nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+
 
 
 
 "YouCompleteMe
-nnoremap gd :tab YcmCompleter GoTo<CR>
+"nnoremap gd :tab YcmCompleter GoToType<CR>
+"nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
+"nnoremap gr :tab YcmCompleter GoToReferences<CR>
+"nnoremap <leader>r :YcmCompleter RefactorRename 
 
 " Vim stacktrace
 let g:unstack_mapkey='<leader>ss'
