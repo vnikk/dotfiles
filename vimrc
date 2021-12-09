@@ -17,55 +17,67 @@ endif
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'mhinz/vim-startify'
-Plugin 'kien/ctrlp.vim'
+" Themes
 Plugin 'morhetz/gruvbox'
-"Plugin 'majutsushi/tagbar'
+Plugin 'ghifarit53/tokyonight-vim'
+Plugin 'evprkr/galaxian-vim'
+
+" File management
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdTree'
+"Plugin 'majutsushi/tagbar'
+
+" Syntax
 "TODO does it work with ycm?
 Plugin 'scrooloose/syntastic'
+
+" Coding
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Bundle 'jistr/vim-nerdtree-tabs'
-
-Plugin 'tpope/vim-dispatch'
-
-"Plugin 'ludovicchabant/vim-gutentags'
-"https://dmitryfrank.com/articles/vim_project_code_navigation
-"Plugin 'vim-scripts/indexer.tar.gz'
-"Plugin 'vim-scripts/vimprj'
-"Plugin 'vim-scripts/DfrankUtil'
-
-Plugin 'easymotion/vim-easymotion'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'vim-test/vim-test'
+Plugin 'tpope/vim-surround'
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'codota/tabnine-vim'
+"Plugin 'ludovicchabant/vim-gutentags'
+
+" UI
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Bundle 'jistr/vim-nerdtree-tabs'
+
+" Util
+Plugin 'mhinz/vim-startify'
+Plugin 'tpope/vim-dispatch'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
+Plugin 'easymotion/vim-easymotion'
 "Plugin 'junegunn/vim-easy-align'
 "TODO lin only
 "Plugin 'KabbAmine/vCoolor.vim'
 "Plugin 'ervandew/supertab'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
-Plugin 'jiangmiao/auto-pairs'
 "Plugin 'auto-pairs-gentle'
-Plugin 'wesQ3/vim-windowswap'
+"Plugin 'wesQ3/vim-windowswap'
 "Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'urbainvaes/vim-tmux-pilot'
 Plugin 'tommcdo/vim-exchange'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'tpope/vim-commentary'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
-Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'psf/black'
 Plugin 'kreskij/vim-reminder-tips'
+"Plugin 'michaelb/vim-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 Plugin 'jremmen/vim-ripgrep'
@@ -73,10 +85,12 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
 "Plugin 'dense-analysis/ale'
-" TESTING
-Plugin 'vim-test/vim-test'
 
 "Plugin 'gilligan/vim-lldb'
+"https://dmitryfrank.com/articles/vim_project_code_navigation
+"Plugin 'vim-scripts/indexer.tar.gz'
+"Plugin 'vim-scripts/vimprj'
+"Plugin 'vim-scripts/DfrankUtil'
 "TRY:
 "stefandtw/quickfix-reflector.vim
 "Plugin 'gisodal/vimgdb'
@@ -86,8 +100,11 @@ Plugin 'vim-test/vim-test'
 "Plugin 'vim-scripts/OmniCppComplete'
 "Plugin 'Rip-Rip/clang_complete'
 
+Plugin 'neoclide/coc.nvim'
+" run :CocInstall coc-pyright
+
 "if v:version >= 703 && has("patch598")
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " All of your Plugins must be added before the following line
@@ -174,9 +191,38 @@ map , <Plug>(easymotion-prefix)
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :GBranches<CR>
+nnoremap <leader>ga :G add %<CR>
+nnoremap <leader>gt :Gtabe 
+
+" Coc
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gn :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>r <plug>(coc-rename)
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+
+
+
 
 "YouCompleteMe
-nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
+"nnoremap gd :tab YcmCompleter GoToType<CR>
+"nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
+"nnoremap gr :tab YcmCompleter GoToReferences<CR>
+"nnoremap <leader>r :YcmCompleter RefactorRename 
 
 " Vim stacktrace
 let g:unstack_mapkey='<leader>ss'
@@ -204,6 +250,9 @@ let g:unstack_mapkey='<leader>ss'
 " system specific
 if filereadable(expand("~/.vim/otherrc"))
     source ~/.vim/otherrc
+endif
+if filereadable(expand("~/.local/vimrc"))
+    source ~/.local/vimrc
 endif
 
 if !exists("g:ycm_semantic_triggers")
@@ -246,17 +295,29 @@ let g:syntastic_python_checkers = ['pyflakes']
 let g:clang_library_path = "/usr/lib/llvm-3.8/lib/libclang.so"
 
 "OpenBrowser
+"open link in browser
+function! OpenBrowser()
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:link = @"
+    let @" = l:saved_reg
+    execute ":OpenBrowser " . l:link
+endfunction
+vnoremap <leader>ob :call OpenBrowser()<CR>
+
 "open vim repo
-function! OpnB()
+function! OpenGit()
     let s:var = trim(expand('<cWORD>'), "'")
     execute ":OpenBrowser http://github.com/" . s:var
 endfunction
-noremap <leader>ov :call OpnB()<CR>
+noremap <leader>ov :call OpenGit()<CR>
 
 "VimWiki
 let g:vimwiki_list = [{'path': '~/my/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_map_prefix = '<Leader>e'
+let g:vimwiki_global_ext = 0
 autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 " NERDCommenter
@@ -307,6 +368,9 @@ set shiftwidth=4
 set expandtab
 "?
 set autoindent
+set smartindent
+set smarttab
+set softtabstop=4
 
 " Smart search
 set hlsearch
@@ -330,8 +394,14 @@ let base16colorspace=256
 syntax on "has to be before colorscheme
 set synmaxcol=5000
 
+let g:python_highlight_all = 1
 try
-    colorscheme gruvbox
+    set termguicolors
+    let g:tokyonight_style = 'storm'
+    let g:tokyonight_disable_italic_comment = 1
+    colorscheme tokyonight
+    "colorscheme galaxian
+    "colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme balancees
 endtry
@@ -366,10 +436,14 @@ if has('gui_running')
     au GUIEnter * simalt ~x
 endif
 
+set tags=./.tags,./tags,~/.tags
+
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_extensions = ['tag', 'mixed']
 
 " Movement
 " backspace and arrows cross line boundaries
@@ -385,8 +459,8 @@ set fdo-=search
 " Don't start new comment on a new line
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
-set tags=./.tags,./tags,~/.tags
 
+set wildignorecase
 set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.git                             " Version control
@@ -410,7 +484,7 @@ command! W w !sudo tee % > /dev/null
 " Run ctags
 " map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q+f -f .<CR>
 "TODO work in tmux
-nmap <leader>t :!ctags -R ./.tags<CR>
+nmap <leader>t :!ctags -R -o .tags<CR>
 
 " Basic
 vnoremap < <gv
@@ -450,9 +524,6 @@ cnoremap <M-d>  <S-right><Delete>
 cnoremap qq q!
 "cnoremap <C-g>  <C-c>noremap <C-D> <DEL>
 cabbrev h tab help
-
-"TODO testing default global yank
-"nnoremap Y y$
 
 "System clipboard interaction
 if system("uname -s") =~ "Linux"
@@ -557,7 +628,7 @@ nmap <leader>od gD:vs<CR><C-W>W<C-o>
 "nmap <leader>t :TagbarToggle<CR>
 
 " remove trailing whitespace
-noremap <silent> <leader>rw :%s/\s\+$//e<CR>
+noremap <silent> <leader>wr :%s/\s\+$//e<CR>
 
 " new tab for search with mappings
 nnoremap <leader>m :tabe<CR>:redir @"><CR>:silent map<CR>:redir END<CR>p
@@ -768,30 +839,31 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-" Source <-> Header
+" Source <-> Header; or Source <-> Test
 function! OpenOther()
     " expand("%:p:r:s?src?include?")
     " :e %<.cpp
-    if expand("%:e") == "cpp"
+    let l:ext = expand("%:e")
+    if l:ext == "cpp"
         exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
-    elseif expand("%:e") == "cc"
+    elseif l:ext == "cc"
         exe "vsplit" fnameescape(expand("%:p:r:s?src?").".h")
-    elseif expand("%:e") == "h"
+    elseif l:ext == "h"
         "if filereadable(expand("%:p:r:s?include?src?").".cpp")
         if filereadable(expand("%:p:r:s?src?").".cpp")
             exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cpp")
         elseif filereadable(expand("%:p:r:s?src?").".cc")
             exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
+    elseif l:ext == "py"
+        if expand("%:r") =~# "^test/test_"
+            exe "tabe" fnameescape(substitute(expand("%:p"), "test/test_", "", ""))
+        else
+            exe "tabe" "test/test_".fnameescape(expand("%:t"))
+        endif
     endif
 endfunction
 nnoremap <leader>oo :call OpenOther()<CR>
-
-function! OpenTest()
-    exe "vsplit" "test/test_".fnameescape(expand("%"))
-endfunction
-nnoremap <leader>ot :call OpenTest()<CR>
-"nnoremap <leader>ot :execute 'vs "test/test_"' . resolve(fnameescape(expand("%")))<CR>
 
 " Visual mode pressing * or # searches for the current selection
 function! VisualSelection(direction, extra_filter) range
@@ -885,6 +957,109 @@ function! Csc()
 endfunction
 command! Csc call Csc()
 """""""""""""""""""""""""""""
+function! FilterScores()
+    %s/M\d\+ \(.\....\).*/\1/e
+    %y+
+endfunction
+command! FilterScores call FilterScores()
+"""""""""""""""""""""""""""""
 "nnoremap <leader><leader> :noh<CR>:pc<CR>
-nnoremap <leader>/ :execute "noh\|pc"<cr>
+nnoremap <leader>/ :execute "noh\|pc\|ccl"<cr>
+
+
+" Change the color scheme from a list of color scheme names.
+" Version 2010-09-12 from http://vim.wikia.com/wiki/VimTip341
+" Press key:
+"   F8                next scheme
+"   Shift-F8          previous scheme
+"   Alt-F8            random scheme
+" Set the list of color schemes used by the above (default is 'all'):
+"   :SetColors all              (all $VIMRUNTIME/colors/*.vim)
+"   :SetColors my               (names built into script)
+"   :SetColors blue slate ron   (these schemes)
+"   :SetColors                  (display current scheme names)
+" Set the current color scheme based on time of day:
+"   :SetColors now
+if v:version < 700 || exists('loaded_setcolors') || &cp
+  finish
+endif
+
+let loaded_setcolors = 1
+let s:mycolors = ['tokyonight', 'galaxian', 'gruvbox', 'balancees', 'slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
+
+" Set list of color scheme names that we will use, except
+" argument 'now' actually changes the current color scheme.
+function! s:SetColors(args)
+  if len(a:args) == 0
+    echo 'Current color scheme names:'
+    let i = 0
+    while i < len(s:mycolors)
+      echo '  '.join(map(s:mycolors[i : i+4], 'printf("%-14s", v:val)'))
+      let i += 5
+    endwhile
+  elseif a:args == 'all'
+    let paths = split(globpath(&runtimepath, 'colors/*.vim'), "\n")
+    let s:mycolors = uniq(sort(map(paths, 'fnamemodify(v:val, ":t:r")')))
+    echo 'List of colors set from all installed color schemes'
+  elseif a:args == 'my'
+    let c1 = 'default elflord peachpuff desert256 breeze morning'
+    let c2 = 'darkblue gothic aqua earth black_angus relaxedgreen'
+    let c3 = 'darkblack freya motus impact less chocolateliquor'
+    let s:mycolors = split(c1.' '.c2.' '.c3)
+    echo 'List of colors set from built-in names'
+  elseif a:args == 'now'
+    call s:HourColor()
+  else
+    let s:mycolors = split(a:args)
+    echo 'List of colors set from argument (space-separated names)'
+  endif
+endfunction
+
+command! -nargs=* SetColors call s:SetColors('<args>')
+
+" Set next/previous/random (how = 1/-1/0) color from our list of colors.
+" The 'random' index is actually set from the current time in seconds.
+" Global (no 's:') so can easily call from command line.
+function! NextColor(how)
+  call s:NextColor(a:how, 1)
+endfunction
+
+" Helper function for NextColor(), allows echoing of the color name to be
+" disabled.
+function! s:NextColor(how, echo_color)
+  if len(s:mycolors) == 0
+    call s:SetColors('all')
+  endif
+  if exists('g:colors_name')
+    let current = index(s:mycolors, g:colors_name)
+  else
+    let current = -1
+  endif
+  let missing = []
+  let how = a:how
+  for i in range(len(s:mycolors))
+    if how == 0
+      let current = localtime() % len(s:mycolors)
+      let how = 1  " in case random color does not exist
+    else
+      let current += how
+      if !(0 <= current && current < len(s:mycolors))
+        let current = (how>0 ? 0 : len(s:mycolors)-1)
+      endif
+    endif
+    try
+      execute 'colorscheme '.s:mycolors[current]
+      break
+    catch /E185:/
+      call add(missing, s:mycolors[current])
+    endtry
+  endfor
+  redraw
+  if len(missing) > 0
+    echo 'Error: colorscheme not found:' join(missing)
+  endif
+  if (a:echo_color)
+    echo g:colors_name
+  endif
+endfunction
 

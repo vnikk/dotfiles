@@ -25,11 +25,6 @@ ENABLE_CORRECTION="true"
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
 
-alias fsx="xcv x"
-alias fsc="xcv c"
-alias fsv="xcv v"
-alias fsl="xcv l"
-
 if [ -f ~/.config/z_home.sh ]; then
     LOCALFILE=~/.config/z_home.sh
 elif [ -f ~/.config/z_work.sh ]; then
@@ -157,6 +152,9 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 # }
 
 # if rebind this to s then l can be used in tmux
+# iterm2: this needs mapping of cmd or opt combination
+bindkey -s 's' 'gst
+'
 bindkey -s 'l' 'l
 '
 bindkey ' ' magic-space
@@ -208,6 +206,28 @@ fco() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
+# fshow - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
+fshow() {
+  local out shas sha q k
+  while out=$(
+      git log --graph --color=always \
+          --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" \
+          --print-query --expect=ctrl-d --toggle-sort=\`); do
+    q=$(head -1 <<< "$out")
+    k=$(head -2 <<< "$out" | tail -1)
+    shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+    [ -z "$shas" ] && continue
+    if [ "$k" = ctrl-d ]; then
+      git diff --color=always $shas | less -R
+    else
+      for sha in $shas; do
+        git show --color=always $sha | less -R
+      done
+    fi
+  done
+}
+
 # doesn't let run vi/vim
 #v() {
     #[ $# -gt 0 ] && fasd -f -e ${EDITOR} "$*" && return
@@ -239,8 +259,8 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls -G'
-alias la='ls -Ga'
+alias l='ls'
+alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
 alias ez='vi ~/.zshrc'

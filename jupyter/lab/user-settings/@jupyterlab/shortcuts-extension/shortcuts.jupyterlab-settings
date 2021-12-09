@@ -13,6 +13,23 @@
                 "Ctrl Shift B"
             ],
             "selector": "body"
+        },
+        {
+            "command": "runmenu:run-all",
+            "keys": [
+                "Ctrl Shift R"
+            ],
+            "selector": "[data-jp-code-runner]"
+        },
+        {
+            "command": "notebook:enable-output-scrolling",
+            "keys": ["S"],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "command": "notebook:disable-output-scrolling",
+            "keys": ["Ctrl S"],
+            "selector": ".jp-Notebook:focus"
         }
     ]
     

@@ -157,8 +157,7 @@
   "vim.easymotionMarkerBackgroundColor": "#539ab8",
   "vim.easymotionMarkerYOffset": 4,
   "vim.foldfix": true,
-  "workbench.editor.enablePreview": false,
-  "python.dataScience.sendSelectionToInteractiveWindow": true,
+"workbench.editor.enablePreview": false,
   "vscode_custom_css.imports": [
     "file:///Users/viazovsk/synthwave84.css"
   ],
@@ -166,8 +165,10 @@
   "vscode_custom_css.policy": true,
   "vscode_custom_css.statusbar": false,
   "gitlens.statusBar.enabled": false,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "'Fira Code', Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
-  "git.suggestSmartCommit": false
+"git.suggestSmartCommit": false,
+"jupyter.sendSelectionToInteractiveWindow": true,
+"jupyter.askForKernelRestart": false
 }
