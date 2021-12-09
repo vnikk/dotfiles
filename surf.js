@@ -42,9 +42,17 @@ mapkey('<Space>4', '#1get first google result', function () {
     document.querySelectorAll('.r')[3].children[0].click();
 }, {domain: /google\.com/});
 
+// DuckDuckGo to Google
+mapkey('<Space>g', '#get google result', function () {
+    query = document.querySelector('#search_form_input').value
+    window.location.replace('https://google.com/search?q=' + query)
+}, {domain: /duckduckgo\.com/});
+
+
 addSearchAliasX('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
 
 addSearchAliasX('l', 'feeling lucky', 'https://google.com/search?btnI&q=');
+//addSearchAliasX('i', 'IDOS', 'https://idos.idnes.cz/pid/spojeni/vysledky/?f=' + address + '&t=')
 
 mapkey('ol', '#8Open Search with alias l', function() {
     Front.openOmnibar({type: "SearchEngine", extra: "l"});
