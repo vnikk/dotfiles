@@ -17,7 +17,7 @@ export KEYTIMEOUT=1
 
 # fasd?
 # TODO home globalias
-plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips )
+plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -283,7 +283,7 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/forgit.plugin.zsh
