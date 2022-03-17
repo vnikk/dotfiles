@@ -15,6 +15,8 @@ map('F', 'gf');
 map('t', 'T');
 //aceVimMap('jk', '<Esc>', 'insert');
 
+map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4500945,14.5z'))
+
 
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;
@@ -48,6 +50,12 @@ mapkey('<Space>g', '#get google result', function () {
     query = document.querySelector('#search_form_input').value
     window.location.replace('https://google.com/search?q=' + query)
 }, {domain: /duckduckgo\.com/});
+
+// Amazon to Goodreads
+mapkey('<Space>g', '#get goodreads result', function () {
+    query = document.querySelector('#productTitle').textContent
+    window.location.replace('https://goodreads.com/search?q=' + query)
+}, {domain: /amazon\.com/});
 
 
 addSearchAliasX('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
