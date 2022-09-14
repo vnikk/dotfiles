@@ -453,6 +453,8 @@ set scrolloff=7
 " Other
 set pastetoggle=<F10>
 
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
 "dont search in folds
 set fdo-=search
 
