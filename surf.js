@@ -82,6 +82,8 @@ mapkey('<Space>g', '#get goodreads result', function () {
 
 addSearchAlias('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
 
+addSearchAlias('r', 'reddit', 'https://www.reddit.com/search?include_over_18=on&sort=relevance&t=all&q=');
+
 mapkey('ot', '#8Open Search with alias t', function() {
     Front.openOmnibar({type: "SearchEngine", extra: "t"});
 });
