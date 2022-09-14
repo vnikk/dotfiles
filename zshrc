@@ -17,7 +17,7 @@ export KEYTIMEOUT=1
 
 # fasd?
 # TODO home globalias
-plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips )
+plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips pipenv)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -315,6 +315,5 @@ alias python=python3
 eval "$(direnv hook zsh)"
 
 # P10K
-# TODO install home Powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
