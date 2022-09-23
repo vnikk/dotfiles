@@ -80,6 +80,9 @@ mapkey('ol', '#8Open Search with alias l', function() {
 
 addSearchAlias('w', 'thesaurus', 'https://thesaurus.com/browse/');
 
+addSearchAlias('c', 'slovnik', 'https://slovnik.seznam.cz/preklad/cesky_rusky/');
+addSearchAlias('r', 'slovnik', 'https://slovnik.seznam.cz/preklad/rusky_cesky/');
+
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
 
 // from: https://github.com/brookhong/Surfingkeys/wiki/Color-Themes
