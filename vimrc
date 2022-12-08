@@ -532,16 +532,15 @@ cabbrev h tab help
 "System clipboard interaction
 if system("uname -s") =~ "Linux"
     nnoremap Y "+y$
-    vnoremap <leader>y "+y
-    noremap <leader>y "+yy
-    noremap <leader>p o<Esc>:set paste<CR>"+p<CR>:set nopaste<CR>
-    noremap <leader>P O<Esc>:set paste<CR>"+P<CR>:set nopaste<CR>
+    vnoremap y "+y
+    noremap y "+y
+    noremap p :set paste<CR>"+p:set nopaste<CR>
+    noremap P :set paste<CR>"+P:set nopaste<CR>
 else
     nnoremap Y "*y$
-    vnoremap <leader>y "*y
-    noremap <leader>y "*yy
-    noremap <leader>p o<Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
-    noremap <leader>P O<Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
+    vnoremap y "*y
+    noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
+    noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 endif
 
 " Tags
