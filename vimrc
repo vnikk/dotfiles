@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'ghifarit53/tokyonight-vim'
 Plugin 'evprkr/galaxian-vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " File management
 Plugin 'kien/ctrlp.vim'
@@ -85,6 +86,7 @@ Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
+Plugin 'jupyter-vim/jupyter-vim'
 "Plugin 'dense-analysis/ale'
 
 "Plugin 'gilligan/vim-lldb'
