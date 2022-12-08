@@ -124,6 +124,9 @@ let mapleader = "\<Space>"
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+" vim-session
+let g:session_autoload = 'no'
+
 " vim-test; 'vimterminal'
 let test#strategy = 'dispatch'
 let g:dispatch_compilers = {}
@@ -188,7 +191,7 @@ map <leader>vr :call VimuxRepeat()<CR>
 let g:slime_target = "tmux"
 
 " Easymotion
-map <leader><leader> <Plug>(easymotion-prefix)
+map , <Plug>(easymotion-prefix)
 
 "Git (fugitive)
 nnoremap <leader>gc :Gcommit<CR>
@@ -314,11 +317,12 @@ endfunction
 noremap <leader>ov :call OpenGit()<CR>
 
 "VimWiki
-let g:vimwiki_list = [{'path': '~/my/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_map_prefix = '<Leader>e'
-let g:vimwiki_global_ext = 0
-autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+" TODO
+"let g:vimwiki_list = [{'path': '~/my/vimwiki/',
+                      "\ 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_map_prefix = '<Leader>e'
+"let g:vimwiki_global_ext = 0
+"autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 " NERDCommenter
 " Comment line, edit line
@@ -440,7 +444,7 @@ set tags=./.tags,./tags,~/.tags
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_cmd = 'CtrlPLastMode'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_extensions = ['tag', 'mixed']
@@ -660,6 +664,9 @@ map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 noremap <silent> <leader>] :cn<CR>zz
 noremap <silent> <leader>[ :cp<CR>zz
 
+" Plugins
+noremap <leader>f :Files<CR>
+
 " Commands
 command Cnt :%s///gn
 
@@ -737,8 +744,10 @@ function! SwitchBg()
     let bg = &background
     if bg == 'dark'
         set background=light
+        colorscheme PaperColor
     else
         set background=dark
+        colorscheme tokyonight
     endif
     "echom &bg
 endfunction
@@ -985,7 +994,8 @@ if v:version < 700 || exists('loaded_setcolors') || &cp
 endif
 
 let loaded_setcolors = 1
-let s:mycolors = ['tokyonight', 'galaxian', 'gruvbox', 'balancees', 'slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
+"colorscheme names used to set color
+let s:mycolors = ['PaperColor', 'flatcolor', 'tokyonight', 'gruvbox'] ", 'galaxian', 'balancees', 'slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']
 
 " Set list of color scheme names that we will use, except
 " argument 'now' actually changes the current color scheme.
