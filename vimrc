@@ -864,10 +864,10 @@ function! OpenOther()
             exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     elseif l:ext == "py"
-        if expand("%:r") =~# "^test/test_"
-            exe "tabe" fnameescape(substitute(expand("%:p"), "test/test_", "", ""))
+        if expand("%:r") =~# "^tests/test_"
+            exe "tabe" fnameescape(substitute(expand("%:p"), "tests/test_", "", ""))
         else
-            exe "tabe" "test/test_".fnameescape(expand("%:t"))
+            exe "tabe" "tests/test_".fnameescape(expand("%:t"))
         endif
     endif
 endfunction
