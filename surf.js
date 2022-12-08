@@ -50,7 +50,8 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
         Clipboard.write(element.src);
         searchSelectedWith('http://images.google.com/searchbyimage?image_url=', false, false, '');
     });
-}, {domain: /^(?:(?!youtube).*)\.com/i});
+});
+unmap('<Space>gi', /youtube.com/);
 
 // Google
 mapkey('<Space>1', '#1get first google result', function () {
@@ -67,6 +68,8 @@ mapkey('<Space>4', '#1get first google result', function () {
 }, {domain: /google\.com/});
 
 addSearchAlias('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
+
+addSearchAlias('ws', 'translate', 'https://cs.wiktionary.org/w/index.php?go=J%C3%ADt+na&search=');
 
 mapkey('ot', '#8Open Search with alias t', function() {
     Front.openOmnibar({type: "SearchEngine", extra: "t"});
