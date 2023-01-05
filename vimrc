@@ -449,6 +449,24 @@ let g:ctrlp_lazy_update = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_extensions = ['tag', 'mixed']
 
+"if executable('rg')
+    "let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+"endif
+
+"if exists("g:ctrlp_user_command")
+  "unlet g:ctrlp_user_command
+"endif
+"set wildignore+=*.txt,*.csv,*.xlsx
+" trying to avoid many txts
+"let g:ctrlp_custom_ignore = {
+    "\ 'file': 'data\/.*\/.*\.txt$',
+"\ }
+"let g:ctrlp_custom_ignore = '\v(\.txt|\.csv|\.xlsx|\.html|\.jsonl)$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]data$',
+    \ 'file': '\v(\.txt|\.csv|\.xlsx|\.html|\.jsonl)@<!$'
+\ }
+
 " Movement
 " backspace and arrows cross line boundaries
 set whichwrap+=<,>,[,]
