@@ -14,8 +14,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
 # fasd?
-# TODO home globalias
-plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips )
+# TODO home globalias alias-tips virtualenv zsh_reload
+plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
