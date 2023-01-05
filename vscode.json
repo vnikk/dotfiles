@@ -165,10 +165,28 @@
   "vscode_custom_css.policy": true,
   "vscode_custom_css.statusbar": false,
   "gitlens.statusBar.enabled": false,
-  "window.zoomLevel": 1,
   "editor.fontFamily": "'Fira Code', Monaco, 'Courier New', monospace",
   "editor.fontLigatures": true,
 "git.suggestSmartCommit": false,
 "jupyter.sendSelectionToInteractiveWindow": true,
-"jupyter.askForKernelRestart": false
+"jupyter.askForKernelRestart": false,
+"Codegenx.Token": "e0e8d000cf60b09116daf3707142e3dc902b0ca179c45baf44c5ade41a9fd815.685a0c12cd663555d3cd8ccefcf910b72fe8741337a2a18fcf82f19d96d73888",
+"python.defaultInterpreterPath": "/anaconda3/bin/python3",
+"editor.suggestSelection": "first",
+"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+"files.exclude": {
+  "__pycache__": true,
+  ".idea": true,
+  ".ipynb*": true,
+  ".mypy_cache": true,
+  ".pytest_cache": true,
+  ".scannerwork": true,
+  ".tags": true,
+  "*swo": true,
+  "*swp": true
+},
+"window.zoomLevel": 2,
+"gitlens.currentLine.enabled": false,
+"gitlens.hovers.currentLine.over": "line",
+"gitlens.codeLens.enabled": false
 }
