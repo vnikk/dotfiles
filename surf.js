@@ -37,6 +37,8 @@ map('F', 'gf');
 map('t', 'T');
 //aceVimMap('jk', '<Esc>', 'insert');
 
+map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4500945,14.5z'))
+
 
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;
@@ -67,13 +69,29 @@ mapkey('<Space>4', '#1get first google result', function () {
     document.querySelectorAll('.r')[3].children[0].click();
 }, {domain: /google\.com/});
 
+// DuckDuckGo to Google
+mapkey('<Space>g', '#get google result', function () {
+    query = document.querySelector('#search_form_input').value
+    window.location.replace('https://google.com/search?q=' + query)
+}, {domain: /duckduckgo\.com/});
+
+// Amazon to Goodreads
+mapkey('<Space>g', '#get goodreads result', function () {
+    query = document.querySelector('#productTitle').textContent
+    window.location.replace('https://goodreads.com/search?q=' + query)
+}, {domain: /amazon\.com/});
+
 addSearchAlias('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
 
 addSearchAlias('ws', 'translate', 'https://cs.wiktionary.org/w/index.php?go=J%C3%ADt+na&search=');
 
+addSearchAlias('r', 'reddit', 'https://www.reddit.com/search?include_over_18=on&sort=relevance&t=all&q=');
+
 mapkey('ot', '#8Open Search with alias t', function() {
     Front.openOmnibar({type: "SearchEngine", extra: "t"});
 });
+
+//addSearchAliasX('i', 'IDOS', 'https://idos.idnes.cz/pid/spojeni/vysledky/?f=' + address + '&t=')
 
 addSearchAlias('l', 'feeling lucky', 'https://google.com/search?btnI&q=');
 

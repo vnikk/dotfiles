@@ -18,7 +18,7 @@ function fasd() {
 function term() {
     # sets colorschemes for terminal
     #bash -c  "$(wget -qO- https://git.io/vQgMr)"
-    :
+    sudo apt install alacritty
 }
 
 function colors() {
@@ -101,7 +101,7 @@ function other() {
     git_install git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
     mkdir -p ~/.oh-my-zsh/themes
-    git_install git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.install/powerlevel10k
+    git_install git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
     if [ ! -f ~/.git-prompt.sh ]; then
         curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.git-prompt.sh
@@ -111,6 +111,7 @@ function other() {
     cp ees.zsh-theme ~/.oh-my-zsh/custom/themes/
 
     mkdir -p ~/.tmux/plugins/
+    git_install git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
     git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
 
@@ -150,6 +151,7 @@ function load_tmux() {
 }
 
 function python() {
+    sudo apt install pipenv
     # installing all this from jupyter notebook can help
     pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
     pip install jupyter_nbextensions_configurator

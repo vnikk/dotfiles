@@ -81,7 +81,6 @@ Plugin 'kreskij/vim-reminder-tips'
 "Plugin 'michaelb/vim-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
-"Plugin 'khzaw/vim-conceal'
 Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -114,7 +113,7 @@ Plugin 'neoclide/coc.nvim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-packadd! vimspector
+"packadd! vimspector
 
 
 " Setting leader here so it works for plugins
@@ -265,6 +264,9 @@ if !exists("g:ycm_semantic_triggers")
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
+
+" Snipmate
+let g:snipMate = { 'snippet_version' : 1 }
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -474,6 +476,8 @@ set scrolloff=7
 
 " Other
 set pastetoggle=<F10>
+
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 "dont search in folds
 set fdo-=search

@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 export POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
@@ -14,7 +16,7 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
 # fasd?
-# TODO home globalias alias-tips virtualenv zsh_reload
+# TODO home globalias alias-tips virtualenv zsh_reload pipenv
 plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
 
 DISABLE_AUTO_TITLE="true"
@@ -307,17 +309,17 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[command]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/forgit.plugin.zsh
 alias chx='chmod +x '
 alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
+alias python=python3
 
 eval "$(direnv hook zsh)"
 
 # P10K
-# TODO install home Powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
