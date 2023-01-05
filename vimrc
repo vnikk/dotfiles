@@ -1090,3 +1090,6 @@ function! s:NextColor(how, echo_color)
   endif
 endfunction
 
+nnoremap <F8> :call NextColor(1)<CR>
+nnoremap <S-F8> :call NextColor(-1)<CR>
+nnoremap <A-F8> :call NextColor(0)<CR>
