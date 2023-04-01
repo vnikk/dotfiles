@@ -114,6 +114,7 @@ function other() {
     git_install git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
     git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
+    ~/.tmux/plugins/tpm/bin/install_plugins
 
     #list to make sure is installed
     #Cscope
@@ -133,6 +134,7 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'term') term;;
         'gitalias') gitalias;;
         'ohmyzsh') ohmyzsh;;
+        'fasd') fasd;;
         *) colors; other; normal; gitalias; term; reminder
     esac
 fi
@@ -151,7 +153,7 @@ function load_tmux() {
 }
 
 function python() {
-    sudo apt install pipenv
+    #sudo apt install pipenv
     # installing all this from jupyter notebook can help
     pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
     pip install jupyter_nbextensions_configurator
