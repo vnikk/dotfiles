@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'ghifarit53/tokyonight-vim'
 Plugin 'evprkr/galaxian-vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " File management
 Plugin 'kien/ctrlp.vim'
@@ -34,6 +35,7 @@ Plugin 'scrooloose/syntastic'
 " Coding
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
+Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'sheerun/vim-polyglot'
@@ -42,7 +44,6 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'vim-test/vim-test'
 Plugin 'tpope/vim-surround'
 "Plugin 'jiangmiao/auto-pairs'
@@ -84,6 +85,7 @@ Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'stsewd/fzf-checkout.vim'
+Plugin 'jupyter-vim/jupyter-vim'
 "Plugin 'dense-analysis/ale'
 
 "Plugin 'gilligan/vim-lldb'
@@ -120,6 +122,9 @@ let mapleader = "\<Space>"
 """""""""""""""""""""""""""""
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
+
+" vim-session
+let g:session_autoload = 'no'
 
 " vim-test; 'vimterminal'
 let test#strategy = 'dispatch'
@@ -314,11 +319,12 @@ endfunction
 noremap <leader>ov :call OpenGit()<CR>
 
 "VimWiki
-let g:vimwiki_list = [{'path': '~/my/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_map_prefix = '<Leader>e'
-let g:vimwiki_global_ext = 0
-autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
+" TODO
+"let g:vimwiki_list = [{'path': '~/my/vimwiki/',
+                      "\ 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_map_prefix = '<Leader>e'
+"let g:vimwiki_global_ext = 0
+"autocmd BufEnter *.md exe 'noremap <F5> :!/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome %:p<CR>'
 
 " NERDCommenter
 " Comment line, edit line
@@ -440,10 +446,28 @@ set tags=./.tags,./tags,~/.tags
 
 " Ctrlp bundle
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_cmd = 'CtrlPLastMode'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_extensions = ['tag', 'mixed']
+
+"if executable('rg')
+    "let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+"endif
+
+"if exists("g:ctrlp_user_command")
+  "unlet g:ctrlp_user_command
+"endif
+"set wildignore+=*.txt,*.csv,*.xlsx
+" trying to avoid many txts
+"let g:ctrlp_custom_ignore = {
+    "\ 'file': 'data\/.*\/.*\.txt$',
+"\ }
+"let g:ctrlp_custom_ignore = '\v(\.txt|\.csv|\.xlsx|\.html|\.jsonl)$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]data$',
+    \ 'file': '\v(\.txt|\.csv|\.xlsx|\.html|\.jsonl)@<!$'
+\ }
 
 " Movement
 " backspace and arrows cross line boundaries
@@ -530,16 +554,15 @@ cabbrev h tab help
 "System clipboard interaction
 if system("uname -s") =~ "Linux"
     nnoremap Y "+y$
-    vnoremap <leader>y "+y
-    noremap <leader>y "+yy
-    noremap <leader>p o<Esc>:set paste<CR>"+p<CR>:set nopaste<CR>
-    noremap <leader>P O<Esc>:set paste<CR>"+P<CR>:set nopaste<CR>
+    vnoremap y "+y
+    noremap y "+y
+    noremap p :set paste<CR>"+p:set nopaste<CR>
+    noremap P :set paste<CR>"+P:set nopaste<CR>
 else
     nnoremap Y "*y$
-    vnoremap <leader>y "*y
-    noremap <leader>y "*yy
-    noremap <leader>p o<Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
-    noremap <leader>P O<Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
+    vnoremap y "*y
+    noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
+    noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 endif
 
 " Tags
@@ -662,6 +685,9 @@ map <leader>sh :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 noremap <silent> <leader>] :cn<CR>zz
 noremap <silent> <leader>[ :cp<CR>zz
 
+" Plugins
+noremap <leader>f :Files<CR>
+
 " Commands
 command Cnt :%s///gn
 
@@ -739,8 +765,10 @@ function! SwitchBg()
     let bg = &background
     if bg == 'dark'
         set background=light
+        colorscheme PaperColor
     else
         set background=dark
+        colorscheme tokyonight
     endif
     "echom &bg
 endfunction
@@ -858,10 +886,10 @@ function! OpenOther()
             exe "vsplit" fnameescape(expand("%:p:r:s?src?").".cc")
         endif
     elseif l:ext == "py"
-        if expand("%:r") =~# "^test/test_"
-            exe "tabe" fnameescape(substitute(expand("%:p"), "test/test_", "", ""))
+        if expand("%:r") =~# "^tests/test_"
+            exe "tabe" fnameescape(substitute(expand("%:p"), "tests/test_", "", ""))
         else
-            exe "tabe" "test/test_".fnameescape(expand("%:t"))
+            exe "tabe" "tests/test_".fnameescape(expand("%:t"))
         endif
     endif
 endfunction
@@ -987,7 +1015,8 @@ if v:version < 700 || exists('loaded_setcolors') || &cp
 endif
 
 let loaded_setcolors = 1
-let s:mycolors = ['tokyonight', 'galaxian', 'gruvbox', 'balancees', 'slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']  " colorscheme names that we use to set color
+"colorscheme names used to set color
+let s:mycolors = ['PaperColor', 'flatcolor', 'tokyonight', 'gruvbox'] ", 'galaxian', 'balancees', 'slate', 'torte', 'darkblue', 'delek', 'murphy', 'elflord', 'pablo', 'koehler']
 
 " Set list of color scheme names that we will use, except
 " argument 'now' actually changes the current color scheme.
@@ -1065,3 +1094,6 @@ function! s:NextColor(how, echo_color)
   endif
 endfunction
 
+nnoremap <F8> :call NextColor(1)<CR>
+nnoremap <S-F8> :call NextColor(-1)<CR>
+nnoremap <A-F8> :call NextColor(0)<CR>

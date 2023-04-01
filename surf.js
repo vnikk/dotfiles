@@ -52,7 +52,8 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
         Clipboard.write(element.src);
         searchSelectedWith('http://images.google.com/searchbyimage?image_url=', false, false, '');
     });
-}, {domain: /^(?:(?!youtube).*)\.com/i});
+});
+unmap('<Space>gi', /youtube.com/);
 
 // Google
 mapkey('<Space>1', '#1get first google result', function () {
@@ -82,6 +83,8 @@ mapkey('<Space>g', '#get goodreads result', function () {
 
 addSearchAlias('t', 'translate', 'https://translate.google.com/#view=home&op=translate&sl=auto&tl=ru&text=');
 
+addSearchAlias('ws', 'translate', 'https://cs.wiktionary.org/w/index.php?go=J%C3%ADt+na&search=');
+
 addSearchAlias('r', 'reddit', 'https://www.reddit.com/search?include_over_18=on&sort=relevance&t=all&q=');
 
 mapkey('ot', '#8Open Search with alias t', function() {
@@ -97,6 +100,9 @@ mapkey('ol', '#8Open Search with alias l', function() {
 });
 
 addSearchAlias('w', 'thesaurus', 'https://thesaurus.com/browse/');
+
+addSearchAlias('c', 'slovnik', 'https://slovnik.seznam.cz/preklad/cesky_rusky/');
+addSearchAlias('r', 'slovnik', 'https://slovnik.seznam.cz/preklad/rusky_cesky/');
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
 

@@ -15,7 +15,8 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
-# TODO home globalias pipenv lias-tips zsh_reload
+# TODO 
+# home globalias pipenv lias-tips zsh_reload
 plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle virtualenv)
 
 DISABLE_AUTO_TITLE="true"
@@ -183,11 +184,12 @@ gt() {
 #bindkey '' '$(gt)
 #'
 
+# fzf git brach
 fbr() {
-  local branches branch
-  branches=$(git --no-pager branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+    local branches branch
+    branches=$(git --no-pager branch -vv) &&
+        branch=$(echo "$branches" | fzf +m) &&
+        git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 fco() {
@@ -271,8 +273,13 @@ alias gsl="git stash list"
 alias gsp="git stash pop"
 alias gdc='git diff --cached'
 alias gpp='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
-alias gapac="gapa && print -z gc -m \'"
+alias gapac='gapa && print -z gc -m "$(git rev-parse --abbrev-ref HEAD): "'
 alias gad='git ls-files  -m --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
+gC() {
+    msg="$(nocorrect git rev-parse --abbrev-ref HEAD): $@"
+    nocorrect git commit -m "$msg"
+}
+
 alias mkdir='mkdir -pv'
 alias dot='cd ~/.dotfiles'
 alias dow='cd ~/Downloads'
