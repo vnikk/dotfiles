@@ -15,9 +15,8 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
-# fasd?
-# TODO home globalias
-plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle zsh_reload virtualenv alias-tips pipenv)
+# TODO home globalias pipenv lias-tips zsh_reload
+plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle virtualenv)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -259,7 +258,7 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls'
+alias l='ls --group-directories-first'
 alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
