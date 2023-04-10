@@ -3,7 +3,6 @@ function normal() {
     ln -s -f $PWD/bashrc ~/.bashrc
     ln -s -f $PWD/zshrc ~/.zshrc
     ln -s -f $PWD/vimrc ~/.vimrc
-    ln -s -f $PWD/ideavimrc ~/.ideavimrc
     # TODO link appr
     ln -s -f $PWD/tmux_work.conf ~/.tmux.conf
 }
@@ -28,6 +27,12 @@ function colors() {
         do ln -s -f $PWD/$i ~/.vim/colors/$i
     done
     cd -
+}
+
+function diff_so_fancy() {
+    sudo add-apt-repository ppa:aos1/diff-so-fancy
+    sudo apt update
+    sudo apt install diff-so-fancy
 }
 
 function gitalias() {
@@ -86,6 +91,7 @@ function other() {
     which vim 1>/dev/null || sudo apt install -y vim-gtk3
     which zsh 1>/dev/null || sudo apt install -y zsh
     which tmux 1>/dev/null || sudo apt install -y tmux
+    which fzf 1>/dev/null || sudo apt install -y fzf
 
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     #vim --noplugin -u NONE +PluginInstall +qall
@@ -121,8 +127,11 @@ function other() {
 }
 
 function reminder() {
+    echo =======================================
     echo REMINDER:
     echo copy content of surf.js to ff
+    echo ---------------------------------------
+    echo Reboot for shell changes to take effect
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
@@ -132,10 +141,11 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'normal') normal;;
         'python') python;;
         'term') term;;
+        'diff_so_fancy') diff_so_fancy;;
         'gitalias') gitalias;;
         'ohmyzsh') ohmyzsh;;
         'fasd') fasd;;
-        *) colors; other; normal; gitalias; term; reminder
+        *) colors; other; normal; diff_so_fancy; gitalias; term; reminder
     esac
 fi
 
