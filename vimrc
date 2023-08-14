@@ -202,7 +202,7 @@ nnoremap <leader>gt :Gtabe
 
 " Coc
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gn :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>gd :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
