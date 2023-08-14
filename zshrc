@@ -259,7 +259,7 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls'
+alias l='ls --group-directories-first'
 alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'

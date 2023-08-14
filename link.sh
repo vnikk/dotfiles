@@ -3,7 +3,6 @@ function normal() {
     ln -s -f $PWD/bashrc ~/.bashrc
     ln -s -f $PWD/zshrc ~/.zshrc
     ln -s -f $PWD/vimrc ~/.vimrc
-    ln -s -f $PWD/ideavimrc ~/.ideavimrc
     # TODO link appr
     ln -s -f $PWD/tmux_work.conf ~/.tmux.conf
 }
@@ -28,6 +27,12 @@ function colors() {
         do ln -s -f $PWD/$i ~/.vim/colors/$i
     done
     cd -
+}
+
+function diff_so_fancy() {
+    sudo add-apt-repository ppa:aos1/diff-so-fancy
+    sudo apt update
+    sudo apt install diff-so-fancy
 }
 
 function gitalias() {
@@ -86,6 +91,7 @@ function other() {
     which vim 1>/dev/null || sudo apt install -y vim-gtk3
     which zsh 1>/dev/null || sudo apt install -y zsh
     which tmux 1>/dev/null || sudo apt install -y tmux
+    which fzf 1>/dev/null || sudo apt install -y fzf
 
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     #vim --noplugin -u NONE +PluginInstall +qall
@@ -114,14 +120,18 @@ function other() {
     git_install git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     git_install git clone --recursive https://github.com/Morantron/tmux-fingers ~/.tmux/plugins/tmux-fingers
     git_install git clone https://github.com/tmux-plugins/tmux-open ~/.tmux/plugins/tmux-open
+    ~/.tmux/plugins/tpm/bin/install_plugins
 
     #list to make sure is installed
     #Cscope
 }
 
 function reminder() {
+    echo =======================================
     echo REMINDER:
     echo copy content of surf.js to ff
+    echo ---------------------------------------
+    echo Reboot for shell changes to take effect
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
@@ -131,9 +141,11 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
         'normal') normal;;
         'python') python;;
         'term') term;;
+        'diff_so_fancy') diff_so_fancy;;
         'gitalias') gitalias;;
         'ohmyzsh') ohmyzsh;;
-        *) colors; other; normal; gitalias; term; reminder
+        'fasd') fasd;;
+        *) colors; other; normal; diff_so_fancy; gitalias; term; reminder
     esac
 fi
 
@@ -151,7 +163,7 @@ function load_tmux() {
 }
 
 function python() {
-    sudo apt install pipenv
+    #sudo apt install pipenv
     # installing all this from jupyter notebook can help
     pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
     pip install jupyter_nbextensions_configurator
