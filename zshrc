@@ -15,7 +15,6 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
-# fasd?
 # TODO home globalias alias-tips virtualenv zsh_reload pipenv
 plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
 
