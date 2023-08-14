@@ -96,7 +96,8 @@ function other() {
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     #vim --noplugin -u NONE +PluginInstall +qall
     # is broken. have to skip errors
-    vim --noplugin +PluginInstall +qall
+    # install reminder-tips separately as it requires github login
+    vim --noplugin +PluginInstall +qall +silent
 
     install_folder ~/.oh-my-zsh $(which curl) && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
