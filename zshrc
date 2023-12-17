@@ -153,8 +153,6 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 # iterm2: this needs mapping of cmd or opt combination
 bindkey -s 's' 'gst
 '
-bindkey -s 'l' 'l
-'
 bindkey ' ' magic-space
 bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
@@ -258,7 +256,9 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls --group-directories-first'
+alias l='ls --group-directories-first --color=auto'
+bindkey -s 'l' 'l
+'
 alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
