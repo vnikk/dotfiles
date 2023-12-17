@@ -105,11 +105,6 @@ conflict()
     git_conflict | xargs vi
 }
 
-# TODO TG
-vks() {
-    node $HOME/my/vk_send/vk_send.js $* &
-}
-
 mcd() {
     mkdir $1; cd $1
 }
