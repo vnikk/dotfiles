@@ -2,6 +2,7 @@ const {
     aceVimMap,
     mapkey,
     imap,
+    iunmap,
     imapkey,
     getClickableElements,
     vmapkey,
@@ -107,6 +108,8 @@ addSearchAlias('c', 'slovnik', 'https://slovnik.seznam.cz/preklad/cesky_rusky/')
 addSearchAlias('r', 'slovnik', 'https://slovnik.seznam.cz/preklad/rusky_cesky/');
 addSearchAlias('dl', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
 addSearchAlias('l', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
+addSearchAlias('p', 'Prirucka', 'https://prirucka.ujc.cas.cz/?slovo=');
+
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
 
