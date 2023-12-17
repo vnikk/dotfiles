@@ -279,8 +279,6 @@ gC() {
 }
 
 alias mkdir='mkdir -pv'
-alias dot='cd ~/.dotfiles'
-alias dow='cd ~/Downloads'
 alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
