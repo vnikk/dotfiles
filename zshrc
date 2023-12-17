@@ -40,7 +40,8 @@ if [ -f ~/.dotfiles/common.sh ]; then
 fi
 
 # TODO why here?
-source $ZSH/oh-my-zsh.sh
+# was slowing zsh load time a lot until commented out
+#source $ZSH/oh-my-zsh.sh
 source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 newfun()
