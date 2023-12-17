@@ -74,7 +74,7 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
 Plugin 'psf/black'
 Plugin 'kreskij/vim-reminder-tips'
@@ -411,6 +411,10 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme balancees
 endtry
+
+if &diff
+    colorscheme kamrat
+endif
 
 set background=dark
 " Fixes new tmux config pane in vim
