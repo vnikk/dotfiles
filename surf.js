@@ -43,7 +43,7 @@ map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;
 settings.modeAfterYank = 'Normal';
-settings.blocklistPattern = /.*notion.so.*/i;
+settings.blocklistPattern = /.*notion.so.*|.*ticktick.com.*/i;
 Hints.setCharacters('asdfgyuiopqwertnmzxcvb');
 imap('jk', "<Esc>");
 
