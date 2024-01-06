@@ -1,3 +1,7 @@
+# this can help debug slow startup
+# uncomment the bottom zprof line too
+#zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -15,9 +19,8 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
-# TODO 
-# home globalias pipenv lias-tips zsh_reload
-plugins=(z git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle virtualenv)
+# TODO home globalias alias-tips virtualenv zsh_reload pipenv
+plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -37,7 +40,8 @@ if [ -f ~/.dotfiles/common.sh ]; then
 fi
 
 # TODO why here?
-source $ZSH/oh-my-zsh.sh
+# was slowing zsh load time a lot until commented out
+#source $ZSH/oh-my-zsh.sh
 source ~/.install/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 newfun()
@@ -106,11 +110,6 @@ conflict()
     git_conflict | xargs vi
 }
 
-# TODO TG
-vks() {
-    node $HOME/my/vk_send/vk_send.js $* &
-}
-
 mcd() {
     mkdir $1; cd $1
 }
@@ -154,8 +153,6 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 # if rebind this to s then l can be used in tmux
 # iterm2: this needs mapping of cmd or opt combination
 bindkey -s 's' 'gst
-'
-bindkey -s 'l' 'l
 '
 bindkey ' ' magic-space
 bindkey '^ ' autosuggest-accept
@@ -260,7 +257,9 @@ bindkey -s 's' 'git status
 '
 
 alias checksizes='for i in */; do du -sh web/; done'
-alias l='ls --group-directories-first'
+alias l='ls --group-directories-first --color=auto'
+bindkey -s 'l' 'l
+'
 alias la='ls -a'
 alias sz="source ~/.zshrc"
 alias szz='source ~/.config/z_*'
@@ -281,8 +280,6 @@ gC() {
 }
 
 alias mkdir='mkdir -pv'
-alias dot='cd ~/.dotfiles'
-alias dow='cd ~/Downloads'
 alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
@@ -323,3 +320,5 @@ eval "$(direnv hook zsh)"
 # P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# for startup debugging
+#zprof

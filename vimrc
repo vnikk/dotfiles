@@ -74,7 +74,7 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'benmills/vimux'
 Plugin 'mattboehm/vim-unstack'
 "Plugin 'wakatime/vim-wakatime'
-Plugin 'vimwiki/vimwiki'
+"Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
 Plugin 'psf/black'
 Plugin 'kreskij/vim-reminder-tips'
@@ -202,7 +202,7 @@ nnoremap <leader>gt :Gtabe
 
 " Coc
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gn :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>gd :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -411,6 +411,10 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme balancees
 endtry
+
+if &diff
+    colorscheme kamrat
+endif
 
 set background=dark
 " Fixes new tmux config pane in vim
