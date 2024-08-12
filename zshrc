@@ -320,3 +320,20 @@ eval "$(direnv hook zsh)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # for startup debugging
 #zprof
+
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/viazovsk/.install/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+    #eval "$__conda_setup"
+#else
+    #if [ -f "/Users/viazovsk/.install/miniconda3/etc/profile.d/conda.sh" ]; then
+        #. "/Users/viazovsk/.install/miniconda3/etc/profile.d/conda.sh"
+    #else
+        #export PATH="/Users/viazovsk/.install/miniconda3/bin:$PATH"
+    #fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+
+eval "$(gh copilot alias -- zsh)"

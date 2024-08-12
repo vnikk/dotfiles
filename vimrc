@@ -49,6 +49,7 @@ Plugin 'tpope/vim-surround'
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'codota/tabnine-vim'
 "Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'madox2/vim-ai'
 
 " UI
 "Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -77,7 +78,7 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
 Plugin 'psf/black'
-Plugin 'kreskij/vim-reminder-tips'
+"Plugin 'kreskij/vim-reminder-tips'
 "Plugin 'michaelb/vim-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
@@ -123,8 +124,76 @@ let mapleader = "\<Space>"
 " PLUGIN SETTINGS
 """""""""""""""""""""""""""""
 
+" vim-ai
+let s:openai_endpoint = "https://udps-dev-gpt-api-eastus.openai.azure.com/openai/deployments/udps-dev-gpt-api-gpt-35-turbo-0301/chat/completions?api-version=2023-07-01-preview"
+let g:vim_ai_complete = {
+\  "engine": "complete",
+\  "options": {
+\    "endpoint_url": s:openai_endpoint,
+\    "max_tokens": 1000,
+\    "temperature": 0.5,
+\    "request_timeout": 20,
+\    "enable_auth": 1,
+\    "initial_prompt": "You are going to play a role of a completion engine with following parameters:\nTask: Provide compact code/text completion, generation, transformation or explanation\nTopic: general programming and text editing\nStyle: Plain result without any commentary, unless commentary is necessary\nAudience: Users of text editor and programmers that need to transform/generate text",
+\    "selection_boundary": "",
+\  },
+\  "ui": {
+\    "paste_mode": 1
+\  }
+\}
+
+let g:vim_ai_edit = {
+\  "engine": "complete",
+\  "options": {
+\    "endpoint_url": s:openai_endpoint,
+\    "max_tokens": 1000,
+\    "temperature": 0.5,
+\    "request_timeout": 20,
+\    "enable_auth": 1,
+\    "initial_prompt": "You are going to play a role of a completion engine with following parameters:\nTask: Provide compact code/text completion, generation, transformation or explanation\nTopic: general programming and text editing\nStyle: Plain result without any commentary, unless commentary is necessary\nAudience: Users of text editor and programmers that need to transform/generate text",
+\    "selection_boundary": "",
+\  },
+\  "ui": {
+\    "paste_mode": 1
+\  }
+\}
+
+let g:vim_ai_chat = {
+\  "options": {
+\    "endpoint_url": s:openai_endpoint,
+\    "max_tokens": 1000,
+\    "temperature": 1,
+\    "request_timeout": 20,
+\    "enable_auth": 1,
+\    "selection_boundary": "",
+\  },
+\  "ui": {
+\    "code_syntax_enabled": 1,
+\    "populate_options": 0,
+\    "open_chat_command": "preset_below",
+\    "scratch_buffer_keep_open": 0,
+\    "paste_mode": 1,
+\  },
+\}
+
+function! CodeReviewFn(range) range
+  let l:prompt = "programming syntax is " . &filetype . ", review the code below"
+  let l:config = {
+  \  "options": {
+  \    "initial_prompt": ">>> system\nyou are a clean code expert",
+  \  },
+  \}
+  '<,'>call vim_ai#AIChatRun(a:range, l:config, l:prompt)
+endfunction
+command! -range CodeReview <line1>,<line2>call CodeReviewFn(<range>)
+
+"let g:vim_ai_debug = 1
+"let g:vim_ai_debug_log_file = '/tmp/vim.log'
+
+
 " vim-session
 let g:session_autoload = 'no'
+let g:session_autosave = 'no'
 
 " vim-test; 'vimterminal'
 let test#strategy = 'dispatch'
@@ -143,28 +212,28 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 
 "Vim Reminder Tips
-call reminder_tips#Setup()
+"call reminder_tips#Setup()
 "AddImportantTip 'Example Important Tip'
-AddReminderTip 'Lookbehind: \(whats before\)\@<=text'
-AddReminderTip 'Lookahead: \(whats before\)\@=text'
-AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
-AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
-"AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
-AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
-AddReminderTip 'Convert to unix: w ++ff=unix'
-AddReminderTip '[Text Object] Inside Function: if'
-AddReminderTip '[Text Object] Around Function: af'
-AddReminderTip '[Text Object] Inside Class: ic'
-AddReminderTip '[Text Object] Around Class: ac'
-AddReminderTip '[Text Object] ]] : Move (forward) to the beginning of the next Python class.'
-AddReminderTip '[Text Object] ][ : Move (forward) to the end of the current Python class.'
-AddReminderTip '[Text Object] [[ : Move (backward) to beginning of the current Python class.'
-AddReminderTip '[Text Object] [] : Move (backward) to end of the previous Python class.'
-AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next Python method or function.'
-AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
-AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
-AddReminderTip 'Go to Current file Directory: <leader>gcd'
-AddReminderTip ':Files to search files by name (fzf)'
+"AddReminderTip 'Lookbehind: \(whats before\)\@<=text'
+"AddReminderTip 'Lookahead: \(whats before\)\@=text'
+"AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
+"AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
+""AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
+"AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
+"AddReminderTip 'Convert to unix: w ++ff=unix'
+"AddReminderTip '[Text Object] Inside Function: if'
+"AddReminderTip '[Text Object] Around Function: af'
+"AddReminderTip '[Text Object] Inside Class: ic'
+"AddReminderTip '[Text Object] Around Class: ac'
+"AddReminderTip '[Text Object] ]] : Move (forward) to the beginning of the next Python class.'
+"AddReminderTip '[Text Object] ][ : Move (forward) to the end of the current Python class.'
+"AddReminderTip '[Text Object] [[ : Move (backward) to beginning of the current Python class.'
+"AddReminderTip '[Text Object] [] : Move (backward) to end of the previous Python class.'
+"AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next Python method or function.'
+"AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
+"AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
+"AddReminderTip 'Go to Current file Directory: <leader>gcd'
+"AddReminderTip ':Files to search files by name (fzf)'
 
 " WindowSwap: want immediate <leader>p for paste
 let g:windowswap_map_keys = 0
@@ -190,6 +259,7 @@ map <leader>vr :call VimuxRepeat()<CR>
 let g:slime_target = "tmux"
 
 " Easymotion
+" TODO could be 'g'
 map , <Plug>(easymotion-prefix)
 
 "Git (fugitive)
@@ -396,7 +466,6 @@ match redundant_spaces  /\s\+\%#\@<!$/
 
 " Access colors present in 256 colorspace
 let base16colorspace=256
-"set background=dark
 syntax on "has to be before colorscheme
 set synmaxcol=5000
 
@@ -652,7 +721,7 @@ inoremap <C-t> <Esc>:tabnew
 " nmap <leader>t <C-w><C-]><C-w>T
 "mnemonic: OpenWindow
 nmap <leader>ow <C-w>T
-nmap <leader>f <C-w>gf
+"nmap <leader>f <C-w>gf
 nmap <leader>od gD:vs<CR><C-W>W<C-o>
 "nmap <leader>t :TagbarToggle<CR>
 
@@ -697,7 +766,7 @@ command Cnt :%s///gn
 
 " Markdown specific
 filetype plugin on
-autocmd FileType markdown source expand("~/.dotfiles/md-settings.vim")
+"autocmd FileType markdown source expand("~/.dotfiles/md-settings.vim")
 augroup MD_settings
     "the command below execute the script for the specific filetype C
 augroup END
