@@ -44,7 +44,7 @@ map('t', 'T');
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;
 settings.modeAfterYank = 'Normal';
-settings.blocklistPattern = /.*notion.so.*/i;
+settings.blocklistPattern = /.*notion.so.*|.*ticktick.com.*/i;
 Hints.setCharacters('asdfgyuiopqwertnmzxcvb');
 imap('jk', "<Esc>");
 iunmap('jk', /keybr.com/);
