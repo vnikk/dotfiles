@@ -38,7 +38,7 @@ map('F', 'gf');
 map('t', 'T');
 //aceVimMap('jk', '<Esc>', 'insert');
 
-map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4500945,14.5z'))
+//map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4500945,14.5z'));
 
 
 settings.hintAlign = "left";
