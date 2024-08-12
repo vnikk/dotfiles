@@ -1,3 +1,10 @@
+" Plugins
+let mapleader=" "
+set easymotion
+map <Leader> <Plug>(easymotion-prefix)
+map <leader>l <Action>(ReformatCode)
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
+
 " Basic
 vnoremap < <gv
 vnoremap > >gv
@@ -68,3 +75,7 @@ vnoremap J nop
 nnoremap K :tabnext<cr>
 "vnoremap K <Esc>:tabnext<cr>
 vnoremap K nop
+
+" Actions
+nmap <leader>d :action Debug<CR>
+nmap gd :action GotoImplementation<CR>
