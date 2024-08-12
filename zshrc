@@ -19,8 +19,8 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
-# TODO home globalias alias-tips virtualenv zsh_reload pipenv
-plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
+# home globalias alias-tips virtualenv zsh_reload pipenv vundle dircycle 
+plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
@@ -114,12 +114,12 @@ mcd() {
     mkdir $1; cd $1
 }
 
-cl() {
-    cd $1; l
-}
-
 addshebang() {
     echo -e "#!/usr/bin/env bash\n$(cat $1)" > $1
+}
+
+tre() {
+	tree -aC -I '.git' --dirsfirst "$@" | less -FRNX;
 }
 
 # VIM MODE!!!
@@ -159,15 +159,11 @@ bindkey '^ ' autosuggest-accept
 bindkey '' history-beginning-search-backward
 bindkey '' history-beginning-search-forward
 
-# fzf
-# https://junegunn.kr/2016/07/fzf-git/
-is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
-}
-
+# Git tags
 gt() {
   # "Nothing to see here, move along"
-  is_in_git_repo || return
+  # https://junegunn.kr/2016/07/fzf-git/
+  git rev-parse HEAD > /dev/null 2>&1 || return
 
   # Pass the list of the tags to fzf-tmux
   # - "{}" in preview option is the placeholder for the highlighted entry
@@ -314,6 +310,8 @@ alias chx='chmod +x '
 alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
 alias python=python3
+alias myip='curl ifconfig.me'
+alias gcc='git commit --amend --no-edit'
 
 eval "$(direnv hook zsh)"
 
