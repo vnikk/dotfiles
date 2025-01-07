@@ -337,3 +337,9 @@ eval "$(direnv hook zsh)"
 ## <<< conda initialize <<<
 
 eval "$(gh copilot alias -- zsh)"
+# setting before fasd which uses sed
+alias sed=gsed
+eval "$(fasd --init auto)"
+
+# Added by Windsurf
+export PATH="/Users/viazovsk/.codeium/windsurf/bin:$PATH"
