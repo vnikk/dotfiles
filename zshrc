@@ -306,6 +306,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.dotfiles/forgit.plugin.zsh
+
 alias chx='chmod +x '
 alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
