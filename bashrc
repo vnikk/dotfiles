@@ -219,3 +219,5 @@ unset __conda_setup
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source /home/wut/.config/broot/launcher/bash/br
