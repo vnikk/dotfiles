@@ -8,7 +8,7 @@ commit_files() {
             files=(cvimrc vimrc vimrc_redundant obsidian.vimrc)
             ;;
         vscode)
-            files=(vscode-keybindings.json vscode.json)
+            files=(vscode-keybindings.json vscode.json vscode-user-settings.json)
             ;;
         tmux)
             files=(green-blue.tmuxtheme other-tmux.conf tmux_home.conf tmux_notes.txt tmux_work.conf)
