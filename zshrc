@@ -20,10 +20,11 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
 # TODO home globalias alias-tips virtualenv zsh_reload pipenv
-plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
+plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages dircycle tmux vundle )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
+DISABLE_AUTO_UPDATE=true
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
@@ -50,10 +51,10 @@ newfun()
     echo "$1() { $2 }" >> $LOCALFILE
 }
 
-pgr()
-{
-    ps -ef | grep "$1"
-}
+#pgr()
+#{
+    #ps -ef | grep "$1"
+#}
 
 newalias()
 {
@@ -144,11 +145,10 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# FASD {
+# FASD
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
 bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
 bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
-# }
 
 # if rebind this to s then l can be used in tmux
 # iterm2: this needs mapping of cmd or opt combination
@@ -288,6 +288,7 @@ if [ ! -z $EDITOR ]; then
 else
     echo 'Editor unset!'
 fi
+alias vi=nvim
 alias -- -='popd'
 alias -g VI=" | vi -"
 alias -g ~="~/"
