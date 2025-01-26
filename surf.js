@@ -36,10 +36,10 @@ unmap("P");
 map("P", "cc");
 map('F', 'gf');
 map('t', 'T');
+map('h', 'oh');
 //aceVimMap('jk', '<Esc>', 'insert');
 
 mapkey("<Space>el", 'Maps', function() { window.location.replace("https://www.google.com/maps/@50.0905824,14.4500945,14.5z"); } );
-
 
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;
@@ -109,6 +109,7 @@ addSearchAlias('r', 'slovnik', 'https://slovnik.seznam.cz/preklad/rusky_cesky/')
 addSearchAlias('dl', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
 addSearchAlias('l', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
 addSearchAlias('p', 'Prirucka', 'https://prirucka.ujc.cas.cz/?slovo=');
+addSearchAlias('g', 'Github', 'https://github.com/search?type=repositories&q=');
 
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');

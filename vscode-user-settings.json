@@ -1,0 +1,52 @@
+{
+    "workbench.colorTheme": "GitHub Dark",
+    "python.defaultInterpreterPath": "",
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 1,
+    "redhat.telemetry.enabled": false,
+    "git.autofetch": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "black-formatter.importStrategy": "fromEnvironment",
+    "githubPullRequests.pullBranch": "never",
+    "vim.commandLineModeKeyBindings": [],
+    "vim.easymotion": true,
+    "vim.normalModeKeyBindings": [],
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "files.associations": {
+        "*.py": "python"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "github.copilot.advanced": {},
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "plaintext": false,
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "vim.vimrc.path": "$HOME/.vscodevimrc",
+    "vim.vimrc.enable": true,
+    "vim.leader": ",",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.idea": true,
+        "**/.mypy_cache": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        "**/.venv": true
+    },
+    "diffEditor.renderSideBySide": true,
+    "application.shellEnvironmentResolutionTimeout": 20,
+    "workbench.iconTheme": "file-icons",
+    "codeviz.analyticsEnabled": true,
+    "codeviz.autoUpdate": false,
+    "continue.telemetryEnabled": false,
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "files.autoSave": "afterDelay"
+}
