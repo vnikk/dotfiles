@@ -13,7 +13,15 @@
     "githubPullRequests.pullBranch": "never",
     "vim.commandLineModeKeyBindings": [],
     "vim.easymotion": true,
-    "vim.normalModeKeyBindings": [],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [ "<space>", "r" ], 
+            "after": [],
+            "commands": [
+              { "command": "editor.action.rename", "args": [] }
+            ]
+          }
+    ],
     "jupyter.interactiveWindow.creationMode": "perFile",
     "files.associations": {
         "*.py": "python"
