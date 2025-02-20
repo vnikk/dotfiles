@@ -125,5 +125,18 @@
         "key": "cmd+f",
         "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "cmd+[",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "-swark.architecture",
+        "when": "editorTextFocus"
     }
 ]
