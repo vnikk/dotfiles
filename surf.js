@@ -39,8 +39,7 @@ map('t', 'T');
 map('h', 'oh');
 //aceVimMap('jk', '<Esc>', 'insert');
 
-//map(":el", window.location.replace('https://www.google.com/maps/@50.0905824,14.4500945,14.5z'));
-
+mapkey("<Space>el", 'Maps', function() { window.location.replace("https://www.google.com/maps/@50.0905824,14.4500945,14.5z"); } );
 
 settings.hintAlign = "left";
 settings.enableAutoFocus = false;

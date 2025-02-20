@@ -46,6 +46,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-test/vim-test'
 Plugin 'tpope/vim-surround'
+"Plugin 'github/copilot.vim'
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'codota/tabnine-vim'
 "Plugin 'ludovicchabant/vim-gutentags'
@@ -218,7 +219,7 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 "AddReminderTip 'Lookahead: \(whats before\)\@=text'
 "AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
 "AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
-""AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
+"AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
 "AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
 "AddReminderTip 'Convert to unix: w ++ff=unix'
 "AddReminderTip '[Text Object] Inside Function: if'
@@ -291,8 +292,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 
-
-
 "YouCompleteMe
 "nnoremap gd :tab YcmCompleter GoToType<CR>
 "nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
@@ -330,19 +329,19 @@ if filereadable(expand("~/.local/vimrc"))
     source ~/.local/vimrc
 endif
 
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+"if !exists("g:ycm_semantic_triggers")
+  "let g:ycm_semantic_triggers = {}
+"endif
+"let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Snipmate
 let g:snipMate = { 'snippet_version' : 1 }
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_confirm_extra_conf = 0
 
 "auto-pairs
 "let g:AutoPairsFlyMode = 1
@@ -628,14 +627,15 @@ cabbrev h tab help
 if system("uname -s") =~ "Linux"
     nnoremap Y "+y$
     vnoremap y "+y
-    noremap y "+y
+    vnoremap p "+p
+    noremap yy "+yy
     noremap p :set paste<CR>"+p:set nopaste<CR>
     noremap P :set paste<CR>"+P:set nopaste<CR>
-else
-    nnoremap Y "*y$
-    vnoremap y "*y
-    noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
-    noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
+"else
+    "nnoremap Y "*y$
+    "vnoremap y "*y
+    "noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
+    "noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 endif
 
 " Tags
