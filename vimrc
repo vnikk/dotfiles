@@ -46,6 +46,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-test/vim-test'
 Plugin 'tpope/vim-surround'
+"Plugin 'github/copilot.vim'
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'codota/tabnine-vim'
 "Plugin 'ludovicchabant/vim-gutentags'
@@ -77,7 +78,7 @@ Plugin 'mattboehm/vim-unstack'
 "Plugin 'vimwiki/vimwiki'
 Plugin 'tyru/open-browser.vim'
 Plugin 'psf/black'
-Plugin 'kreskij/vim-reminder-tips'
+"Plugin 'kreskij/vim-reminder-tips'
 "Plugin 'michaelb/vim-tips'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
@@ -143,28 +144,28 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 
 "Vim Reminder Tips
-call reminder_tips#Setup()
-"AddImportantTip 'Example Important Tip'
-AddReminderTip 'Lookbehind: \(whats before\)\@<=text'
-AddReminderTip 'Lookahead: \(whats before\)\@=text'
-AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
-AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
-"AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
-AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
-AddReminderTip 'Convert to unix: w ++ff=unix'
-AddReminderTip '[Text Object] Inside Function: if'
-AddReminderTip '[Text Object] Around Function: af'
-AddReminderTip '[Text Object] Inside Class: ic'
-AddReminderTip '[Text Object] Around Class: ac'
-AddReminderTip '[Text Object] ]] : Move (forward) to the beginning of the next Python class.'
-AddReminderTip '[Text Object] ][ : Move (forward) to the end of the current Python class.'
-AddReminderTip '[Text Object] [[ : Move (backward) to beginning of the current Python class.'
-AddReminderTip '[Text Object] [] : Move (backward) to end of the previous Python class.'
-AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next Python method or function.'
-AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
-AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
-AddReminderTip 'Go to Current file Directory: <leader>gcd'
-AddReminderTip ':Files to search files by name (fzf)'
+"call reminder_tips#Setup()
+""AddImportantTip 'Example Important Tip'
+"AddReminderTip 'Lookbehind: \(whats before\)\@<=text'
+"AddReminderTip 'Lookahead: \(whats before\)\@=text'
+"AddReminderTip 'Negative Lookbehind: \(whats before\)\@<!text'
+"AddReminderTip 'Negative Lookahead: \(whats before\)\@!text'
+""AddReminderTip 'Very magic Lookbehind: \v(whats before)@<=text'
+"AddReminderTip 'Turn on regex magic to give literal meaning to symbols: \v'
+"AddReminderTip 'Convert to unix: w ++ff=unix'
+"AddReminderTip '[Text Object] Inside Function: if'
+"AddReminderTip '[Text Object] Around Function: af'
+"AddReminderTip '[Text Object] Inside Class: ic'
+"AddReminderTip '[Text Object] Around Class: ac'
+"AddReminderTip '[Text Object] ]] : Move (forward) to the beginning of the next Python class.'
+"AddReminderTip '[Text Object] ][ : Move (forward) to the end of the current Python class.'
+"AddReminderTip '[Text Object] [[ : Move (backward) to beginning of the current Python class.'
+"AddReminderTip '[Text Object] [] : Move (backward) to end of the previous Python class.'
+"AddReminderTip '[Text Object] ]m : Move (forward) to the beginning of the next Python method or function.'
+"AddReminderTip '[Text Object] ]M : Move (forward) to the end of the current Python method or function.'
+"AddReminderTip '[Text Object] [M : Move (backward) to the end of the previous Python method or function.'
+"AddReminderTip 'Go to Current file Directory: <leader>gcd'
+"AddReminderTip ':Files to search files by name (fzf)'
 
 " WindowSwap: want immediate <leader>p for paste
 let g:windowswap_map_keys = 0
@@ -221,8 +222,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 
-
-
 "YouCompleteMe
 "nnoremap gd :tab YcmCompleter GoToType<CR>
 "nnoremap <leader>gd :tab YcmCompleter GoTo<CR>
@@ -260,19 +259,19 @@ if filereadable(expand("~/.local/vimrc"))
     source ~/.local/vimrc
 endif
 
-if !exists("g:ycm_semantic_triggers")
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
+"if !exists("g:ycm_semantic_triggers")
+  "let g:ycm_semantic_triggers = {}
+"endif
+"let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " Snipmate
 let g:snipMate = { 'snippet_version' : 1 }
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_confirm_extra_conf = 0
 
 "auto-pairs
 "let g:AutoPairsFlyMode = 1
@@ -559,14 +558,15 @@ cabbrev h tab help
 if system("uname -s") =~ "Linux"
     nnoremap Y "+y$
     vnoremap y "+y
-    noremap y "+y
+    vnoremap p "+p
+    noremap yy "+yy
     noremap p :set paste<CR>"+p:set nopaste<CR>
     noremap P :set paste<CR>"+P:set nopaste<CR>
-else
-    nnoremap Y "*y$
-    vnoremap y "*y
-    noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
-    noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
+"else
+    "nnoremap Y "*y$
+    "vnoremap y "*y
+    "noremap <leader>p :set paste<CR>"*p:set nopaste<CR>
+    "noremap <leader>P :set paste<CR>"*P:set nopaste<CR>
 endif
 
 " Tags

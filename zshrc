@@ -19,11 +19,13 @@ export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export KEYTIMEOUT=1
 
+# TODO
 # home globalias alias-tips virtualenv zsh_reload pipenv vundle dircycle 
-plugins=(git git-extras fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
+plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="true"
+DISABLE_AUTO_UPDATE=true
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
@@ -50,10 +52,10 @@ newfun()
     echo "$1() { $2 }" >> $LOCALFILE
 }
 
-pgr()
-{
-    ps -ef | grep "$1"
-}
+#pgr()
+#{
+    #ps -ef | grep "$1"
+#}
 
 newalias()
 {
@@ -144,11 +146,10 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# FASD {
+# FASD
 bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
 bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
 bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
-# }
 
 # if rebind this to s then l can be used in tmux
 # iterm2: this needs mapping of cmd or opt combination
@@ -284,6 +285,7 @@ if [ ! -z $EDITOR ]; then
 else
     echo 'Editor unset!'
 fi
+alias vi=nvim
 alias -- -='popd'
 alias -g VI=" | vi -"
 alias -g ~="~/"
@@ -316,8 +318,27 @@ alias gcc='git commit --amend --no-edit'
 
 eval "$(direnv hook zsh)"
 
+# hack for broken pipenv
+unset VIRTUAL_ENV
+
 # P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # for startup debugging
 #zprof
+
+source /home/wut/.config/broot/launcher/bash/br
+alias sa='source .venv/bin/activate'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/home/wut/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
