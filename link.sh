@@ -36,8 +36,8 @@ function diff_so_fancy() {
 }
 
 function gitalias() {
-    git config --global user.name "vnikk"
-    git config --global user.email vnikk@github.com
+    git config user.name "vnikk"
+    git config user.email vnikk@github.com
     git config --global color.ui true
 
     # diff-so-fancy
@@ -92,6 +92,10 @@ function other() {
     which zsh 1>/dev/null || sudo apt install -y zsh
     which tmux 1>/dev/null || sudo apt install -y tmux
     which fzf 1>/dev/null || sudo apt install -y fzf
+    which rg 1>/dev/null || sudo apt install -y ripgrep
+    which pass 1>/dev/null || sudo apt install -y pass
+    which uv 1>/dev/null || curl -LsSf https://astral.sh/uv/install.sh | sh
+
 
     git_install git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     #vim --noplugin -u NONE +PluginInstall +qall

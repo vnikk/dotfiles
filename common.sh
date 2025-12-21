@@ -12,9 +12,9 @@ alias l='ls -CF'
 
 if [ $(uname) = "Linux" ]; then
     alias xclip='xclip -selection c'
-	alias l='ls -CF --group-directories-first'
+    alias l='ls -CF --group-directories-first'
     alias get='sudo apt install'
-    alias here="nautilus . &"
+    alias here="dolphin . &"
 
     dimon()
     {

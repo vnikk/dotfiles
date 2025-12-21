@@ -24,7 +24,9 @@ export KEYTIMEOUT=1
 plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
 
 DISABLE_AUTO_TITLE="true"
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
+unsetopt correct_all
+setopt correct
 DISABLE_AUTO_UPDATE=true
 
 # don't save command if space at the begining
@@ -325,8 +327,6 @@ unset VIRTUAL_ENV
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# for startup debugging
-#zprof
 
 source /home/wut/.config/broot/launcher/bash/br
 alias sa='source .venv/bin/activate'
@@ -342,3 +342,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# for startup debugging; has to be at the end of the file
+#zprof
