@@ -110,6 +110,17 @@ addSearchAlias('dl', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
 addSearchAlias('l', 'DeepL', 'https://www.deepl.com/translator#en/cs/');
 addSearchAlias('p', 'Prirucka', 'https://prirucka.ujc.cas.cz/?slovo=');
 addSearchAlias('g', 'Github', 'https://github.com/search?type=repositories&q=');
+addSearchAlias('gpt', 'ChatGPT', 'https://chatgpt.com/?q=');
+
+// Open Omnibar with ChatGPT
+mapkey('oc', '#8Open Search with alias gpt (ChatGPT)', function () {
+    Front.openOmnibar({ type: "SearchEngine", extra: "gpt" });
+});
+
+// Search selected text with ChatGPT
+mapkey('sg', '#8Search selected text with ChatGPT', function () {
+    searchSelectedWith('https://chatgpt.com/?q=');
+});
 
 
 Hints.style('border: solid 1px #5f4b96; color: #000000; background: initial; background-color: #a3ffde; font-size: 12px; font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;');
