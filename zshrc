@@ -345,3 +345,5 @@ esac
 
 # for startup debugging; has to be at the end of the file
 #zprof
+
+. "$HOME/.local/bin/env"
