@@ -58,6 +58,8 @@ mapkey('<Space>gi', '#1get image link and google image search', function () {
 });
 unmap('<Space>gi', /youtube.com/);
 
+unmap('/', /github\.com/i);
+
 // Google
 mapkey('<Space>1', '#1get first google result', function () {
     document.querySelectorAll('.r')[0].children[0].click();
