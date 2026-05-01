@@ -24,22 +24,11 @@ export KEYTIMEOUT=1
 plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
 
 DISABLE_AUTO_TITLE="true"
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 DISABLE_AUTO_UPDATE=true
 
 # don't save command if space at the begining
 setopt HIST_IGNORE_SPACE
-
-if [ -f ~/.config/z_home.sh ]; then
-    LOCALFILE=~/.config/z_home.sh
-elif [ -f ~/.config/z_work.sh ]; then
-    LOCALFILE=~/.config/z_work.sh
-fi
-source $LOCALFILE
-
-if [ -f ~/.dotfiles/common.sh ]; then
-    source ~/.dotfiles/common.sh
-fi
 
 # TODO why here?
 # was slowing zsh load time a lot until commented out
@@ -233,7 +222,7 @@ fshow() {
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+  nocorrect cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
 }
 #####################
 
@@ -247,11 +236,25 @@ bindkey '^[x' insert-last-command-output
 
 # TODO why twice?
 source $ZSH/oh-my-zsh.sh
-#must be under "oh-my-zsh"
+# must be under "oh-my-zsh"
 bindkey -s 'u' 'cd ..
 '
 bindkey -s 's' 'git status
 '
+
+# need local files to be sourced after oh-my-zsh
+if [ -f ~/.config/z_home.sh ]; then
+    LOCALFILE=~/.config/z_home.sh
+elif [ -f ~/.config/z_work.sh ]; then
+    LOCALFILE=~/.config/z_work.sh
+fi
+source $LOCALFILE
+
+if [ -f ~/.dotfiles/common.sh ]; then
+    source ~/.dotfiles/common.sh
+fi
+# must be after oh-my-zsh
+eval "$(fasd --init auto)"
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias l='ls --group-directories-first --color=auto'
@@ -281,7 +284,8 @@ alias .="source"
 alias -s zip=unzip
 if [ ! -z $EDITOR ]; then
     alias vi="$EDITOR -p"
-    alias v="f -e \"$EDITOR\""
+    # trying to add separate "v" alias in .local/bin/v
+    # alias v="f -e \"$EDITOR\""
 else
     echo 'Editor unset!'
 fi
@@ -310,7 +314,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 source ~/.dotfiles/forgit.plugin.zsh
 
 alias chx='chmod +x '
-alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js'
+alias surf='cat ~/.dotfiles/surf.js > ~/.config/surf.js; cat ~/.config/surf.mrk.js >> ~/.config/surf.js; cat ~/.config/surf.js | pbcopy; echo "settings are in clipboard to paste"'
 alias remember-key='ssh-add ~/.ssh/id_rsa'
 alias python=python3
 alias myip='curl ifconfig.me'
@@ -331,10 +335,7 @@ unset VIRTUAL_ENV
 eval "$(gh copilot alias -- zsh)"
 # setting before fasd which uses sed
 alias sed=gsed
-eval "$(fasd --init auto)"
 
-# TODO move to local
-source /home/wut/.config/broot/launcher/bash/br
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
