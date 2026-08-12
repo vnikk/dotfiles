@@ -1,0 +1,103 @@
+;; ~/.config/kanata/kanata.kbd
+;; kanata config reproducing the macOS Karabiner-Elements "Default profile".
+;; Tracked in dotfiles. Secret (Pwd) lives in secret.kbd (gitignored), included below.
+;;
+;; NOT reproducible in kanata (kanata has no frontmost-app awareness) — kept in
+;; Karabiner or dropped:
+;;   - Teams/Firefox/Outlook  Ctrl+X/C/V -> Cmd+X/C/V
+;;   - Outlook  Cmd+M -> Cmd+Shift+R
+;;   - Firefox  Ctrl+R -> Cmd+R
+;;   - VIP Access  Cmd+C -> Cmd+Shift+S
+;;   - Teams  F5 -> mute (app-conditional)
+;;   - Outlook  Ctrl+Shift+A -> Accept (applescript)
+
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes)
+
+(include secret.kbd)
+
+;; Physical keys we touch. Everything else passes through (process-unmapped-keys).
+(defsrc
+  caps  lmet lctl lalt  rmet
+  z     lft  rght bspc
+  a  s  d  f  g  h  j  k  l  v  b  n  i  o
+  f3 f4 f5 f6 f9)
+
+(defalias
+  ;; Caps Lock -> Hyper (Cmd+Ctrl+Opt+Shift) on hold, Esc on tap
+  cap (tap-hold 200 200 esc (multi lmet lctl lalt lsft))
+
+  ;; Left-Ctrl held -> overrides layer (undo + word-nav). Karabiner mapped
+  ;; Left-Ctrl->Option generally; only these combos were actually used.
+  lc  (layer-while-held lctlL)
+
+  ;; Right-Cmd: tap = right_command, hold = arrow-nav (hjkl)
+  rm  (tap-hold 200 200 rmet (layer-while-held rnav))
+
+  ;; 'a': tap = a, hold = mouse-keys layer
+  a   (tap-hold 200 200 a (layer-while-held mouse))
+
+  ;; F5 -> mic mute toggle. Karabiner ran ~/dev/utils/toggle_volume.scpt (sets
+  ;; input volume 0/90). The Homebrew kanata is compiled WITHOUT cmd, and kanata
+  ;; has no native mic-mute, so F5 is left transparent here. To restore exactly:
+  ;;   1) install a cmd-enabled build (kanata_cmd_allowed from GitHub releases)
+  ;;   2) add `danger-enable-cmd yes` to defcfg
+  ;;   3) f5m (cmd osascript /Users/viazovsk/dev/utils/toggle_volume.scpt)
+  ;;   4) map f5 -> @f5m in the base layer
+
+  ;; scroll sub-mode inside the mouse layer (hold s)
+  scrl (layer-while-held mscroll)
+
+  ;; "Lgn" chord types the login name
+  lgn (macro v i a z o v s k))
+
+;; Modifier rotation (Karabiner simple_modifications):
+;;   Left-Cmd -> Control ,  Left-Ctrl -> (Option via lctlL) ,  Left-Alt -> Command
+(deflayer base
+  @cap  lctl @lc  lmet  @rm
+  _     _    _    _
+  @a _  _  _  _  _  _  _  _  _  _  _  _  _
+  _  _  _   _  _)
+
+;; Left-Ctrl held: Cmd+Z undo, Option+arrows / Option+backspace word-nav.
+(deflayer lctlL
+  _  _  _  _  _
+  (macro lmet z)  (macro lalt lft)  (macro lalt rght)  (macro lalt bspc)
+  _  _  _  _  _  _  _  _  _  _  _  _  _  _
+  _  _  _  _  _)
+
+;; Right-Cmd held: h/j/k/l -> arrows
+(deflayer rnav
+  _  _  _  _  _
+  _  _  _  _
+  _  _  _  _  _  lft  down  up  rght  _  _  _  _  _
+  _  _  _  _  _)
+
+;; 'a' held: mouse move (hjkl), buttons (v=left b=middle n=right), s=scroll sub-mode.
+;; ponytail: f/g speed multipliers from Karabiner dropped — accel curve covers it;
+;; add per-key speed layers if you actually miss them.
+(deflayer mouse
+  _  _  _  _  _
+  _  _  _  _
+  _  @scrl _  _  _
+  (movemouse-accel-left 1 500 1 12)
+  (movemouse-accel-down 1 500 1 12)
+  (movemouse-accel-up   1 500 1 12)
+  (movemouse-accel-right 1 500 1 12)
+  mlft  mmid  mrgt  _  _
+  _  _  _  _  _)
+
+;; mouse + s held: h/j/k/l -> scroll wheel
+(deflayer mscroll
+  _  _  _  _  _
+  _  _  _  _
+  _  _  _  _  _
+  (mwheel-left 50 120) (mwheel-down 50 120) (mwheel-up 50 120) (mwheel-right 50 120)
+  _  _  _  _  _
+  _  _  _  _  _)
+
+;; Chord macros (fire when keys pressed together in base)
+(defchordsv2
+  (j k l) @lgn 200 all-released ()
+  (j i o) @pwd 200 all-released ())

@@ -1,0 +1,14 @@
+# Alacritty config — converted from alacritty.yml (YAML support removed in 0.14).
+# Shared via dotfiles. NOTE: terminal.shell.program is OS-specific:
+#   macOS: /opt/homebrew/bin/tmux    Linux: /usr/bin/tmux
+[window]
+startup_mode = "Maximized"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "0xProto Nerd Font Mono"
+
+[terminal.shell]
+program = "/opt/homebrew/bin/tmux"
