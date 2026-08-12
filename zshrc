@@ -12,6 +12,9 @@ export POWERLEVEL9K_TRANSIENT_PROMPT=same-dir
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# Skip oh-my-zsh compaudit (saves ~200ms)
+ZSH_DISABLE_COMPFIX=true
+
 #Fixes tmux vim colors display
 export TERM="xterm-256color"
 export ZSH=~/.oh-my-zsh
@@ -21,7 +24,7 @@ export KEYTIMEOUT=1
 
 # TODO
 # home globalias alias-tips virtualenv zsh_reload pipenv vundle dircycle 
-plugins=(git git-extras z fasd per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux  )
+plugins=(git git-extras z per-directory-history bgnotify extract fancy-ctrl-z zsh-autosuggestions colored-man-pages tmux)
 
 DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="false"
@@ -212,6 +215,14 @@ fshow() {
   done
 }
 
+mdp() {
+    if [[ -z "$1" ]]; then
+      echo "Usage: mdp <file.md>"
+      return 1
+    fi
+  code "$1" && sleep 0.3 && code --command 'markdown.showPreview'
+}
+
 # doesn't let run vi/vim
 #v() {
     #[ $# -gt 0 ] && fasd -f -e ${EDITOR} "$*" && return
@@ -254,7 +265,12 @@ if [ -f ~/.dotfiles/common.sh ]; then
     source ~/.dotfiles/common.sh
 fi
 # must be after oh-my-zsh
-eval "$(fasd --init auto)"
+# Cache fasd init (saves ~1s startup)
+fasd_cache="${XDG_CACHE_HOME:-$HOME/.cache}/fasd-init-zsh"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init auto >| "$fasd_cache"
+fi
+source "$fasd_cache"
 
 alias checksizes='for i in */; do du -sh web/; done'
 alias l='ls --group-directories-first --color=auto'
@@ -328,21 +344,12 @@ unset VIRTUAL_ENV
 # P10K
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Hide user@host (context) segment from prompt
+typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO,ROOT,REMOTE,REMOTE_SUDO}_CONTENT_EXPANSION=''
 
 # for startup debugging
 #zprof
 
-eval "$(gh copilot alias -- zsh)"
 # setting before fasd which uses sed
 alias sed=gsed
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# pnpm
-export PNPM_HOME="/home/wut/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
