@@ -50,7 +50,17 @@ mods = "Command"
 key = "J"
 chars = "\u001bj"   # send M-j -> tmux previous-window (existing bind -n M-j)
 
+[[keyboard.bindings]]
+mods = "Command"
+key = "K"
+chars = "\u001bk"   # send M-k -> tmux next-window (existing bind -n M-k)
+
 # iTerm parity: Cmd+<letter> neutralized to just type the letter (terminal-only).
+[[keyboard.bindings]]
+mods = "Command"
+key = "H"
+chars = "h"
+
 [[keyboard.bindings]]
 mods = "Command"
 key = "B"
