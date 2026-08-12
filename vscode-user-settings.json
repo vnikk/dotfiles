@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "GitHub Dark",
     "python.defaultInterpreterPath": "",
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 1,
@@ -20,7 +19,11 @@
             "commands": [
               { "command": "editor.action.rename", "args": [] }
             ]
-          }
+        },
+        {
+            "before": [ "E" ],
+            "after": [],
+        }
     ],
     "jupyter.interactiveWindow.creationMode": "perFile",
     "files.associations": {
@@ -32,8 +35,9 @@
     "github.copilot.advanced": {},
     "github.copilot.enable": {
         "*": true,
-        "markdown": false,
         "plaintext": false,
+        "markdown": true,
+        "scminput": false
     },
     "github.copilot.editor.enableAutoCompletions": true,
     "vim.vimrc.path": "$HOME/.vscodevimrc",
@@ -59,5 +63,36 @@
     "files.autoSave": "afterDelay",
     "python.locator": "js",
     "git.openRepositoryInParentFolders": "never",
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "cline.vsCodeLmModelSelector": {
+        
+    },
+    "mcpManager.servers": [
+        {
+            "name": "FileSystem",
+            "enabled": true,
+            "command": "npx -y @modelcontextprotocol/server-filesystem /Users/username/Desktop /tmp/test",
+            "type": "process"
+        }
+    ],
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "workbench.colorTheme": "Dark+",
+    "github.copilot.selectedCompletionModel": "",
+    "python.analysis.typeCheckingMode": "standard",
+    "docker.extension.enableComposeLanguageServer": false,
+    "security.promptForLocalFileProtocolHandling": false,
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilotcli:claude-sonnet-4.6",
+    "yaml.disableSchemaDetection": [
+        "**/.github/workflows/*.yml",
+        "**/.github/workflows/*.yaml",
+        "**/.gitea/workflows/*.yml",
+        "**/.gitea/workflows/*.yaml",
+        "**/.forgejo/workflows/*.yml",
+        "**/.forgejo/workflows/*.yaml"
+    ],
+    "docker.extension.dockerEngineAvailabilityPrompt": false,
+    "chat.viewSessions.orientation": "stacked",
+    "makefile.configureOnOpen": false
 }
