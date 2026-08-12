@@ -3,9 +3,13 @@
 #   macOS: /opt/homebrew/bin/tmux    Linux: /usr/bin/tmux
 [window]
 startup_mode = "Maximized"
+decorations = "none"
+# Make Option act as Meta (iTerm's "Option as Esc+") so Option+Left/Right/Backspace
+# do word navigation/delete at the shell.
+option_as_alt = "Both"
 
 [font]
-size = 14.0
+size = 18.0
 
 [font.normal]
 family = "0xProto Nerd Font Mono"
@@ -19,3 +23,24 @@ program = "/opt/homebrew/bin/tmux"
 mods = "Command"
 key = "S"
 chars = "\u0015gst\r"
+
+# iTerm parity for shell line editing:
+[[keyboard.bindings]]
+mods = "Command"
+key = "Left"
+chars = "\u0001"   # Ctrl-A: start of line
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "Right"
+chars = "\u0005"   # Ctrl-E: end of line
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "Back"
+chars = "\u0015"   # Ctrl-U: clear line
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "L"
+chars = "\u0015l\r"   # clear line + run `l`
