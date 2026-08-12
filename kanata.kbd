@@ -45,6 +45,9 @@
   ;; scroll sub-mode inside the mouse layer (hold s)
   scrl (layer-while-held mscroll)
 
+  ;; Cmd+H -> no-op globally (disables macOS Hide). Plain h and mouse-layer h unaffected.
+  ch (fork h XX (lmet))
+
   ;; "Lgn" chord types the login name
   lgn (macro v i a z o v s k))
 
@@ -53,7 +56,7 @@
 (deflayer base
   @cap  _    _    _     @rm
   _     _    _    _
-  @a _  _  _  _  _  _  _  _  _  _  _  _  _
+  @a _  _  _  _  @ch _  _  _  _  _  _  _  _
   _  _  _   _  _)
 
 ;; Right-Cmd held: h/j/k/l -> arrows

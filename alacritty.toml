@@ -58,11 +58,6 @@ chars = "\u001bk"   # send M-k -> tmux next-window (existing bind -n M-k)
 # iTerm parity: Cmd+<letter> neutralized to just type the letter (terminal-only).
 [[keyboard.bindings]]
 mods = "Command"
-key = "H"
-chars = "h"
-
-[[keyboard.bindings]]
-mods = "Command"
 key = "B"
 chars = "b"
 
