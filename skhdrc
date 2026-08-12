@@ -1,0 +1,14 @@
+# skhd — global app-launch / focus hotkeys (recovered from Raycast). macOS only.
+# `open -a` focuses the app if running, launches it otherwise.
+# Linux equivalent lives in KDE custom shortcuts (per the align plan).
+
+cmd + shift - e : open -a "Microsoft Teams"
+cmd + shift - o : open -a "Microsoft Outlook"
+
+# Add more below, one per line:
+#   cmd + shift - <key> : open -a "<App Name>"
+# e.g.
+#   cmd + shift - f : open -a "Firefox"
+#   cmd + shift - c : open -a "Google Chrome"
+#   cmd + shift - v : open -a "Visual Studio Code"
+#   cmd + shift - b : open -a "Obsidian"
