@@ -12,3 +12,10 @@ family = "0xProto Nerd Font Mono"
 
 [terminal.shell]
 program = "/opt/homebrew/bin/tmux"
+
+# Cmd+S at the shell prompt -> run `gst` (git status). Terminal-only, so Save
+# still works in GUI apps. \u0015 = Ctrl-U (clear line), \r = Enter.
+[[keyboard.bindings]]
+mods = "Command"
+key = "S"
+chars = "\u0015gst\r"
