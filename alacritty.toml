@@ -44,3 +44,8 @@ chars = "\u0015"   # Ctrl-U: clear line
 mods = "Command"
 key = "L"
 chars = "\u0015l\r"   # clear line + run `l`
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "J"
+chars = "\u001bj"   # send M-j -> tmux previous-window (existing bind -n M-j)
