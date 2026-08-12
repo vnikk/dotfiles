@@ -28,10 +28,6 @@
   ;; Caps Lock -> Hyper (Cmd+Ctrl+Opt+Shift) on hold, Esc on tap
   cap (tap-hold 200 200 esc (multi lmet lctl lalt lsft))
 
-  ;; Left-Ctrl held -> overrides layer (undo + word-nav). Karabiner mapped
-  ;; Left-Ctrl->Option generally; only these combos were actually used.
-  lc  (layer-while-held lctlL)
-
   ;; Right-Cmd: tap = right_command, hold = arrow-nav (hjkl)
   rm  (tap-hold 200 200 rmet (layer-while-held rnav))
 
@@ -52,20 +48,13 @@
   ;; "Lgn" chord types the login name
   lgn (macro v i a z o v s k))
 
-;; Modifier rotation (Karabiner simple_modifications):
-;;   Left-Cmd -> Control ,  Left-Ctrl -> (Option via lctlL) ,  Left-Alt -> Command
+;; Modifiers: NATIVE (Karabiner cmd/ctrl/opt rotation removed per user request).
+;; Cmd = Cmd (Cmd+Tab app switch works), Ctrl = Ctrl, Opt = Opt.
 (deflayer base
-  @cap  lctl @lc  lmet  @rm
+  @cap  _    _    _     @rm
   _     _    _    _
   @a _  _  _  _  _  _  _  _  _  _  _  _  _
   _  _  _   _  _)
-
-;; Left-Ctrl held: Cmd+Z undo, Option+arrows / Option+backspace word-nav.
-(deflayer lctlL
-  _  _  _  _  _
-  (macro lmet z)  (macro lalt lft)  (macro lalt rght)  (macro lalt bspc)
-  _  _  _  _  _  _  _  _  _  _  _  _  _  _
-  _  _  _  _  _)
 
 ;; Right-Cmd held: h/j/k/l -> arrows
 (deflayer rnav
