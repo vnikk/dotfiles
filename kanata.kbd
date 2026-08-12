@@ -46,14 +46,18 @@
   scrl (layer-while-held mscroll)
 
   ;; "Lgn" chord types the login name
-  lgn (macro v i a z o v s k))
+  lgn (macro v i a z o v s k)
+
+  ;; Cmd+S -> type "gst" + Enter (global; unmod strips the held Cmd so it types text)
+  gst (macro (unmod g s t ret))
+  sk  (fork s @gst (lmet)))
 
 ;; Modifiers: NATIVE (Karabiner cmd/ctrl/opt rotation removed per user request).
 ;; Cmd = Cmd (Cmd+Tab app switch works), Ctrl = Ctrl, Opt = Opt.
 (deflayer base
   @cap  _    _    _     @rm
   _     _    _    _
-  @a _  _  _  _  _  _  _  _  _  _  _  _  _
+  @a @sk _  _  _  _  _  _  _  _  _  _  _  _
   _  _  _   _  _)
 
 ;; Right-Cmd held: h/j/k/l -> arrows
