@@ -49,3 +49,49 @@ chars = "\u0015l\r"   # clear line + run `l`
 mods = "Command"
 key = "J"
 chars = "\u001bj"   # send M-j -> tmux previous-window (existing bind -n M-j)
+
+# iTerm parity: Cmd+<letter> neutralized to just type the letter (terminal-only).
+[[keyboard.bindings]]
+mods = "Command"
+key = "B"
+chars = "b"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "D"
+chars = "d"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "F"
+chars = "f"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "N"
+chars = "n"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "P"
+chars = "p"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "T"
+chars = "t"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "U"
+chars = "u"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "W"
+chars = "w"
+
+[[keyboard.bindings]]
+mods = "Command"
+key = "Period"
+chars = "."
